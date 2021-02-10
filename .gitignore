@@ -69,3 +69,4 @@ typings/
 .DS_Store?
 .Trashes
 Thumbs.db
+.gitmsg

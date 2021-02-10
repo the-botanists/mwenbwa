@@ -1,8 +1,8 @@
 {
-  "name": "@becode/mwenbwa",
+  "name": "@botanists/mwenbwa",
   "version": "0.0.1",
   "description": "A web-based game of conquests… and trees",
-  "author": "leny <leny@becode.org>",
+  "author": "Pieront Emilie <pieront.emilie@gmail.com>, Kevin Cassart <cassart.kev@gmail.com>, Debroux Cédric <cedric@debroux.ovh>, Cedric AUDRIT <cedric@audrit.be>",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -30,6 +30,7 @@
     "@becode/eslint-config": "^0.9.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.2",
     "eslint": "^7.19.0",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
@@ -45,9 +46,12 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "leaflet": "^1.7.1",
     "mongoose": "^5.11.15",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-leaflet": "^3.1.0",
+    "style-loader": "^2.0.0"
   },
   "husky": {
     "hooks": {

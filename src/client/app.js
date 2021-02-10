@@ -1,14 +1,14 @@
-/* becodeorg/mwenbwa
+/* botanists/mwenbwa
  *
  * /src/client/app.js - Client entry point
  *
- * coded by leny@BeCode
- * started at 18/05/2020
+ * started at 08/02/2021
  */
 
 import * as React from "react";
 import ReactDOM from "react-dom";
 
-import HelloWorld from "./components/hello";
+// import HelloWorld from "./components/hello";
+import GameBoard from "./components/gameboard";
 
-ReactDOM.render(<HelloWorld />, document.querySelector("#app"));
+ReactDOM.render(<GameBoard />, document.querySelector("#app"));
