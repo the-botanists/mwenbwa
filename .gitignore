@@ -70,3 +70,4 @@ typings/
 .Trashes
 Thumbs.db
 .gitmsg
+.package-lock.json
