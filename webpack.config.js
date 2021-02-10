@@ -5,7 +5,6 @@
  * coded by leny@BeCode
  * started at 18/05/2020
  */
-
 /* eslint-disable */
 
 const webpack = require("webpack");
@@ -115,3 +114,5 @@ module.exports = env => {
         watch: env === "dev",
     };
 };
+
+  
