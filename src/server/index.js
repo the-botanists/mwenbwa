@@ -6,6 +6,11 @@ const {APP_PORT} = process.env;
 
 const app = express();
 
+// var routes = require('./routes')(app);
+app.get("/game", (request, response) => {
+    response.render("../client/app2.js");
+});
+
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
 app.get("/hello", (req, res) => {
