@@ -7,7 +7,6 @@
  */
 
 import * as React from "react";
-// import {client} from "../../server/config/dbconnect";
 const HelloWorld = () => (
     <div>
         <h1>{"Hello, Quentin!"}</h1>
