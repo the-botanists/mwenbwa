@@ -45,9 +45,11 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "mongodb": "^3.6.4",
     "mongoose": "^5.11.15",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "react-popup": "^0.10.0"
   },
   "husky": {
     "hooks": {
