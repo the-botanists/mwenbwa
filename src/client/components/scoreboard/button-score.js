@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "./button";
 
-const ButtonScore = () => (
+const ButtonScore = ({onOpenModal}) => (
     <div>
-        <Button label={"Score"} onClick={() => console.log("Click!")} />
+        <Button label={"Score"} onClick={onOpenModal} />
     </div>
 );
 
