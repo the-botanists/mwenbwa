@@ -7,9 +7,17 @@
 
 import * as React from "react";
 import ReactDOM from "react-dom";
+import "./assets/css/reset.css";
 import "./assets/css/main.css";
 
-// import HelloWorld from "./components/hello";
+import Hello from "./components/hello";
 import GameBoard from "./components/gameboard";
 
-ReactDOM.render(<GameBoard />, document.querySelector("#app"));
+const isConnected = localStorage.getItem("logged");
+console.log(isConnected);
+
+if (isConnected === "true") {
+    ReactDOM.render(<GameBoard />, document.querySelector("#app"));
+} else {
+    ReactDOM.render(<Hello />, document.querySelector("#app"));
+}

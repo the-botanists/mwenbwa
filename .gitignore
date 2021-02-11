@@ -71,3 +71,9 @@ typings/
 Thumbs.db
 .gitmsg
 .package-lock.json
+
+
+*.css.map
+src/client/assets/css/*.css.map
+src/client/assets/*.css.map
+src/client/assets/main.css.map
