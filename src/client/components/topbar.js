@@ -7,7 +7,7 @@
 
 import * as React from "react";
 
-//
+import Scoreboard from "./scoreboard/container/score-board";
 
 const goLogOut = () => {
     localStorage.removeItem("logged");
@@ -27,9 +27,7 @@ const TopBar = () => (
                 <a className={"navbar-item button is-rounded mx-6 px-6"}>
                     {"Info 2"}
                 </a>
-                <a className={"navbar-item button is-rounded mx-6  px-6"}>
-                    {"Info 3"}
-                </a>
+                <Scoreboard />
             </div>
 
             <div className={"navbar-end"}>
