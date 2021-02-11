@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 
 import TableScore from "./table-score";
+// import ButtonCloseModal from "./button-close-modal";
+import Button from "./button";
 
 const modalStyle = {
     position: "absolute",
@@ -18,7 +20,7 @@ const modalStyle = {
     background: "rgba(0, 0, 0, 0.20)",
 };
 
-const ModalScore = ({show = false}) => {
+const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
     if (!show) {
         return null;
     }
@@ -27,6 +29,10 @@ const ModalScore = ({show = false}) => {
         <div style={modalStyle}>
             <div className={classnames("box")}>
                 <TableScore />
+                <div className={classnames("contButtons")}>
+                    <Button label={"Close"} onClick={onCloseModal} />
+                    <Button label={"Share"} onClick={onShareScore} />
+                </div>
             </div>
         </div>,
         document.querySelector("#scoreModal"),
@@ -35,6 +41,8 @@ const ModalScore = ({show = false}) => {
 
 ModalScore.propTypes = {
     show: PropTypes.bool,
+    onCloseModal: PropTypes.func.isRequired,
+    onShareScore: PropTypes.func,
 };
 
 export default ModalScore;

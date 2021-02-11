@@ -10,10 +10,22 @@ const Scoreboard = () => {
         setShowModal(true);
     };
 
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+
+    const handleShareScore = () => {
+        console.log("shared!");
+    };
+
     return (
         <div>
             <ButtonScore onOpenModal={handleOpenModal} />
-            <ModalScore show={showModal} />
+            <ModalScore
+                show={showModal}
+                onCloseModal={handleCloseModal}
+                onShareScore={handleShareScore}
+            />
         </div>
     );
 };
