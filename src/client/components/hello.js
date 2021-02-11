@@ -9,14 +9,17 @@ import * as React from "react";
 
 // localStorage.removeItem("logged");
 
-function isLogin() {
-    localStorage.setItem("logged", true);
-}
+const isLogin = status => {
+    localStorage.setItem("logged", status);
+};
 
 const isConnected = localStorage.getItem("logged");
 
 const Hello = () => (
-    <div className={"container.is-fullhd has-background-dark"}>
+    <div
+        className={
+            "container-fullscreen container.is-fullhd has-background-dark"
+        }>
         <div className={"container"}>
             <h1 className={"has-text-light"}>{"Hello, Everyone!"}</h1>
             <hr />
@@ -61,7 +64,7 @@ const Hello = () => (
                         <button
                             type={"submit"}
                             className={"button is-primary"}
-                            onClick={isLogin()}>
+                            onClick={isLogin(true)}>
                             {"Sign in"}
                         </button>
                     </form>

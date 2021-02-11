@@ -9,9 +9,9 @@ import * as React from "react";
 
 //
 
-function goLogOut() {
+const goLogOut = () => {
     localStorage.removeItem("logged");
-}
+};
 
 const TopBar = () => (
     <nav
@@ -45,7 +45,7 @@ const TopBar = () => (
                         className={
                             "navbar-item button is-danger is-rounded mx-4 px-4"
                         }
-                        onClick={goLogOut()}>
+                        onClick={goLogOut}>
                         <strong>{"Log Out"}</strong>
                     </button>
                 </form>
