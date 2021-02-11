@@ -1,10 +1,16 @@
-import React from "react";
+import * as React from "react";
 import ReactDOM from "react-dom";
-import "./assets/style.css";
-import "./assets/reset.css";
+import "./assets/css/reset.css";
+import "./assets/css/main.css";
 
-// import HelloWorld from "./components/hello";
+import Hello from "./components/hello";
+import GameBoard from "./components/gameboard";
 
-import Scoreboard from "./components/scoreboard/container/score-board";
+const isConnected = localStorage.getItem("logged");
+console.log(isConnected);
 
-ReactDOM.render(<Scoreboard />, document.querySelector("#app"));
+if (isConnected === "true") {
+    ReactDOM.render(<GameBoard />, document.querySelector("#app"));
+} else {
+    ReactDOM.render(<Hello />, document.querySelector("#app"));
+}

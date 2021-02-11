@@ -1,0 +1,9 @@
+#leafletContainer { 
+    width: 100%; 
+    height: 100vh;
+}
+
+.container-fullscreen{
+    width: 100%;
+    height: 100vh;
+}
