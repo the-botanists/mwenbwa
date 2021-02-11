@@ -5,23 +5,29 @@
   height: $height;
 }
 
-@mixin border-radius($radius) {
-  border-radius: $radius;
-}
-
-@mixin box-shadow {
-  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.582);
-}
-
 // ======style 4 scoreboard========
 
+.k-modalScore{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.20);
+}
+
+
 .k-leafIcon {
-  @include box(1.4rem);
+  @include box(1.6rem);
   background: center / contain no-repeat url("./svg/leaf-erable.svg");
 }
 
 .k-treeIcon {
-  @include box(1.4rem);
+  @include box(1.6rem);
   background: center / contain no-repeat url("./svg/tree-k.svg");
 }
 .k-searchIcon {
@@ -29,7 +35,14 @@
   background: center / contain no-repeat url("./svg/search.svg");
 }
 
-// .contButtons{
-//     display:flex;
-//     justify-content: end;
-// }
+.k-titleScore{
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.k-buttonsGroup{
+    display:flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
