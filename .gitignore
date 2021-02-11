@@ -71,3 +71,9 @@ typings/
 Thumbs.db
 .gitmsg
 .package-lock.json
+
+
+
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+.github/ISSUE_TEMPLATE
