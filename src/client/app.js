@@ -1,14 +1,7 @@
-/* botanists/mwenbwa
- *
- * /src/client/app.js - Client entry point
- *
- * started at 08/02/2021
- */
-
 import * as React from "react";
 import ReactDOM from "react-dom";
 import "./assets/css/reset.css";
-import "./assets/css/main.css";
+import "./assets/style.css";
 
 import Hello from "./components/hello";
 import GameBoard from "./components/gameboard";

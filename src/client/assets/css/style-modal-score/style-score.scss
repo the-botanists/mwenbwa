@@ -1,0 +1,35 @@
+// ======Mixins Kev========
+
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+@mixin box-shadow {
+  box-shadow: 0rem 0.5rem 1rem rgba(0, 0, 0, 0.582);
+}
+
+// ======style 4 scoreboard========
+
+.k-leafIcon {
+  @include box(1.4rem);
+  background: center / contain no-repeat url("./svg/leaf-erable.svg");
+}
+
+.k-treeIcon {
+  @include box(1.4rem);
+  background: center / contain no-repeat url("./svg/tree-k.svg");
+}
+.k-searchIcon {
+  @include box(1rem);
+  background: center / contain no-repeat url("./svg/search.svg");
+}
+
+// .contButtons{
+//     display:flex;
+//     justify-content: end;
+// }

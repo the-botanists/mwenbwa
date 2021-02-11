@@ -1,10 +1,3 @@
-/* botanists/mwenbwa
- *
- * /src/client/components/hello.js - Hello Component
- *
- * started at 11/02/2021
- */
-
 import * as React from "react";
 
 // localStorage.removeItem("logged");
