@@ -68,4 +68,7 @@ typings/
 .DS_Store
 .DS_Store?
 .Trashes
-Thumbs.db
+Thumbs.d
+
+# Map Css #
+src/client/assets/style.css.map

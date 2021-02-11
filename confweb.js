@@ -11,6 +11,8 @@
 const webpack = require("webpack");
 const {resolve} = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 
 module.exports = env => {
     const plugins = [
@@ -42,7 +44,6 @@ module.exports = env => {
                             const packageName = module.context.match(
                                 /[\\/]node_modules[\\/](.*?)([\\/]|$)/,
                             )[1];
-
                             return `npm.${packageName.replace("@", "")}`;
                         },
                     },
@@ -62,7 +63,7 @@ module.exports = env => {
         module: {
             rules: [
                 {
-                    test: /\.(png|jpg|gif|svg)$/,
+                    test: /\.(png|jpg|gif)$/,
                     use: [
                         {
                             loader: "file-loader",

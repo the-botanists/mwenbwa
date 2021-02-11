@@ -6,8 +6,9 @@
  * started at 18/05/2020
  */
 
-import * as React from "react";
+import React from "react";
 import ReactDOM from "react-dom";
+import "./assets/style.css";
 
 import HelloWorld from "./components/hello";
 
