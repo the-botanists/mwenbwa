@@ -20,7 +20,7 @@ class Hello extends React.Component {
                 }>
                 <div className={"container"}>
                     <h1 className={"has-text-light"}>
-                        {"Battle of Liege trees"}
+                        {"Battle Tree Conqueror"}
                     </h1>
                     <hr />
                     <div className={"columns"}>
