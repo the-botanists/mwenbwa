@@ -1,15 +1,39 @@
 import Tree from "../models/tree";
 
-const list = (req, res) => {
+const getAllTree = (req, res) => {
     Tree.find()
         .then(trees => res.status(200).json(trees))
         .catch(error => res.status(400).json({error}));
 };
 
-const read = (req, res) => {
+const getOneTree = (req, res) => {
     Tree.findOne({_id: req.params.id})
         .then(tree => res.status(200).json({tree}))
         .catch(error => res.status(404).json({error}));
 };
 
-export default {list, read};
+const deleteTree = (req, res) => {
+    Tree.updateOne({_id: req.params.id}, {...req.body, _id: req.params.id})
+        .then(() => res.status(200).json({message: "This tree is updated !"}))
+        .catch(error => res.status(400).json({error}));
+};
+
+const removeTree = (req, res) => {
+    Tree.deleteOne({_id: req.params.id})
+        .then(() =>
+            res.status(200).json({message: "This tree is Destroyed  !"}),
+        )
+        .catch(error => res.status(400).json({error}));
+};
+
+const createTree = (req, res) => {
+    delete req.body._id;
+    const tree = new Tree({
+        ...req.body,
+    });
+    tree.save()
+        .then(() => res.status(201).json({message: "Tree add !"}))
+        .catch(error => res.status(400).json({error}));
+};
+
+export default {getAllTree, getOneTree, deleteTree, removeTree, createTree};
