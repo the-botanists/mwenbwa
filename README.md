@@ -9,7 +9,8 @@ ___
 ## Live Demo
 
 hosted on [VPS](https://battletree.neant.be/)
-hosted on heroku.com - Soon
+
+hosted on [heroku](https://btc-liege.herokuapp.com/) Soon
 
 ## Features
 
@@ -17,6 +18,7 @@ Soon
 
 ## Technology used and specification
 
+- NPM
 - NodeJS
 - MongoDB
 - Docker
