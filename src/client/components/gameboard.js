@@ -5,10 +5,10 @@ import TopBar from "./topbar";
 class GameBoard extends React.Component {
     render() {
         return (
-            <div>
+            <>
                 <TopBar />
                 <GameMap />
-            </div>
+            </>
         );
     }
 }

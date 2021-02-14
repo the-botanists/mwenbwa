@@ -1,6 +1,8 @@
 #leafletContainer { 
     width: 100%; 
-    height: 100vh;
+    height: 94.5vh;
+    z-index: 2;
+    margin-top: 5.5vh;
 }
 
 .container-fullscreen{

@@ -38,8 +38,8 @@ const treeSchema = mongoose.Schema({
         required: true,
     },
     // owner: {
-    //     type: ObjectId,
-    // },
+    //      type: ObjectId,
+    //  },
 });
 
 export default mongoose.model("Tree", treeSchema);
