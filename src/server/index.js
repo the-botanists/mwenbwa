@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import mongoose from "mongoose";
 import treeRoutes from "./routes/tree";
+import scoreRoutes from "./routes/score";
 
 const {APP_PORT} = process.env;
 
@@ -25,6 +26,7 @@ const app = express();
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
 app.use("/api/trees", treeRoutes);
+app.use("/api/scores", scoreRoutes);
 
 // app.get("*", (req, res) => {
 //     res.sendFile(path.resolve("./bin/client/index.html"));
