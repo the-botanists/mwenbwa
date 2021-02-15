@@ -14,10 +14,10 @@ mongoose.connect(
         useCreateIndex: true,
         useUnifiedTopology: true,
     },
-    () => console.log("You are connected to the DB Atlas"),
+    () => console.log("💫 You are connected to the DB Atlas 👌"),
 );
 mongoose.connection.on("error", () => {
-    throw new Error(`Unable to connect to database`);
+    throw new Error(`💣 ... 💥 Unable to connect to database`);
 });
 
 const app = express();
