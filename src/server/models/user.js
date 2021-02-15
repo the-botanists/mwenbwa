@@ -3,17 +3,13 @@ const uniqueValidator = require("mongoose-unique-validator"); //Vérifictaion un
 
 const userShema = mongoose.Schema({
     email: {
-        type: {
-            type: String,
-            required: true,
-            unique: true,
-        },
+        type: String,
+        required: true,
+        unique: true,
     }, //unique first vérification unique mail adress
     password: {
-        type: {
-            type: String,
-            require: true,
-        },
+        type: String,
+        required: true,
     },
 });
 
