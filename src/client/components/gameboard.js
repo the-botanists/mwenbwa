@@ -1,14 +1,14 @@
 import * as React from "react";
-import GameMap from "./map";
+import GameMap from "./map/mapview";
 import TopBar from "./topbar";
 
 class GameBoard extends React.Component {
     render() {
         return (
-            <div>
+            <>
                 <TopBar />
                 <GameMap />
-            </div>
+            </>
         );
     }
 }

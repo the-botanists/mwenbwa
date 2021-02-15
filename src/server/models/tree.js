@@ -29,17 +29,17 @@ const treeSchema = mongoose.Schema({
     //     type: String,
     //     required: true,
     // },
-    diameter: {
+    diametre_cime: {
         type: Number,
         required: true,
     },
-    shape: {
+    circonf: {
         type: Number,
         required: true,
     },
     // owner: {
-    //     type: ObjectId,
-    // },
+    //      type: ObjectId,
+    //  },
 });
 
 export default mongoose.model("Tree", treeSchema);
