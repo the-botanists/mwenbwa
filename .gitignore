@@ -83,6 +83,9 @@ src/client/assets/*.css.map
 src/client/assets/main.css.map
 src/client/assets/css/main.css.map
 
+#testRequest file kev#
+src/server/testReq.http
+
 
 # CONTRIBUTING.md
 # CODE_OF_CONDUCT.md

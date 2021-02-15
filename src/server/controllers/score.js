@@ -1,8 +1,8 @@
 const Score = require("../models/score");
 
-exports.createScore = async (req, res) => {
-    const score = new Score(req.body);
+export const createScore = async (req, res) => {
     try {
+        const score = new Score(req.body);
         await score.save();
         res.status(201).json(score);
     } catch (error) {
@@ -10,36 +10,36 @@ exports.createScore = async (req, res) => {
     }
 };
 
-exports.getOneScore = async (req, res) => {
-    const score = await Score.findOne({_id: req.params.id});
+export const getOneScore = async (req, res) => {
     try {
+        const score = await Score.findOne({_id: req.params.id});
         res.status(200).json(score);
     } catch (error) {
         res.status(404).json({error});
     }
 };
 
-exports.getOneScoreByUser = async (req, res) => {
-    const score = await Score.findOne({_id: req.params.id});
+export const getOneScoreByUser = async (req, res) => {
     try {
+        const score = await Score.findOne({username: req.params.username});
         res.status(200).json(score);
     } catch (error) {
         res.status(404).json({error: "This username does not exist"});
     }
 };
 
-exports.getAllScores = async res => {
-    const scores = await Score.find();
+export const getAllScores = async res => {
     try {
+        const scores = await Score.find();
         res.status(200).json(scores);
     } catch (error) {
         res.status(404).json({error});
     }
 };
 
-// exports.updateScore = async (req, res) => {
+// export const updateScore = async (req, res) => {
 //     try {
-//         await Score.findOneAndUpdate(req.params.username, req.body);
+//         await Score.findOneAndUpdate({username: req.params.username});
 //         await Score.save();
 //         res.send(score);
 //     } catch (error) {
@@ -47,7 +47,7 @@ exports.getAllScores = async res => {
 //     }
 // };
 
-exports.deleteScore = async (req, res) => {
+export const deleteScore = async (req, res) => {
     try {
         const score = await Score.findByIdAndDelete(req.params.id);
         if (!score) {
