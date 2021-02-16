@@ -12,11 +12,15 @@ function GetScores() {
             .then(
                 scores => {
                     setIsLoaded(true);
-                    setItems(scores.slice(0, 10));
+                    setItems(
+                        scores
+                            .slice(0, 6)
+                            .sort((a, b) => b.numOfTrees - a.numOfTrees),
+                    );
                 },
-                //errors must be handled here rather than in
-                // a catch() block so that we don't swallow exceptions
-                // due to real bugs in the components.
+                /*errors must be handled here rather than in
+                a catch() block so that we don't swallow exceptions
+                due to real bugs in the components.*/
                 err => {
                     setIsLoaded(true);
                     setError(err);
