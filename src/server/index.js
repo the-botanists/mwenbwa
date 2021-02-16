@@ -2,8 +2,9 @@ import express from "express";
 import path from "path";
 import mongoose from "mongoose";
 import treeRoutes from "./routes/tree";
+import simpleuserRoutes from "./routes/simpleuser";
+// const userRoutes = require("./routes/user");
 
-const userRoutes = require("./routes/user");
 const {APP_PORT} = process.env;
 
 // Database Connection URL
@@ -25,9 +26,11 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
+app.use("/api/simpleusers", simpleuserRoutes);
 app.use("/api/trees", treeRoutes);
 
-app.use("/api/auth", userRoutes);
+
+// app.use("/api/auth", userRoutes);
 
 // app.get("*", (req, res) => {
 //     res.sendFile(path.resolve("./bin/client/index.html"));
@@ -36,3 +39,4 @@ app.use("/api/auth", userRoutes);
 app.listen(APP_PORT, () =>
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),
 );
+ 
