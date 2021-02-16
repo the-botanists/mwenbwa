@@ -1,9 +1,12 @@
 import Tree from "../models/tree";
 
-const getAllTree = (req, res) => {
-    Tree.find()
-        .then(trees => res.status(200).json(trees))
-        .catch(error => res.status(400).json({error}));
+const getAllTree = async (req, res) => {
+    try {
+        const allTrees = await Tree.find();
+        res.status(200).json(allTrees);
+    } catch (error) {
+        res.status(400).json({error});
+    }
 };
 
 const getOneTree = (req, res) => {
