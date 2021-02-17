@@ -7,7 +7,7 @@ function GetScores() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost/api/scores")
+        fetch("/api/scores")
             .then(res => res.json())
             .then(
                 scores => {

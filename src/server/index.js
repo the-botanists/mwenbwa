@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import treeRoutes from "./routes/tree";
 import scoreRoutes from "./routes/score";
 
-const userRoutes = require("./routes/user");
+// const userRoutes = require("./routes/user");
 const {APP_PORT} = process.env;
 
 // Database Connection URL
@@ -29,7 +29,7 @@ app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 app.use("/api/trees", treeRoutes);
 app.use("/api/scores", scoreRoutes);
 
-app.use("/api/auth", userRoutes);
+// app.use("/api/auth", userRoutes);
 
 // app.get("*", (req, res) => {
 //     res.sendFile(path.resolve("./bin/client/index.html"));

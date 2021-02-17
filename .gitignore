@@ -91,3 +91,5 @@ src/server/testReq.http
 # CODE_OF_CONDUCT.md
 # .github/ISSUE_TEMPLATE
 
+
+.vscode

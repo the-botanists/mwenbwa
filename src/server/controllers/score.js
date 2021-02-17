@@ -28,7 +28,7 @@ export const getOneScoreByUser = async (req, res) => {
     }
 };
 
-export const getAllScores = async res => {
+export const getAllScores = async (req, res) => {
     try {
         const scores = await Score.find();
         res.status(200).json(scores);
