@@ -2,7 +2,6 @@ import express from "express";
 import path from "path";
 import mongoose from "mongoose";
 import treeRoutes from "./routes/tree";
-// import simpleuserRoutes from "./routes/simpleuser";
 import scoreRoutes from "./routes/score";
 
 // const userRoutes = require("./routes/user");
@@ -17,6 +16,7 @@ mongoose.connect(
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true,
+        // useFindAndModify: false,
     },
     () => console.log("💫 You are connected to the DB Atlas 👌"),
 );
@@ -28,7 +28,6 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
-// app.use("/api/simpleusers", simpleuserRoutes);
 app.use("/api/trees", treeRoutes);
 app.use("/api/scores", scoreRoutes);
 

@@ -1,12 +1,30 @@
 import express from "express";
 import treeCtrl from "../controllers/tree";
+import Tree from "../models/tree";
 
-const router2 = express.Router();
+const router = express.Router();
 
-router2.get("/", treeCtrl.getAllTree);
-router2.get("/:id", treeCtrl.getOneTree);
-router2.put("/:id", treeCtrl.updateTree);
-router2.delete("/:id", treeCtrl.removeTree);
-router2.post("/", treeCtrl.createTree);
+router.get("/", treeCtrl.getAllTree);
+router.get("/:id", treeCtrl.getOneTree);
+// router.put("/:id", treeCtrl.updateTree);
+router.delete("/:id", treeCtrl.removeTree);
+router.post("/", treeCtrl.createTree);
 
-export default router2;
+router.put("/updateall", (req, res) => {
+    Tree.updateMany(
+        {height: {$gte: 2}},
+        {$set: {treevalue2: {$divide: ["$circonf", 3.1421]}}},
+        (err, result) => {
+            if (err) {
+                res.send(err);
+                console.log(err);
+            } else {
+                console.log("Updated Docs : ", result);
+            }
+        },
+    );
+});
+
+export default router;
+
+// { $set: { treevalue:   {$multiply:[{$divide: ["$circonf", 3.1421]},  "$height"]} },
