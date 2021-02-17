@@ -1,5 +1,5 @@
 import * as React from "react";
-import classnames from "classnames";
+import GetScores from "./get-scores";
 
 const TableScore = () => (
     <>
@@ -17,12 +17,10 @@ const TableScore = () => (
                     <th />
                 </tr>
             </thead>
-
-            <tbody classnames={"k-tbodyScore"}>
+            <GetScores />
+            {/* <tbody classnames={"k-tbodyScore"}>
                 {Array.apply(0, new Array(8)).map((x, i) => {
-                    console.log(i);
                     let pos = i;
-                    console.log(pos);
                     return (
                         <tr
                             className={classnames("k-tableRow")}
@@ -46,7 +44,7 @@ const TableScore = () => (
                         </tr>
                     );
                 })}
-            </tbody>
+            </tbody> */}
         </table>
     </>
 );

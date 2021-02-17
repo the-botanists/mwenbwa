@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 
 import TableScore from "./table-score";
-// import ButtonCloseModal from "./button-close-modal";
 import Button from "./button";
 
 const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
@@ -17,8 +16,8 @@ const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
             <div className={classnames("box", "k-boxModal")}>
                 <TableScore />
                 <div className={classnames("k-buttonsGroup")}>
-                    <Button label={"Close"} onClick={onCloseModal} />
                     <Button label={"Share"} onClick={onShareScore} />
+                    <Button label={"Close"} onClick={onCloseModal} />
                 </div>
             </div>
         </div>,

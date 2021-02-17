@@ -68,7 +68,8 @@ class TreesMarkers extends React.Component {
 
         return allTreesMarker.map(tree => (
             <Marker
-                key={tree._id.$oid}
+                // !!!!!! I replaced the key (tree._id.$oid) by (tree._id) to correct the console error. "KEV"
+                key={tree._id}
                 icon={randtreeIcon()}
                 position={tree.location.coordinates}>
                 <Popup>

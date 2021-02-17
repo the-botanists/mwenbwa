@@ -3,6 +3,8 @@ import path from "path";
 import mongoose from "mongoose";
 import treeRoutes from "./routes/tree";
 import simpleuserRoutes from "./routes/simpleuser";
+import scoreRoutes from "./routes/score";
+
 // const userRoutes = require("./routes/user");
 
 const {APP_PORT} = process.env;
@@ -28,7 +30,7 @@ app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
 app.use("/api/simpleusers", simpleuserRoutes);
 app.use("/api/trees", treeRoutes);
-
+app.use("/api/scores", scoreRoutes);
 
 // app.use("/api/auth", userRoutes);
 
