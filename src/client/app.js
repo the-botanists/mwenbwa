@@ -5,12 +5,14 @@ import "./assets/style.css";
 
 import Hello from "./components/hello";
 import GameBoard from "./components/gameboard";
+import SubmitForm from "./components/profile/list"
 
-const isConnected = localStorage.getItem("logged");
+const isConnected = "0";
 console.log(isConnected);
 
 if (isConnected === "true") {
     ReactDOM.render(<GameBoard />, document.querySelector("#app"));
 } else {
-    ReactDOM.render(<Hello />, document.querySelector("#app"));
+    // ReactDOM.render(<Hello />, document.querySelector("#app"));
+    ReactDOM.render(<SubmitForm />, document.querySelector("#app"));
 }
