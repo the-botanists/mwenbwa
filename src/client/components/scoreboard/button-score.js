@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Button from "./button";
+import Button from "../reusable-components/button";
 
 const ButtonScore = ({onOpenModal}) => (
     <div>

@@ -5,7 +5,7 @@ import classnames from "classnames";
 import {useSpring, animated} from "react-spring";
 
 import TableScore from "./table-score";
-import Button from "./button";
+import Button from "../reusable-components/button";
 
 const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
     //const 4 anims
@@ -39,16 +39,16 @@ const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
     return createPortal(
         <div
             // style={mountModal}
-            className={classnames("k-modalScore")}>
+            className={classnames("k-modal")}>
             <animated.div
-                className={classnames("box", "k-modalScore__box")}
+                className={classnames("box", "k-modal__box")}
                 style={{transform: modalMove.xys.interpolate(trans)}}
                 onMouseMove={({clientX: x, clientY: y}) =>
                     set({xys: calc(x, y)})
                 }
                 onMouseLeave={startSetMove}>
                 <TableScore />
-                <div className={classnames("k-modalScore__btnsGroup")}>
+                <div className={classnames("k-modal__btnsGroup")}>
                     <Button label={"Share"} onClick={onShareScore} />
                     <Button
                         label={"Close"}
@@ -60,7 +60,7 @@ const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
                 </div>
             </animated.div>
         </div>,
-        document.querySelector("#scoreModal"),
+        document.querySelector("#modals"),
     );
 };
 

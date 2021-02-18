@@ -1,4 +1,4 @@
-.k-modalScore {
+.k-modal {
   position: absolute;
   top: 0;
   right: 0;
@@ -17,7 +17,7 @@
   background: rgba(0, 0, 0, 0.2);
 }
 
-.k-modalScore__box {
+.k-modal__box {
   min-height: 445px;
   min-width: 445px;
   display: -webkit-box;
@@ -30,7 +30,7 @@
   overflow: hidden;
 }
 
-.k-modalScore__btnsGroup {
+.k-modal__btnsGroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
