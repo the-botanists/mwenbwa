@@ -5,7 +5,7 @@ import MarkerClusterGroup from "react-leaflet-markercluster";
 import "leaflet/dist/leaflet.css";
 import "../../assets/css/map.css";
 import "react-leaflet-markercluster/dist/styles.min.css";
-import TreesMarkers from "./marker";
+// import TreesMarkers from "./marker";
 
 function GameMap() {
     const position = [50.6283, 5.5768];
@@ -39,7 +39,7 @@ function GameMap() {
                 showCoverageOnHover={false}
                 zoomToBoundsOnClick={false}
                 disableClusteringAtZoom={17}>
-                <TreesMarkers />
+                {/* <TreesMarkers /> */}
             </MarkerClusterGroup>
         </MapContainer>
     );
