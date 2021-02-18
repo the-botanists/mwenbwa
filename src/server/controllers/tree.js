@@ -26,10 +26,6 @@ const getAllTreeWithGeo = async (req, res) => {
 const getOneTree = async (req, res) => {
     try {
         const oneTree = await Tree.findOne({_id: req.params.id});
-<<<<<<< HEAD
-        // console.log(oneTree);
-=======
->>>>>>> dev
         res.status(200).json({oneTree});
     } catch (error) {
         res.status(404).json({error});

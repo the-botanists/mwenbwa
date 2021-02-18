@@ -12,10 +12,5 @@ console.log(isConnected);
 if (isConnected === "true") {
     ReactDOM.render(<GameBoard />, document.querySelector("#app"));
 } else {
-<<<<<<< HEAD
     ReactDOM.render(<Hello />, document.querySelector("#app"));
-=======
-    // ReactDOM.render(<Hello />, document.querySelector("#app"));
-    // ReactDOM.render(<SubmitForm />, document.querySelector("#app"));
->>>>>>> dev
 }
