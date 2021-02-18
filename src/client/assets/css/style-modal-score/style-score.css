@@ -17,6 +17,37 @@
   background: rgba(0, 0, 0, 0.2);
 }
 
+.k-modalScore__box {
+  min-height: 445px;
+  min-width: 445px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+}
+
+.k-modalScore__btnsGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  gap: 1rem;
+}
+
+.k-table {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
 .k-leafIcon {
   width: 1.6rem;
   height: 1.6rem;
@@ -39,15 +70,5 @@
   text-align: center;
   font-size: 1.6rem;
   font-weight: 600;
-}
-
-.k-buttonsGroup {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  gap: 1rem;
 }
 /*# sourceMappingURL=style-score.css.map */
