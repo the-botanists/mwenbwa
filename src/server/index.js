@@ -3,6 +3,7 @@ import path from "path";
 import mongoose from "mongoose";
 import treeRoutes from "./routes/tree";
 
+const userRoutes = require("./routes/user");
 const {APP_PORT} = process.env;
 
 // Database Connection URL
@@ -14,10 +15,10 @@ mongoose.connect(
         useCreateIndex: true,
         useUnifiedTopology: true,
     },
-    () => console.log("You are connected to the DB Atlas"),
+    () => console.log("💫 You are connected to the DB Atlas 👌"),
 );
 mongoose.connection.on("error", () => {
-    throw new Error(`Unable to connect to database`);
+    throw new Error(`💣 ... 💥 Unable to connect to database`);
 });
 
 const app = express();
@@ -25,6 +26,8 @@ const app = express();
 app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
 app.use("/api/trees", treeRoutes);
+
+app.use("/api/auth", userRoutes);
 
 // app.get("*", (req, res) => {
 //     res.sendFile(path.resolve("./bin/client/index.html"));
