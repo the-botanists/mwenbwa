@@ -1,11 +1,11 @@
-// import React, {useState, useEffect} from "react"; // useMap, useMapEvents
+// import React from "react";
 // import axios from "axios";
 // import {Marker, Popup} from "react-leaflet"; // MapContainer, TileLayer
 // import L from "leaflet";
 // import TreeImage0 from "../../assets/img/watercolor-tree1.png";
 // import TreeImage1 from "../../assets/img/watercolor-tree2.png";
 
-// const randtreeIcon = () => {
+// function randtreeIcon() {
 //     function getRandomInt(max) {
 //         return Math.floor(Math.random() * Math.floor(max));
 //     }
@@ -26,7 +26,7 @@
 //         popupAnchor: [17, 0], // point from which the popup should open relative to the iconAnchor
 //     });
 //     return treeIcon;
-// };
+// }
 
 // function fixLatinName(treeLatinName) {
 //     let latinName = treeLatinName.split(` X `)[0];
@@ -35,51 +35,62 @@
 //     return latinName;
 // }
 
-// const center = [50.6283, 5.5768];
-// const latMin = center[0] - 0.003;
-// const latMax = center[0] + 0.003;
-// const lonMin = center[1] - 0.007;
-// const lonMax = center[1] + 0.007;
+// // let center = () => {return [50.6283, 5.5768];}
+// const CurrentCenter = [50.6283, 5.5768];
+// const latMin = center => center[0] - 0.003;
+// const latMax = center => center[0] + 0.003;
+// const lonMin = center => center[1] - 0.006;
+// const lonMax = center => center[1] + 0.006;
 
-// function GetMarker() {
-//     const [error, setError] = useState(null);
-//     // const [isLoaded, setIsLoaded] = useState(false);
-//     const [treesmarker, setTreesmarker] = useState([]);
+// class TreesMarkers extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = {
+//             allTreesMarker: [],
+//         };
+//     }
 
-//     // console.log(currentZoom);
+//     componentDidMount() {
+//         this.getTreesMarker();
+//     }
 
-//     useEffect(() => {
+//     getTreesMarker() {
 //         axios
 //             .get("/api/trees/all")
 //             .then(response => {
-//                 // setIsLoaded(true);
-//                 setTreesmarker(response.data);
+//                 const data = response.data;
+//                 // let filtered = response.filter(
+//                 //     tree =>
+//                 //         tree.location.coordinates[1] > lonMin &&
+//                 //         tree.location.coordinates[1] < lonMax &&
+//                 //         tree.location.coordinates[0] > latMin &&
+//                 //         tree.location.coordinates[0] < latMax
+//                 //         );
+//                 this.setState({allTreesMarker: data});
+//                 console.log("Data received!!");
+//                 console.log("data");
 //             })
-//             // })
 //             .catch(() => {
-//                 // console.log("Error retrieving data!!!");
-//                 // setIsLoaded(true);
-//                 setError(error);
-//                 console.log(error);
+//                 // console.log("Error data found!!!");
 //             });
-//     });
+//     }
 
-//     // if (!isLoaded) {
-//     //     return <span className={"title"}>{"loading"}</span>;
-//     // }
-//     return treesmarker.map(tree => {
-//         console.log(tree.location.coordinates[0]);
-//         console.log(`ATT :${lonMin}`);
-//         console.log(tree.location.coordinates[1]);
-//         if (
-//             tree.location.coordinates[1] > lonMin &&
-//             tree.location.coordinates[1] < lonMax &&
-//             tree.location.coordinates[0] > latMin &&
-//             tree.location.coordinates[0] < latMax
-//         ) {
-//             return (
-//                 <>
-//                     {/* <MapEvents /> */}
+//     displayTreeMaker(allTreesMarker) {
+//         if (!allTreesMarker.length) {
+//             return null;
+//         }
+
+//         return allTreesMarker.map(tree => {
+//             // console.log(tree.location.coordinates[0])
+//             // console.log("ATT :"+lonMin)
+//             // console.log(tree.location.coordinates[1])
+//             if (
+//                 tree.location.coordinates[1] > lonMin(CurrentCenter) &&
+//                 tree.location.coordinates[1] < lonMax(CurrentCenter) &&
+//                 tree.location.coordinates[0] > latMin(CurrentCenter) &&
+//                 tree.location.coordinates[0] < latMax(CurrentCenter)
+//             ) {
+//                 return (
 //                     <Marker
 //                         key={tree._id}
 //                         icon={randtreeIcon()}
@@ -89,7 +100,9 @@
 //                             <br />
 //                             <p>
 //                                 {"Value : "}
-//                                 {/* {parseInt((tree.circonf / 3.1421) * tree.height)} */}
+//                                 {parseInt(
+//                                     (tree.circonf / 3.1421) * tree.height,
+//                                 )}
 //                                 {" leafs"}{" "}
 //                             </p>
 //                             <p>
@@ -149,10 +162,14 @@
 //                             </button>
 //                         </Popup>
 //                     </Marker>
-//                 </>
-//             );
-//         }
-//     });
+//                 );
+//             }
+//         });
+//     }
+
+//     render() {
+//         return <>{this.displayTreeMaker(this.state.allTreesMarker)}</>;
+//     }
 // }
 
-// export default GetMarker;
+// export default TreesMarkers;

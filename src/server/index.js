@@ -33,9 +33,9 @@ app.use("/api/scores", scoreRoutes);
 
 // app.use("/api/auth", userRoutes);
 
-// app.get("*", (req, res) => {
-//     res.sendFile(path.resolve("./bin/client/index.html"));
-// });
+app.get("/", (req, res) => {
+    res.sendFile(path.resolve("./bin/client/index.html"));
+});
 
 app.listen(APP_PORT, () =>
     console.log(`🚀 Server is listening on port ${APP_PORT}.`),

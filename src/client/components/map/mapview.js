@@ -5,28 +5,45 @@ import MarkerClusterGroup from "react-leaflet-markercluster";
 import "leaflet/dist/leaflet.css";
 import "../../assets/css/map.css";
 import "react-leaflet-markercluster/dist/styles.min.css";
-// import TreesMarkers from "./marker";
-import GetMarker from "./marker2";
+import TreesMarkers from "./marker";
+// import GetMarker from "./marker2";
 
 // let currentView = useMap(map.getBounds())
 
-function makeACall(bounds, zoom, zoomThreshold = 16) {
-    console.log(`Current map zoom is ${zoom}`);
-    if (zoom > zoomThreshold) {
-        console.log("make a call to the server with the bounds:", bounds);
-        // currentZoom = zoom
-    }
-}
+// function makeACall(bounds, zoom, zoomThreshold = 16) {
+//     console.log(`Current map zoom is ${zoom}`);
+//     if (zoom > zoomThreshold) {
+//         console.log("make a call to the server with the bounds:", bounds);
+//         // currentZoom = zoom
+//     }
+// }
+
+// const makeACall = (bounds, zoom, bcenter, zoomThreshold = 15) => {
+//     console.log(`Current map zoom is ${zoom}`);
+//     if (zoom > zoomThreshold) {
+//         console.log("make a call to the server with the bounds:", bounds);
+//         console.log("Center:", bcenter);
+//         // currentZoom = zoom
+//     }
+// }
+
+const infoCenter = bcenter => {
+    console.log("Center : ", bcenter);
+    return bcenter;
+};
 
 const MapEvents = () => {
     const map = useMapEvents({
-        moveend: () => makeACall(map.getBounds(), map.getZoom()),
-        zoomend: () => makeACall(map.getBounds(), map.getZoom()),
+        // moveend: () => makeACall(map.getBounds(), map.getZoom(), map.getCenter()),
+        // zoomend: () => makeACall(map.getBounds(), map.getZoom(), map.getCenter()),
+        moveend: () => infoCenter(map.getCenter()),
+        zoomend: () => infoCenter(map.getCenter()),
     });
     return null;
 };
 
-const SetMarker = GetMarker;
+const SetMarker = TreesMarkers;
+// const SetMarker = GetMarker;
 
 function GameMap() {
     const position = [50.6283, 5.5768];
@@ -37,8 +54,8 @@ function GameMap() {
             zoom={17}
             minZoom={12}
             maxZoom={18}
+            // style={{ height: "100vh", width: "100vw" }}
             scrollWheelZoom={true}>
-            <MapEvents />
             <TileLayer
                 url={
                     // 'https://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -60,6 +77,7 @@ function GameMap() {
                 showCoverageOnHover={false}
                 zoomToBoundsOnClick={false}
                 disableClusteringAtZoom={17}>
+                <MapEvents />
                 <SetMarker />
             </MarkerClusterGroup>
         </MapContainer>
