@@ -1,4 +1,4 @@
-// import path from "path";
+import path from "path";
 // import treeRoutes from "./routes/tree";
 // const userRoutes = require("./routes/user");
 // const {APP_PORT} = process.env;
@@ -85,8 +85,10 @@ app.use(bodyParser.json());
 // app.use(express.urlencoded({extended: true}));
 // app.use(express.json());
 
+//
+app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 app.get("/", (req, res) => {
-    res.json({message: "API Working"});
+    res.sendFile(path.resolve("./bin/client/index.html"));
 });
 /**
  * Router Middleware
@@ -94,7 +96,9 @@ app.get("/", (req, res) => {
  * Method - *
  */
 app.use("/user", user);
-
+//app.get("*", (req, res) => {
+//     res.sendFile(path.resolve("ERROR 404"));
+// });
 app.listen(PORT, () => {
     console.log(`Server Started at PORT ${PORT}`);
 });
