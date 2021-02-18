@@ -12836,7 +12836,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.253);
 }
 
 .k-modal__box {
@@ -12852,6 +12852,10 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   overflow: hidden;
 }
 
+.k-modal__box--profile {
+  overflow: unset;
+}
+
 .k-modal__btnsGroup {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12862,6 +12866,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   -ms-flex-item-align: end;
       align-self: flex-end;
   gap: 1rem;
+  margin-top: 1.25rem;
 }
 
 .k-table {
@@ -12892,5 +12897,22 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   text-align: center;
   font-size: 1.6rem;
   font-weight: 600;
+}
+
+.colorPicker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1.5rem;
+}
+
+.colorPicker__selected {
+  width: 2rem;
+  height: 1.2rem;
+  border-radius: 3px;
+  border: 1px solid #dbdbdb;
 }
 /*# sourceMappingURL=style.css.map */
