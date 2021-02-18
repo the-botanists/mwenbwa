@@ -1,4 +1,5 @@
 import Tree from "../models/tree";
+import Trees from "../models/trees";
 
 const getAllTree = async (req, res) => {
     try {
@@ -9,9 +10,26 @@ const getAllTree = async (req, res) => {
     }
 };
 
+const getAllTreeWithGeo = async (req, res) => {
+    try {
+        const geo200Trees = await Trees.find({
+            location: {
+                $geoWithin: {$centerSphere: [[50.624454, 5.604456], 0.0000313]},
+            },
+        });
+        res.status(200).json(geo200Trees);
+    } catch (error) {
+        res.status(400).json({error});
+    }
+};
+
 const getOneTree = async (req, res) => {
     try {
         const oneTree = await Tree.findOne({_id: req.params.id});
+<<<<<<< HEAD
+        // console.log(oneTree);
+=======
+>>>>>>> dev
         res.status(200).json({oneTree});
     } catch (error) {
         res.status(404).json({error});
@@ -49,4 +67,11 @@ const createTree = (req, res) => {
         .catch(error => res.status(400).json({error}));
 };
 
-export default {getAllTree, getOneTree, updateTree, removeTree, createTree};
+export default {
+    getAllTree,
+    getOneTree,
+    updateTree,
+    removeTree,
+    createTree,
+    getAllTreeWithGeo,
+};

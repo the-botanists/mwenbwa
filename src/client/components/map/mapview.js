@@ -1,15 +1,52 @@
 import React from "react";
-import {MapContainer, TileLayer} from "react-leaflet"; // Marker, Popup,
+import {MapContainer, TileLayer, useMapEvents} from "react-leaflet"; // Marker, Popup, useMap
 import MarkerClusterGroup from "react-leaflet-markercluster";
 // import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "../../assets/css/map.css";
 import "react-leaflet-markercluster/dist/styles.min.css";
-// import TreesMarkers from "./marker";
+import TreesMarkers from "./marker";
+// import GetMarker from "./marker2";
+
+// let currentView = useMap(map.getBounds())
+
+// function makeACall(bounds, zoom, zoomThreshold = 16) {
+//     console.log(`Current map zoom is ${zoom}`);
+//     if (zoom > zoomThreshold) {
+//         console.log("make a call to the server with the bounds:", bounds);
+//         // currentZoom = zoom
+//     }
+// }
+
+// const makeACall = (bounds, zoom, bcenter, zoomThreshold = 15) => {
+//     console.log(`Current map zoom is ${zoom}`);
+//     if (zoom > zoomThreshold) {
+//         console.log("make a call to the server with the bounds:", bounds);
+//         console.log("Center:", bcenter);
+//         // currentZoom = zoom
+//     }
+// }
+
+const infoCenter = bcenter => {
+    console.log("Center : ", bcenter);
+    return bcenter;
+};
+
+const MapEvents = () => {
+    const map = useMapEvents({
+        // moveend: () => makeACall(map.getBounds(), map.getZoom(), map.getCenter()),
+        // zoomend: () => makeACall(map.getBounds(), map.getZoom(), map.getCenter()),
+        moveend: () => infoCenter(map.getCenter()),
+        zoomend: () => infoCenter(map.getCenter()),
+    });
+    return null;
+};
+
+const SetMarker = TreesMarkers;
+// const SetMarker = GetMarker;
 
 function GameMap() {
     const position = [50.6283, 5.5768];
-
     return (
         <MapContainer
             id={"leafletContainer"}
@@ -17,6 +54,7 @@ function GameMap() {
             zoom={17}
             minZoom={12}
             maxZoom={18}
+            // style={{ height: "100vh", width: "100vw" }}
             scrollWheelZoom={true}>
             <TileLayer
                 url={
@@ -39,7 +77,8 @@ function GameMap() {
                 showCoverageOnHover={false}
                 zoomToBoundsOnClick={false}
                 disableClusteringAtZoom={17}>
-                {/* <TreesMarkers /> */}
+                <MapEvents />
+                <SetMarker />
             </MarkerClusterGroup>
         </MapContainer>
     );
