@@ -1,4 +1,4 @@
-.k-modalScore {
+.k-modal {
   position: absolute;
   top: 0;
   right: 0;
@@ -14,10 +14,10 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.253);
 }
 
-.k-modalScore__box {
+.k-modal__box {
   min-height: 445px;
   min-width: 445px;
   display: -webkit-box;
@@ -28,9 +28,14 @@
       -ms-flex-direction: column;
           flex-direction: column;
   overflow: hidden;
+  background-color: #15dea5 !important;
 }
 
-.k-modalScore__btnsGroup {
+.k-modal__box--profile {
+  overflow: unset;
+}
+
+.k-modal__btnsGroup {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -70,5 +75,25 @@
   text-align: center;
   font-size: 1.6rem;
   font-weight: 600;
+}
+
+.colorPicker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.2rem;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+}
+
+.colorPicker__selected {
+  width: 3rem;
+  height: 2rem;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style-score.css.map */

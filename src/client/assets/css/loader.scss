@@ -1,0 +1,51 @@
+$color-bars: #15dea5;
+$color-bars-rev: darken($color-bars, 50);
+$size: 3vh;
+$anim-duration: 1000ms;
+$num-bars: 5;
+$anim-delay: $anim-duration / $num-bars;
+
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $size * 10;
+    height: $size * 7.5;
+    display: flex;
+    justify-content: space-evenly;
+    &__bar {
+        background-color: $color-bars;
+        height: 100%;
+        width: $size;
+        animation: bars $anim-duration backwards infinite ease-in-out alternate;
+        @for $i from 1 through $num-bars {
+            &--#{$i} {
+                animation-delay: $anim-delay * $i;
+                &:hover {
+                    animation-play-state: paused;
+                    background-color: lighten($color-bars, 30);
+                }
+            }
+            &--#{$i}-rev {
+                background-color: $color-bars-rev;
+                animation-delay: $anim-delay * $i + random(100) * 15ms;
+                animation-direction: alternate-reverse;
+                animation-fill-mode: forwards;
+                &:hover {
+                    animation-play-state: paused;
+                }
+            }
+        }
+    }
+}
+
+@keyframes bars {
+    0% {
+        transform: scaleY(0.5);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}

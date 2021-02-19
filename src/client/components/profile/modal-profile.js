@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 import {useSpring, animated} from "react-spring";
 
-import TableScore from "./table-score";
+import FormProfile from "./forms-profile";
 import Button from "../reusable-components/button";
 
-const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
+const ModalProfile = ({show = false, onCloseModal, onSaveProfile}) => {
     //const 4 anims
     const calc = (x, y) => [
         -(y - window.innerHeight / 2) / 200,
@@ -22,14 +22,6 @@ const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
         config: {mass: 5, tension: 350, friction: 40},
     }));
     const startSetMove = () => set({xys: [0, 0, 1]});
-
-    // const btnsAppear = useSpring({
-    //     from: {transform: "translateY(4rem)"},
-    //     to: {transform: "translateY(0)"},
-    //     delay: 600,
-    //     config: {mass: 1, tension: 400, friction: 12},
-    // });
-
     //end anims
 
     if (!show) {
@@ -37,21 +29,30 @@ const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
     }
 
     return createPortal(
-        <div
-            // style={mountModal}
-            className={classnames("k-modal")}>
+        <div className={classnames("k-modalProfile k-modal")}>
             <animated.div
-                className={classnames("box", "k-modal__box")}
+                className={classnames(
+                    "box",
+                    "k-modal__box",
+                    "k-modal__box--profile",
+                )}
                 style={{transform: modalMove.xys.interpolate(trans)}}
                 onMouseMove={({clientX: x, clientY: y}) =>
                     set({xys: calc(x, y)})
                 }
                 onMouseLeave={startSetMove}>
-                <TableScore />
+                <FormProfile />
                 <div className={classnames("k-modal__btnsGroup")}>
-                    <Button label={"Share"} onClick={onShareScore} />
                     <Button
-                        label={"Close"}
+                        label={"Save"}
+                        onClick={() => {
+                            onCloseModal();
+                            onSaveProfile();
+                            startSetMove();
+                        }}
+                    />
+                    <Button
+                        label={"Cancel"}
                         onClick={() => {
                             onCloseModal();
                             startSetMove();
@@ -64,10 +65,10 @@ const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
     );
 };
 
-ModalScore.propTypes = {
+ModalProfile.propTypes = {
     show: PropTypes.bool,
     onCloseModal: PropTypes.func.isRequired,
     onShareScore: PropTypes.func,
 };
 
-export default ModalScore;
+export default ModalProfile;

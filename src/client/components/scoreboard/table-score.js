@@ -8,7 +8,8 @@ const TableScore = () => (
             <thead className={"k-tableHead"}>
                 <tr>
                     <th>
-                        <div className={"k-searchIcon"} />
+                        {/* <div className={"k-searchIcon"} /> */}
+                        {"#"}
                     </th>
                     <th>{"User Name"}</th>
                     <th>{"Leafs"}</th>
