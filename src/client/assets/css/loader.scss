@@ -1,21 +1,75 @@
-@mixin random-bgr() {
-  background: rgb(random(255), random(255), random(255));
-}
-@function randomColor(){
-$red: random(256)-1; 
-$green: random(256)-1; 
-$blue: random(256)-1;
-@return rgb($red, $green, $blue);
-}
+$color-bars: #15dea5;
+$color-bars-rev: darken($color-bars, 50);
+$size: 3vh;
+$anim-duration: 1000ms;
+$num-bars: 5;
+$anim-delay: $anim-duration / $num-bars;
 
-.loader {
-    &__element {
-        width: 30px;
-        height: 100px;
-        background: rgb(90, 90, 90);
-        margin: 5px;
-        &:hover {
-            background: rgb(14, 185, 157);
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.load {
+    width: $size * 10;
+    height: $size * 7.5;
+    display: flex;
+    justify-content: space-evenly;
+    &__bar {
+        background-color: $color-bars;
+        height: 100%;
+        width: $size;
+        animation: bars $anim-duration backwards infinite ease-in-out alternate;
+        @for $i from 1 through $num-bars {
+            &--#{$i} {
+                animation-delay: $anim-delay * $i;
+            }
+            &--#{$i}-rev {
+                background-color: $color-bars-rev;
+                animation-delay: $anim-delay * $i + random(100) * 15ms;
+                animation-direction: alternate-reverse;
+                animation-fill-mode: forwards;
+                &:hover {
+                    animation-play-state: paused;
+                }
+            }
         }
     }
 }
+
+@keyframes bars {
+    0% {
+        transform: scaleY(0.5);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+
+
+//=================LOADER SPRING===================//
+// @mixin random-bgr() {
+//     background: rgb(random(255), random(255), random(255));
+// }
+// @function randomColor() {
+//     $red: random(256)-1;
+//     $green: random(256)-1;
+//     $blue: random(256)-1;
+//     @return rgb($red, $green, $blue);
+// }
+
+
+
+// .loader {
+//     &__element {
+//         width: 30px;
+//         height: 100px;
+//         background: rgb(90, 90, 90);
+//         margin: 5px;
+//         &:hover {
+//             background: rgb(14, 185, 157);
+//         }
+//     }
+// }

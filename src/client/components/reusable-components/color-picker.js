@@ -9,7 +9,7 @@ const ColorPicker = () => {
     const [showPicker, setShowPicker] = useState(false);
 
     const fadeStyles = useSpring({
-        config: {...config.gentle},
+        config: {...config.slow},
         from: {transformOrigin: "left", transform: "scale(0)"},
         to: {
             transform: showPicker ? "scale(1)" : "scale(0)",

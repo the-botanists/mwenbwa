@@ -1,7 +1,24 @@
-// import React from "react";
-// import {useSpring, animated} from "react-spring";
-// import range from "lodash-es/range";
-// import "../../assets/css/loader.css";
+import React from "react";
+import "../../assets/css/loader.css";
+
+const Loader = () => (
+    <div className={"container"}>
+        <div className={"load"}>
+            <div className={"load__bar load__bar--1"} />
+            <div className={"load__bar load__bar--2"} />
+            <div className={"load__bar load__bar--3"} />
+            <div className={"load__bar load__bar--4"} />
+            <div className={"load__bar load__bar--5"} />
+        </div>
+        {/* <div className="load">
+                <div className="load__bar load__bar--1-rev"></div>
+                <div className="load__bar load__bar--2-rev"></div>
+                <div className="load__bar load__bar--3-rev"></div>
+                <div className="load__bar load__bar--4-rev"></div>
+                <div className="load__bar load__bar--5-rev"></div>
+            </div> */}
+    </div>
+);
 
 // const items = range(4);
 // const interp = i => r =>
@@ -32,4 +49,4 @@
 //     );
 // }
 
-// export default Loader;
+export default Loader;
