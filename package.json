@@ -74,12 +74,12 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.2",
+    "react-spring": "^8.0.27",
     "register-service-worker": "^1.7.2",
     "serve": "^11.3.2",
     "style-loader": "^2.0.0",
     "swr": "^0.4.2",
-    "with-router": "^1.0.1",
-    "react-spring": "^8.0.27"
+    "with-router": "^1.0.1"
   },
   "husky": {
     "hooks": {

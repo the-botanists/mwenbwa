@@ -1,28 +1,18 @@
 import path from "path";
-<<<<<<< HEAD
-// import treeRoutes from "./routes/tree";
+import treeRoutes from "./routes/tree";
+import scoreRoutes from "./routes/score";
 // const userRoutes = require("./routes/user");
 // const {APP_PORT} = process.env;
 // const express = require("express");
 // const mongoose = require("mongoose");
 // const bodyParser = require("body-parser");
 // const app = express();
-=======
-import mongoose from "mongoose";
-import treeRoutes from "./routes/tree";
-import scoreRoutes from "./routes/score";
-
-// const userRoutes = require("./routes/user");
-
-const {APP_PORT} = process.env;
->>>>>>> origin/dev
 
 //Body Parser
 // const urlencodedParser = bodyParser.urlencoded({
 //     extended: true,
 // });
 // Database Connection URL
-<<<<<<< HEAD
 // mongoose.Promise = global.Promise;
 // mongoose.connect(
 //     `mongodb+srv://battletree:zD4V1183RRGf5DBF@botanistes.tjvkg.mongodb.net/botanistes?retryWrites=true&w=majority`,
@@ -36,39 +26,14 @@ const {APP_PORT} = process.env;
 // mongoose.connection.on("error", () => {
 //     throw new Error(`Unable to connect to database`);
 // });
-=======
-mongoose.Promise = global.Promise;
-mongoose.connect(
-    `mongodb+srv://battletree:zD4V1183RRGf5DBF@botanistes.tjvkg.mongodb.net/botanistes?retryWrites=true&w=majority`,
-    {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-        // useFindAndModify: false,
-    },
-    () => console.log("💫 You are connected to the DB Atlas 👌"),
-);
-mongoose.connection.on("error", () => {
-    throw new Error(`💣 ... 💥 Unable to connect to database`);
-});
-
-const app = express();
->>>>>>> origin/dev
 
 // app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 
-<<<<<<< HEAD
-// app.use("/api/trees", treeRoutes);
-=======
-app.use("/api/trees", treeRoutes);
-app.use("/api/scores", scoreRoutes);
->>>>>>> origin/dev
-
 // app.use("/api/auth", userRoutes);
 
-app.get("/", (req, res) => {
-    res.sendFile(path.resolve("./bin/client/index.html"));
-});
+// app.get("/", (req, res) => {
+//     res.sendFile(path.resolve("./bin/client/index.html"));
+// });
 
 //On définit notre objet express nommé app
 
@@ -104,6 +69,8 @@ app.get("/", (req, res) => {
 const express = require("express");
 const bodyParser = require("body-parser");
 const user = require("../server/routes/user");
+// const treeRoutes = require("./routes/tree");
+
 // const signup = require("../client/components/hello");
 const InitiateMongoServer = require("./config/db");
 
@@ -132,9 +99,12 @@ app.get("/", (req, res) => {
  * Method - *
  */
 app.use("/user", user);
+app.use("/api/trees", treeRoutes);
+app.use("/api/scores", scoreRoutes);
+
 //app.get("*", (req, res) => {
 //     res.sendFile(path.resolve("ERROR 404"));
 // });
 app.listen(PORT, () => {
-    console.log(`Server Started at PORT ${PORT}`);
+    console.log(`🚀 Server Started at PORT ${PORT}`);
 });
