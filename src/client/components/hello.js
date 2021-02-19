@@ -1,103 +1,50 @@
-import * as React from "react";
-const login = require("../../server/controllers/user");
-const signup = require("../../server/controllers/user");
+import React from "react";
+import axios from "axios";
+import {Formik, Field, Form} from "formik";
 
-// localStorage.removeItem("logged");
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 const Hello = () => (
-    // this.goLogin = this.goLogin.bind(this);
-    // goLogin() {
-    //     localStorage.setItem("logged", true);
-    // }
-    // const btnLogin = this.goLogin;
-    <div
-        className={
-            "container-fullscreen container.is-fullhd has-background-dark"
-        }>
-        <div className={"container"}>
-            <h1 className={"has-text-light"}>{"Battle Tree Conqueror"}</h1>
-            <hr />
-            <div className={"columns"}>
-                <div
-                    className={
-                        "column is-three-quarters has-background-primary"
-                    }>
-                    {"Info"}
-                    <div className={"box"}>
-                        {"I'm in a box."}
-                        <br />
-                        {"Not Connected"}
-                    </div>
-                </div>
+    <div>
+        <h1>{"Sign Up"}</h1>
+        <Formik
+            initialValues={{
+                username: "",
+                password: "",
+                email: "",
+            }}
+            onSubmit={async values => {
+                await sleep(500);
+                axios
+                    .post("/user/signup", values)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    });
+            }}>
+            {({isSubmitting}) => (
+                <Form>
+                    <label htmlFor={"username"}>{"Enter your username"}</label>
+                    <Field name={"username"} placeholder={"Jane"} />
 
-                <div className={"column is-one-quarter has-background-primary"}>
-                    <form className={"box"}>
-                        <div className={"field"}>
-                            <label className={"label"}>{"Email"}</label>
-                            <div className={"control"}>
-                                <input
-                                    className={"input"}
-                                    type={"email"}
-                                    placeholder={"e.g. john.doe@example.com"}
-                                />
-                            </div>
-                        </div>
+                    <label htmlFor={"password"}>{"Password"}</label>
+                    <Field name={"password"} placeholder={"*****"} />
 
-                        <div className={"field"}>
-                            <label className={"label"}>{"Password"}</label>
-                            <div className={"control"}>
-                                <input
-                                    className={"input"}
-                                    type={"password"}
-                                    placeholder={"********"}
-                                />
-                            </div>
-                        </div>
-
-                        <button
-                            type={"submit"}
-                            className={"button is-primary"}
-                            onClick={login}>
-                            {"Sign in"}
-                        </button>
-                    </form>
-                    <form className={"box"}>
-                        <div className={"field"}>
-                            <label className={"label"}>
-                                {"Email subscription"}
-                            </label>
-                            <div className={"control"}>
-                                <input
-                                    className={"input"}
-                                    type={"email"}
-                                    placeholder={"e.g. john.doe@example.com"}
-                                />
-                            </div>
-                        </div>
-
-                        <div className={"field"}>
-                            <label className={"label"}>{"Password"}</label>
-                            <div className={"control"}>
-                                <input
-                                    className={"input"}
-                                    type={"password"}
-                                    placeholder={"********"}
-                                />
-                            </div>
-                        </div>
-
-                        <button
-                            type={"submit"}
-                            className={"button is-primary"}
-                            onClick={signup}>
-                            {"Sign up"}
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <small>{"botanists/mwenbwa"}</small>
-        </div>
+                    <label htmlFor={"email"}>{"Email"}</label>
+                    <Field
+                        name={"email"}
+                        placeholder={"jane@acme.com"}
+                        type={"email"}
+                    />
+                    <button type={"submit"} disabled={isSubmitting}>
+                        {"Submit"}
+                    </button>
+                </Form>
+            )}
+        </Formik>
     </div>
 );
 
-export default Hello;
+export {Hello};

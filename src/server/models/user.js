@@ -1,18 +1,25 @@
-const mongoose = require("mongoose");
-const uniqueValidator = require("mongoose-unique-validator"); //Vérifictaion unique mail adress
+//FILENAME : User.js
 
-const userShema = mongoose.Schema({
+const mongoose = require("mongoose");
+
+const UserSchema = mongoose.Schema({
+    username: {
+        type: String,
+        required: true,
+    },
     email: {
         type: String,
         required: true,
-        unique: true,
-    }, //unique first vérification unique mail adress
+    },
     password: {
         type: String,
         required: true,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now(),
+    },
 });
 
-userShema.plugin(uniqueValidator); //vérification unique mail adress
-
-module.exports = mongoose.model("user", userShema);
+// export model user with UserSchema
+module.exports = mongoose.model("user", UserSchema);

@@ -1,7 +1,7 @@
 // import {ObjectId} from "mongodb";
 import mongoose from "mongoose"; // , {ObjectId}
 
-const treeSchema = mongoose.Schema({
+const treesSchema = mongoose.Schema({
     locked: {
         type: Boolean,
         required: true,
@@ -50,4 +50,4 @@ const treeSchema = mongoose.Schema({
     },
 });
 
-export default mongoose.model("Tree", treeSchema);
+export default mongoose.model("Trees", treesSchema);
