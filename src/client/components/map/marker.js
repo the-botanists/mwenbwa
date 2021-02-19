@@ -47,6 +47,7 @@ class TreesMarkers extends React.Component {
         super(props);
         this.state = {
             allTreesMarker: [],
+            data: this.props.dataParentToChild,
         };
     }
 
@@ -79,7 +80,6 @@ class TreesMarkers extends React.Component {
         if (!allTreesMarker.length) {
             return null;
         }
-
         const TEST = allTreesMarker
             .filter(
                 tree =>
@@ -146,7 +146,7 @@ class TreesMarkers extends React.Component {
                                 className={"input"}
                                 type={"text"}
                                 placeholder={"Text input"}
-                                value={"123"}
+                                value={this.props.dataParentToChild}
                             />
                         </div>
                         <button type={"button"} className={"button is-success"}>
