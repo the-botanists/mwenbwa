@@ -1,5 +1,5 @@
 import React from "react";
-import {MapContainer, TileLayer, useMapEvents, useMap} from "react-leaflet"; // Marker, Popup, useMap
+import {MapContainer, TileLayer, useMapEvents} from "react-leaflet"; // Marker, Popup, useMap
 import MarkerClusterGroup from "react-leaflet-markercluster";
 // import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -25,11 +25,11 @@ const setCurrentCenter = [50.62231133913421, 5.563437938690186];
 // const SetMarker = TreesMarkers dataParentToChild={<MapEvents />} ;
 //const SetMarker = GetMarker data={setCurrentCenter}
 
-function MyComponent() {
-    const map = useMap();
-    console.log("map center:", map.getCenter());
-    return map.getCenter();
-}
+// function MyComponent() {
+//     const map = useMap();
+//     console.log("map center:", map.getCenter());
+//     return map.getCenter();
+// }
 
 function GameMap() {
     const position = [50.6283, 5.5768];
@@ -59,7 +59,7 @@ function GameMap() {
                 showCoverageOnHover={false}
                 zoomToBoundsOnClick={false}
                 disableClusteringAtZoom={17}>
-                <MyComponent />
+                {/* <MyComponent /> */}
                 <GetMarker
                     CurrentCenter={setCurrentCenter}
                     // CurrentCenter={setCurrentCenter}
