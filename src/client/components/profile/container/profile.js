@@ -4,6 +4,10 @@ import ModalProfile from "../modal-profile";
 
 const Profile = () => {
     const [showModal, setShowModal] = useState(false);
+    // const [username, setUsername] = useState("");
+    // const [name, setName] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [Color, setColor] = useState("");
 
     const handleOpenModal = () => {
         setShowModal(true);
@@ -18,6 +22,10 @@ const Profile = () => {
         setShowModal(false);
     };
 
+    // const handleChangeUser = () => {
+    //     setUsername()
+    // };
+
     return (
         <div>
             <ButtonProfile onOpenModal={handleOpenModal} />
@@ -25,6 +33,7 @@ const Profile = () => {
                 show={showModal}
                 onCloseModal={handleCloseModal}
                 onSaveProfile={handleSaveProfile}
+                // onChangeUser={handleChangeUser}
             />
         </div>
     );

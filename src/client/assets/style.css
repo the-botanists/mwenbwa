@@ -12850,7 +12850,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
       -ms-flex-direction: column;
           flex-direction: column;
   overflow: hidden;
-  background-color: #15dea5 !important;
 }
 
 .k-modal__box--profile {

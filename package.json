@@ -57,6 +57,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "leaflet": "^1.7.1",
+    "md5": "^2.3.0",
     "mongodb": "^3.6.4",
     "mongoose": "^5.11.15",
     "mongoose-unique-validator": "^2.0.3",

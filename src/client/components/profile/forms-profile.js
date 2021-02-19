@@ -1,6 +1,7 @@
-import * as React from "react";
+import React from "react";
 // import PropTypes from "prop-types";
 // import classnames from "classnames";
+const md5 = require("md5");
 
 import ColorPicker from "../reusable-components/color-picker";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -10,16 +11,24 @@ const FormProfile = () => {
     const iconUser = <FontAwesomeIcon icon={faUser} />;
     const iconEnvelope = <FontAwesomeIcon icon={faEnvelope} />;
 
+    const emailHash = email => md5(email.trim().toLowerCase());
+    const hashGravatar = emailHash("sfsartV@gmail.com");
+    console.log(hashGravatar);
+
     return (
         <div>
+            <div className={"avatar"}>
+                <img className={"avatar__content "} src={""} alt={""} />
+            </div>
             <div className={"field"}>
                 <label className={"label"}>{"Name"}</label>
-                <div className={"control"}>
+                <div className={"control has-icons-left"}>
                     <input
                         className={"input"}
                         type={"text"}
-                        placeholder={"Text input"}
+                        placeholder={"Your name"}
                     />
+                    <span className={"icon is-small is-left"}>{iconUser}</span>
                 </div>
             </div>
 
@@ -29,7 +38,7 @@ const FormProfile = () => {
                     <input
                         className={"input"}
                         type={"text"}
-                        placeholder={"Text input"}
+                        placeholder={"Your username"}
                     />
                     <span className={"icon is-small is-left"}>{iconUser}</span>
                 </div>
@@ -42,7 +51,7 @@ const FormProfile = () => {
                     <input
                         className={"input"}
                         type={"email"}
-                        placeholder={"Email input"}
+                        placeholder={"Your Email"}
                     />
                     <span className={"icon is-small is-left"}>
                         {iconEnvelope}
