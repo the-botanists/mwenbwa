@@ -1,11 +1,11 @@
-.loaderElement {
+.loader__element {
   width: 30px;
   height: 100px;
   background: #5a5a5a;
   margin: 5px;
 }
 
-.loaderElement:hover {
+.loader__element:hover {
   background: #0eb99d;
 }
 /*# sourceMappingURL=loader.css.map */

@@ -18,13 +18,18 @@
 //         config: {duration: 3500},
 //         reset: true,
 //     });
-//     return items.map(i => (
-//         <animated.div
-//             key={i}
-//             className={"loaderElement"}
-//             style={{transform: radians.interpolate(interp(i))}}
-//         />
-//     ));
+//     return (
+//         <div className={"loader"}>
+//             {items.map(i => (
+//                 <animated.div
+//                     key={i}
+//                     className={"loader__element"}
+//                     style={{transform: radians.interpolate(interp(i))}}
+//                 />
+//             ))}
+//             ;
+//         </div>
+//     );
 // }
 
 // export default Loader;

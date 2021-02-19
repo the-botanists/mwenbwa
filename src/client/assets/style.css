@@ -12866,7 +12866,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   -ms-flex-item-align: end;
       align-self: flex-end;
   gap: 1rem;
-  margin-top: 1.25rem;
 }
 
 .k-table {
@@ -12907,12 +12906,15 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
       -ms-flex-align: center;
           align-items: center;
   gap: 1.5rem;
+  margin-bottom: 1.2rem;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
 }
 
 .colorPicker__selected {
-  width: 2rem;
-  height: 1.2rem;
-  border-radius: 3px;
-  border: 1px solid #dbdbdb;
+  width: 3rem;
+  height: 2rem;
+  border-radius: 5px;
 }
 /*# sourceMappingURL=style.css.map */

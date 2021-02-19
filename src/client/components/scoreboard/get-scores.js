@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import classnames from "classnames";
 import {useSpring, animated} from "react-spring";
+// import Loader from "../reusable-components/loader";
 
 function GetScores() {
     const [error, setError] = useState(null);
@@ -23,7 +24,7 @@ function GetScores() {
                     // debugger
                     setItems(
                         scores
-                            .slice(0, 6)
+                            .slice(0, 8)
                             .sort((a, b) => b.numOfTrees - a.numOfTrees),
                     );
                 },
@@ -52,6 +53,7 @@ function GetScores() {
                     <td>{"Chargement..."}</td>
                 </tr>
             </animated.tbody>
+            // <Loader/>
         );
     }
     return (
