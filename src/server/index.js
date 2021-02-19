@@ -70,6 +70,7 @@ import path from "path";
 const express = require("express");
 const bodyParser = require("body-parser");
 const user = require("../server/routes/user");
+// const signup = require("../client/components/hello");
 const InitiateMongoServer = require("./config/db");
 
 // Initiate Mongo Server
@@ -90,6 +91,7 @@ app.use(express.static(path.resolve(__dirname, "../../bin/client")));
 app.get("/", (req, res) => {
     res.sendFile(path.resolve("./bin/client/index.html"));
 });
+
 /**
  * Router Middleware
  * Router - /user/*
