@@ -1,16 +1,22 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
+import {BrowserRouter, Route} from "react-router-dom";
+// import {withRouter} from "react-router";
 import "./assets/css/reset.css";
 import "./assets/style.css";
-
-import Hello from "./components/hello";
 import GameBoard from "./components/gameboard";
-
-const isConnected = "true";
-console.log(isConnected);
-
-if (isConnected === "true") {
+import {Hello} from "../client/components/hello";
+// import {divIcon} from "leaflet";
+const burl = "http://localhost";
+const isConnected = 0;
+if (isConnected === 1) {
     ReactDOM.render(<GameBoard />, document.querySelector("#app"));
 } else {
-    ReactDOM.render(<Hello />, document.querySelector("#app"));
+    ReactDOM.render(
+        <BrowserRouter>
+            <Route exact path={`${burl}/user/signup`} />
+            <Hello />
+        </BrowserRouter>,
+        document.querySelector("#app"),
+    );
 }
