@@ -1,11 +1,11 @@
 // import {ObjectId} from "mongodb";
 import mongoose from "mongoose"; // , {ObjectId}
 
-const treeSchema = mongoose.Schema({
-    // locked: {
-    //     type: Boolean,
-    //     required: true,
-    // },
+const treesSchema = mongoose.Schema({
+    locked: {
+        type: Boolean,
+        required: true,
+    },
     geoloc: {
         type: {
             type: String,
@@ -25,21 +25,29 @@ const treeSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    // generatedName: {
-    //     type: String,
-    //     required: true,
-    // },
-    diameter: {
+    generatedName: {
+        type: String,
+        required: true,
+    },
+    diametre_cime: {
         type: Number,
         required: true,
     },
-    shape: {
+    circonf: {
         type: Number,
         required: true,
     },
-    // owner: {
-    //      type: ObjectId,
-    //  },
+    owner: {
+        type: String,
+    },
+    treevalue: {
+        type: Number,
+        required: true,
+    },
+    leafs: {
+        type: Number,
+        required: true,
+    },
 });
 
-export default mongoose.model("Tree", treeSchema);
+export default mongoose.model("Trees", treesSchema);
