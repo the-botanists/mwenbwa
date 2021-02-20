@@ -35,8 +35,8 @@
 
 .loader__bar--1-rev {
   background-color: black;
-  -webkit-animation-delay: 800ms;
-          animation-delay: 800ms;
+  -webkit-animation-delay: 290ms;
+          animation-delay: 290ms;
   animation-direction: alternate-reverse;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
@@ -60,8 +60,8 @@
 
 .loader__bar--2-rev {
   background-color: black;
-  -webkit-animation-delay: 1750ms;
-          animation-delay: 1750ms;
+  -webkit-animation-delay: 1135ms;
+          animation-delay: 1135ms;
   animation-direction: alternate-reverse;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
@@ -85,8 +85,8 @@
 
 .loader__bar--3-rev {
   background-color: black;
-  -webkit-animation-delay: 915ms;
-          animation-delay: 915ms;
+  -webkit-animation-delay: 660ms;
+          animation-delay: 660ms;
   animation-direction: alternate-reverse;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
@@ -110,8 +110,8 @@
 
 .loader__bar--4-rev {
   background-color: black;
-  -webkit-animation-delay: 950ms;
-          animation-delay: 950ms;
+  -webkit-animation-delay: 1025ms;
+          animation-delay: 1025ms;
   animation-direction: alternate-reverse;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
@@ -135,8 +135,8 @@
 
 .loader__bar--5-rev {
   background-color: black;
-  -webkit-animation-delay: 1420ms;
-          animation-delay: 1420ms;
+  -webkit-animation-delay: 1015ms;
+          animation-delay: 1015ms;
   animation-direction: alternate-reverse;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
