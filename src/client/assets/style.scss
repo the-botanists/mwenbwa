@@ -1,108 +1,93 @@
 @import "../../../node_modules/bulma/bulma.sass";
 // @import "./css/style-modal-score/style-score.scss";
-
+// @import "./css/loader.scss";
 
 // ======Mixins Kev========
 @mixin box($width, $height: $width) {
-  width: $width;
-  height: $height;
+    width: $width;
+    height: $height;
 }
 
 // ======VARIABLES========
 $color-bg-modals: #ffffff;
 
-
-
 // ======style 4 scoreboard========
 .k-modal {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.253);
-  // opacity: 0;
-  &__box {
-      min-height: 445px;
-      min-width: 445px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      // background-color: $color-bg-modals !important;
-      &--profile {
-          overflow: unset;
-      }
-  }
-  &__btnsGroup {
-      display: flex;
-      justify-content: flex-end;
-      align-self: flex-end; 
-      gap: 1rem;
-  }
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.253);
+    // opacity: 0;
+    &__box {
+        min-height: 445px;
+        min-width: 445px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        // background-color: $color-bg-modals !important;
+        &--profile {
+            overflow: unset;
+        }
+    }
+    &__btnsGroup {
+        display: flex;
+        justify-content: flex-end;
+        align-self: flex-end;
+        gap: 1rem;
+    }
 }
 
 .k-table {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 
 .k-leafIcon {
-  @include box(1.6rem);
-  background: center / contain no-repeat url("./svg/leaf-erable.svg");
+    @include box(1.6rem);
+    background: center / contain no-repeat url("./svg/leaf-erable.svg");
 }
 
 .k-treeIcon {
-  @include box(1.6rem);
-  background: center / contain no-repeat url("./svg/tree-k.svg");
+    @include box(1.6rem);
+    background: center / contain no-repeat url("./svg/tree-k.svg");
 }
 .k-searchIcon {
-  @include box(1rem);
-  background: center / contain no-repeat url("./svg/search.svg");
+    @include box(1rem);
+    background: center / contain no-repeat url("./svg/search.svg");
 }
 
 .k-titleScore {
-  text-align: center;
-  font-size: 1.6rem;
-  font-weight: 600;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 600;
 }
 
 // ================== COLOR PICKER =============== //
-.colorPicker {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.2rem;
-  justify-content: stretch;
-  &__selected {
-      width: 3rem;
-      height: 2rem;
-      border-radius: 5px;
-  }
-  // &__picker {
-  // }
+
+.k-colorPicker {
+    display: flex;
+    gap: 1rem;
+    &__selectedContainer {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        position: relative;
+        padding: 5px;
+        margin-bottom: 1.2rem;
+    }
+    &__selected {
+        width: 2.4rem;
+        height: 2rem;
+        &:hover {
+            position: relative;
+            z-index: 2;
+            outline: 2px solid #fff;
+            box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+        }
+    }
 }
-
-// ================== LOADER =============== //
-// @mixin random-bgr() {
-//     background: rgb(random(255), random(255), random(255));
-// }
-// @function randomColor(){
-// 	$red: random(256)-1;
-// 	$green: random(256)-1;
-// 	$blue: random(256)-1;
-// 	@return rgb($red, $green, $blue);
-// }
-
-// .loaderElement {
-//     width: 30px;
-//     height: 20px;
-//     background: rgb(211, 40, 40);
-//     margin: 5px;
-// }
-
-// .loaderElement:hover {
-//     background: rgb(221, 68, 144);
-// }
