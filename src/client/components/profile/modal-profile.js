@@ -5,7 +5,7 @@ import classnames from "classnames";
 import {useSpring, animated} from "react-spring";
 
 import FormProfile from "./forms-profile";
-import Button from "../reusable-components/button";
+import Button from "../tools/button";
 
 const ModalProfile = ({show = false, onCloseModal, onSaveProfile}) => {
     //const 4 anims
@@ -45,6 +45,7 @@ const ModalProfile = ({show = false, onCloseModal, onSaveProfile}) => {
                 <div className={classnames("k-modal__btnsGroup")}>
                     <Button
                         label={"Save"}
+                        // btnModif="modal"
                         onClick={() => {
                             onCloseModal();
                             onSaveProfile();
@@ -53,6 +54,7 @@ const ModalProfile = ({show = false, onCloseModal, onSaveProfile}) => {
                     />
                     <Button
                         label={"Cancel"}
+                        // btnModif="modal"
                         onClick={() => {
                             onCloseModal();
                             startSetMove();

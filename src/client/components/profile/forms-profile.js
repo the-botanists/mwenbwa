@@ -1,64 +1,36 @@
 import React from "react";
 // import PropTypes from "prop-types";
 // import classnames from "classnames";
-const md5 = require("md5");
 
-import ColorPicker from "../reusable-components/color-picker";
+import ColorPicker from "../tools/color-picker";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faEnvelope} from "@fortawesome/free-solid-svg-icons";
+import Field from "../tools/field";
+import Avatar from "../tools/avatar";
 
 const FormProfile = () => {
     const iconUser = <FontAwesomeIcon icon={faUser} />;
     const iconEnvelope = <FontAwesomeIcon icon={faEnvelope} />;
 
-    const emailHash = email => md5(email.trim().toLowerCase());
-    const hashGravatar = emailHash("sfsartV@gmail.com");
-    console.log(hashGravatar);
-
     return (
         <div>
-            <div className={"avatar"}>
-                <img className={"avatar__content "} src={""} alt={""} />
-            </div>
-            <div className={"field"}>
-                <label className={"label"}>{"Name"}</label>
-                <div className={"control has-icons-left"}>
-                    <input
-                        className={"input"}
-                        type={"text"}
-                        placeholder={"Your name"}
-                    />
-                    <span className={"icon is-small is-left"}>{iconUser}</span>
-                </div>
-            </div>
+            <Avatar emailToHash={"cassartkv@gmail.com"} />
+            <Field icon={iconUser} label={"Name"} placeholder={"Your name"} />
+            <Field
+                icon={iconUser}
+                label={"User Name"}
+                placeholder={"Your username"}
+                // username ? "username already in use" : "This username is available" >>
+                help={"This username is available"}
+            />
+            <Field
+                icon={iconEnvelope}
+                label={"Email"}
+                placeholder={"Your email "}
+                // email !valide ? "This email is invalid" : "email valid" >>
+                help={"This email is invalid"}
+            />
 
-            <div className={"field"}>
-                <label className={"label"}>{"Username"}</label>
-                <div className={"control has-icons-left"}>
-                    <input
-                        className={"input"}
-                        type={"text"}
-                        placeholder={"Your username"}
-                    />
-                    <span className={"icon is-small is-left"}>{iconUser}</span>
-                </div>
-                <p className={"help"}>{"This username is available"}</p>
-            </div>
-
-            <div className={"field"}>
-                <label className={"label"}>{"Email"}</label>
-                <div className={"control has-icons-left"}>
-                    <input
-                        className={"input"}
-                        type={"email"}
-                        placeholder={"Your Email"}
-                    />
-                    <span className={"icon is-small is-left"}>
-                        {iconEnvelope}
-                    </span>
-                </div>
-                <p className={"help"}>{"This email is invalid"}</p>
-            </div>
             <div className={"field"}>
                 <label className={"label"}>{"Color"}</label>
                 <ColorPicker />

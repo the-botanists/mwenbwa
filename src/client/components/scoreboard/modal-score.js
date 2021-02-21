@@ -5,7 +5,7 @@ import classnames from "classnames";
 import {useSpring, animated} from "react-spring";
 
 import TableScore from "./table-score";
-import Button from "../reusable-components/button";
+import Button from "../tools/button";
 
 const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
     //const 4 anims
@@ -22,14 +22,6 @@ const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
         config: {mass: 5, tension: 350, friction: 40},
     }));
     const startSetMove = () => set({xys: [0, 0, 1]});
-
-    // const btnsAppear = useSpring({
-    //     from: {transform: "translateY(4rem)"},
-    //     to: {transform: "translateY(0)"},
-    //     delay: 600,
-    //     config: {mass: 1, tension: 400, friction: 12},
-    // });
-
     //end anims
 
     if (!show) {
@@ -37,9 +29,7 @@ const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
     }
 
     return createPortal(
-        <div
-            // style={mountModal}
-            className={classnames("k-modal")}>
+        <div className={classnames("k-modal")}>
             <animated.div
                 className={classnames("box", "k-modal__box")}
                 style={{transform: modalMove.xys.interpolate(trans)}}
@@ -49,9 +39,14 @@ const ModalScore = ({show = false, onCloseModal, onShareScore}) => {
                 onMouseLeave={startSetMove}>
                 <TableScore />
                 <div className={classnames("k-modal__btnsGroup")}>
-                    <Button label={"Share"} onClick={onShareScore} />
+                    <Button
+                        label={"Share"}
+                        // btnModif="modal"
+                        onClick={onShareScore}
+                    />
                     <Button
                         label={"Close"}
+                        // btnModif="modal"
                         onClick={() => {
                             onCloseModal();
                             startSetMove();

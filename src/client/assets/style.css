@@ -12820,6 +12820,22 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 
+.k-button {
+  padding: 0.5rem 1rem;
+  border-radius: 50rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.k-button--modal {
+  background-color: #15dea5;
+}
+
+.k-button--nav {
+  background-color: #eec06b;
+}
+
 .k-modal {
   position: absolute;
   top: 0;
@@ -12840,8 +12856,8 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .k-modal__box {
-  min-height: 445px;
-  min-width: 445px;
+  min-height: 32rem;
+  min-width: 30rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12896,6 +12912,24 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   text-align: center;
   font-size: 1.6rem;
   font-weight: 600;
+}
+
+.k-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2rem;
+}
+
+.k-avatar__content {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
 }
 
 .k-colorPicker {

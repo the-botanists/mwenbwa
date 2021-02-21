@@ -20,4 +20,23 @@ Button.propTypes = {
     onClick: PropTypes.func.isRequired,
 };
 
+// const Button = ({label, title, disabled = false, btnModif, onClick}) => (
+//     <div
+//         className={classnames("k-button",`k-button--${btnModif}` )}
+//         type={"button"}
+//         disabled={disabled}
+//         title={title || label}
+//         onClick={onClick}>
+//         {label}
+//     </div>
+// );
+
+// Button.propTypes = {
+//     label: PropTypes.string.isRequired,
+//     title: PropTypes.string,
+//     disabled: PropTypes.bool,
+//     optionClass: PropTypes.string,
+//     onClick: PropTypes.func.isRequired,
+// };
+
 export default Button;

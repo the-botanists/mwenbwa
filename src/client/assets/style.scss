@@ -10,8 +10,36 @@
 
 // ======VARIABLES========
 $color-bg-modals: #ffffff;
+$color-btn-modals: #15dea5;
+$color-btn-nav: rgb(238, 192, 107);
+$box-shabow: 0 3px 12px rgba(0, 0, 0, 0.15);
+$radius-pill: 50rem;
+$radius-circle: 50%;
 
-// ======style 4 scoreboard========
+// ======BUTTON========
+
+.k-button {
+    padding: 0.5rem 1rem;
+    // border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: $radius-pill;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover{
+
+    }
+    &:focus{
+
+    }
+    &--modal {
+        background-color: $color-btn-modals;
+    }
+    &--nav {
+        background-color: $color-btn-nav;
+    }
+}
+
+// ======SCOREBOARD========
 .k-modal {
     position: absolute;
     top: 0;
@@ -25,8 +53,8 @@ $color-bg-modals: #ffffff;
     background: rgba(0, 0, 0, 0.253);
     // opacity: 0;
     &__box {
-        min-height: 445px;
-        min-width: 445px;
+        min-height: 32rem;
+        min-width: 30rem;
         display: flex;
         flex-direction: column;
         overflow: hidden;
@@ -67,6 +95,19 @@ $color-bg-modals: #ffffff;
     font-weight: 600;
 }
 
+// ================== AVATAR =============== //
+
+.k-avatar {
+    display: flex;
+    justify-content: center;
+    margin: 2rem;
+    &__content {
+        @include box(8rem);
+        border-radius: $radius-circle;
+        box-shadow: $box-shabow;
+    }
+}
+
 // ================== COLOR PICKER =============== //
 
 .k-colorPicker {
@@ -74,7 +115,7 @@ $color-bg-modals: #ffffff;
     gap: 1rem;
     &__selectedContainer {
         border: 1px solid rgba(0, 0, 0, 0.2);
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: $box-shabow;
         border-radius: 4px;
         position: relative;
         padding: 5px;

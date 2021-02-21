@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import classnames from "classnames";
 import {useSpring, animated} from "react-spring";
-// import Loader from "../reusable-components/loader";
+import Loader from "../tools/loader";
 
 function GetScores() {
     const [error, setError] = useState(null);
@@ -19,8 +19,9 @@ function GetScores() {
             .then(res => res.json())
             .then(
                 scores => {
-                    // debugger
-                    setIsLoaded(true);
+                    setTimeout(() => {
+                        setIsLoaded(true);
+                    }, 3000);
                     // debugger
                     setItems(
                         scores
@@ -48,12 +49,12 @@ function GetScores() {
         );
     } else if (!isLoaded) {
         return (
-            <animated.tbody style={scoreAppear}>
-                <tr>
-                    <td>{"Chargement..."}</td>
-                </tr>
-            </animated.tbody>
-            // <Loader/>
+            // <animated.tbody style={scoreAppear}>
+            //     <tr>
+            //         <td>{"Chargement..."}</td>
+            //     </tr>
+            // </animated.tbody>
+            <Loader />
         );
     }
     return (

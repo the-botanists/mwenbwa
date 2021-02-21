@@ -1,4 +1,5 @@
 $color-bars: #15dea5;
+$color-bars-hover: rgb(238, 192, 107);
 $color-bars-rev: darken($color-bars, 20);
 $size: 3vh;
 $anim-duration: 1000ms;
@@ -27,7 +28,7 @@ $anim-delay: $anim-duration / $num-bars;
                 animation-delay: $anim-delay * $i;
                 &:hover {
                     animation-play-state: paused;
-                    background-color: rgb(238, 192, 107);
+                    background-color: $color-bar-hover;
                 }
             }
         }
