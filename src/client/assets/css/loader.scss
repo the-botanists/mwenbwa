@@ -1,16 +1,19 @@
 $color-bars: #15dea5;
-$color-bars-rev: darken($color-bars, 50);
+$color-bars-hover: rgb(238, 192, 107);
+$color-bars-rev: darken($color-bars, 20);
 $size: 3vh;
 $anim-duration: 1000ms;
 $num-bars: 5;
 $anim-delay: $anim-duration / $num-bars;
 
-
-.loader {
+.k-loaderContainer{
     position: absolute;
+    z-index: 100;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.k-loader {
     width: $size * 10;
     height: $size * 7.5;
     display: flex;
@@ -25,16 +28,7 @@ $anim-delay: $anim-duration / $num-bars;
                 animation-delay: $anim-delay * $i;
                 &:hover {
                     animation-play-state: paused;
-                    background-color: lighten($color-bars, 30);
-                }
-            }
-            &--#{$i}-rev {
-                background-color: $color-bars-rev;
-                animation-delay: $anim-delay * $i + random(100) * 15ms;
-                animation-direction: alternate-reverse;
-                animation-fill-mode: forwards;
-                &:hover {
-                    animation-play-state: paused;
+                    background-color: $color-bar-hover;
                 }
             }
         }

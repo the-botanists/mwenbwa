@@ -1,11 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Button from "../reusable-components/button";
+import Button from "../tools/button";
 
 const ButtonScore = ({onOpenModal}) => (
     <div>
-        <Button label={"Score"} onClick={onOpenModal} />
+        <Button
+            //  btnModif={"nav"}
+            label={"Score"}
+            onClick={onOpenModal}
+        />
     </div>
 );
 

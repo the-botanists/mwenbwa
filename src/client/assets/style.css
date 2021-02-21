@@ -12820,6 +12820,22 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 
+.k-button {
+  padding: 0.5rem 1rem;
+  border-radius: 50rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.k-button--modal {
+  background-color: #15dea5;
+}
+
+.k-button--nav {
+  background-color: #eec06b;
+}
+
 .k-modal {
   position: absolute;
   top: 0;
@@ -12840,8 +12856,8 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .k-modal__box {
-  min-height: 445px;
-  min-width: 445px;
+  min-height: 32rem;
+  min-width: 30rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12898,23 +12914,51 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   font-weight: 600;
 }
 
-.colorPicker {
+.k-avatar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.2rem;
-  -webkit-box-pack: stretch;
-      -ms-flex-pack: stretch;
-          justify-content: stretch;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2rem;
 }
 
-.colorPicker__selected {
-  width: 3rem;
+.k-avatar__content {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.k-colorPicker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
+.k-colorPicker__selectedContainer {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  position: relative;
+  padding: 5px;
+  margin-bottom: 1.2rem;
+}
+
+.k-colorPicker__selected {
+  width: 2.4rem;
   height: 2rem;
-  border-radius: 5px;
+}
+
+.k-colorPicker__selected:hover {
+  position: relative;
+  z-index: 2;
+  outline: 2px solid #fff;
+  -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
 }
 /*# sourceMappingURL=style.css.map */
