@@ -17,6 +17,7 @@ const Login = () => (
                     .then(res => {
                         // Store Data in sessionStorage
                         sessionStorage.setItem("token", res.data.token);
+                        sessionStorage.setItem("email", values.email);
                         console.log(res.data);
                         window.location.reload(false);
                     })
