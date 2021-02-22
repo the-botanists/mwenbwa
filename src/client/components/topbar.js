@@ -9,9 +9,8 @@ import * as React from "react";
 
 import Scoreboard from "./scoreboard/container/score-board";
 import Profile from "./profile/container/profile";
-
 const goLogOut = () => {
-    localStorage.removeItem("logged");
+    sessionStorage.clear();
 };
 
 const TopBar = () => (

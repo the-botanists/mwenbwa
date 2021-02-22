@@ -5,7 +5,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import "./assets/css/reset.css";
 import "./assets/style.css";
 import GameBoard from "./components/gameboard";
-import {Hello} from "../client/components/hello";
+import {SignUp} from "../client/components/signup";
 import {Login} from "../client/components/login";
 // import {divIcon} from "leaflet";
 const burl = "http://localhost";
@@ -15,7 +15,7 @@ if (sessionStorage.getItem("token")) {
     ReactDOM.render(
         <BrowserRouter>
             <Route exact path={`${burl}/user/signup`} />
-            <Hello />
+            <SignUp />
             <Login />
         </BrowserRouter>,
         document.querySelector("#app"),
