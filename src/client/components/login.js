@@ -1,8 +1,6 @@
 import React from "react";
 import axios from "axios";
 import {Formik, Field, Form} from "formik";
-import {Redirect} from "react-router";
-
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const Login = () => (
     <div>
@@ -17,10 +15,10 @@ const Login = () => (
                 axios
                     .post("/user/login", values)
                     .then(res => {
-                        // Enregistrer des données dans sessionStorage
+                        // Store Data in sessionStorage
                         sessionStorage.setItem("token", res.data.token);
                         console.log(res.data);
-                        return <Redirect to={"/"} />;
+                        window.location.reload(false);
                     })
                     .catch(error => {
                         console.log(error);
