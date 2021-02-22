@@ -40,11 +40,19 @@ router.post(
             });
             if (user) {
                 res.status(400).json({
-                    msg: "User Already Exists",
+                    msg: "Email Already Exists",
                 });
                 return;
             }
-
+            const testPseudo = await User.findOne({
+                username,
+            });
+            if (testPseudo) {
+                res.status(400).json({
+                    msg: "Username Already Exists",
+                });
+                return;
+            }
             user = new User({
                 username,
                 email,

@@ -1,9 +1,7 @@
 import React from "react";
 import axios from "axios";
 import {Formik, Field, Form} from "formik";
-
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-
 const SignUp = () => (
     <div>
         <h1>{"Sign Up"}</h1>
@@ -21,7 +19,9 @@ const SignUp = () => (
                         console.log(res);
                     })
                     .catch(error => {
-                        console.log(error);
+                        console.log(error.response.data.msg);
+                        document.querySelector("#error_msg").innerHTML =
+                            error.response.data.msg;
                     });
             }}>
             {({isSubmitting}) => (
@@ -30,7 +30,11 @@ const SignUp = () => (
                     <Field name={"username"} placeholder={"Jane"} />
 
                     <label htmlFor={"password"}>{"Password"}</label>
-                    <Field name={"password"} placeholder={"*****"} />
+                    <Field
+                        name={"password"}
+                        type={"password"}
+                        placeholder={"*****"}
+                    />
 
                     <label htmlFor={"email"}>{"Email"}</label>
                     <Field
@@ -41,6 +45,7 @@ const SignUp = () => (
                     <button type={"submit"} disabled={isSubmitting}>
                         {"Submit"}
                     </button>
+                    <div id={"error_msg"}> </div>
                 </Form>
             )}
         </Formik>
