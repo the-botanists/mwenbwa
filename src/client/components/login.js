@@ -42,7 +42,9 @@ const Login = () => (
                             });
                     })
                     .catch(error => {
-                        console.log(error);
+                        console.log(error.response.data.msg);
+                        document.querySelector("#error_log").innerHTML =
+                            error.response.data.message;
                     });
             }}>
             {({isSubmitting}) => (
@@ -59,6 +61,7 @@ const Login = () => (
                     <button type={"submit"} disabled={isSubmitting}>
                         {"Submit"}
                     </button>
+                    <div id={"error_log"}> </div>
                 </Form>
             )}
         </Formik>

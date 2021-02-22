@@ -86,7 +86,6 @@ router.post(
                 },
             );
         } catch (err) {
-            console.log(err.message);
             res.status(500).send("Error in Saving");
         }
     },
@@ -96,7 +95,7 @@ router.post(
     [
         check("email", "Please enter a valid email").isEmail(),
         check("password", "Please enter a valid password").isLength({
-            min: 6,
+            min: 1,
         }),
     ],
     async (req, res) => {
@@ -104,14 +103,13 @@ router.post(
 
         if (!errors.isEmpty()) {
             res.status(400).json({
-                errors: errors.array(),
+                message: "error connection",
             });
             return;
         }
 
         const {email, password} = req.body;
         try {
-            console.log("try login");
             const user = await User.findOne({
                 email,
             });
@@ -119,15 +117,13 @@ router.post(
                 res.status(400).json({
                     message: "User Not Exist",
                 });
-                console.log("login incorect");
                 return;
             }
             const isMatch = await bcrypt.compare(password, user.password);
             if (!isMatch) {
-                res.status(400).json({
-                    message: "Incorrect Password !",
+                res.status(300).json({
+                    message: "Incorrect Password or Email !",
                 });
-                console.log("mot de passe incorect");
                 return;
             }
 
@@ -153,7 +149,6 @@ router.post(
                 },
             );
         } catch (e) {
-            console.error(e);
             res.status(500).json({
                 message: "Server Error",
             });
