@@ -84,7 +84,8 @@
     "serve": "^11.3.2",
     "style-loader": "^2.0.0",
     "swr": "^0.4.2",
-    "with-router": "^1.0.1"
+    "with-router": "^1.0.1",
+    "yup": "^0.32.9"
   },
   "husky": {
     "hooks": {
