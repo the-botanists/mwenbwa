@@ -76,8 +76,8 @@ export const GetMarker = () => {
                     <br />
                     <p>
                         {"Value : "}
-                        {parseInt((tree.circonf / 3.1421) * tree.height)}
-                        {" leafs"}{" "}
+                        {Math.ceil(tree.treevalue)}
+                        {"🍃 leafs "}
                     </p>
                     <p>
                         {fixLatinName(tree.latinName)}{" "}

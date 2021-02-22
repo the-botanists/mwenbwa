@@ -103,6 +103,7 @@ router.post(
 
         const {email, password} = req.body;
         try {
+            console.log("try login");
             const user = await User.findOne({
                 email,
             });
@@ -110,6 +111,7 @@ router.post(
                 res.status(400).json({
                     message: "User Not Exist",
                 });
+                console.log("login incorect");
                 return;
             }
             const isMatch = await bcrypt.compare(password, user.password);
@@ -117,6 +119,7 @@ router.post(
                 res.status(400).json({
                     message: "Incorrect Password !",
                 });
+                console.log("mot de passe incorect");
                 return;
             }
 

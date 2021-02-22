@@ -5,8 +5,8 @@ import MarkerClusterGroup from "react-leaflet-markercluster";
 import "leaflet/dist/leaflet.css";
 import "../../assets/css/map.css";
 import "react-leaflet-markercluster/dist/styles.min.css";
-// import TreesMarkers from "./marker";
-import {GetMarker} from "./marker2";
+import GetMarker from "./marker";
+// import {GetMarker} from "./marker2";
 
 const infoCenter = bcenter => {
     console.log("Center : ", bcenter);

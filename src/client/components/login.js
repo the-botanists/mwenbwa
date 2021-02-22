@@ -1,24 +1,24 @@
 import React from "react";
 import axios from "axios";
 import {Formik, Field, Form} from "formik";
-
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-
-const Hello = () => (
+const Login = () => (
     <div>
-        <h1>{"Sign Up"}</h1>
+        <h1>{"Loggin"}</h1>
         <Formik
             initialValues={{
-                username: "",
-                password: "",
                 email: "",
+                password: "",
             }}
             onSubmit={async values => {
                 await sleep(500);
                 axios
-                    .get("/user/signup", values)
+                    .post("/user/login", values)
                     .then(res => {
-                        console.log(res);
+                        // Store Data in sessionStorage
+                        sessionStorage.setItem("token", res.data.token);
+                        console.log(res.data);
+                        window.location.reload(false);
                     })
                     .catch(error => {
                         console.log(error);
@@ -26,18 +26,11 @@ const Hello = () => (
             }}>
             {({isSubmitting}) => (
                 <Form>
-                    <label htmlFor={"username"}>{"Enter your username"}</label>
-                    <Field name={"username"} placeholder={"Jane"} />
+                    <label htmlFor={"email"}>{"Enter your mail"}</label>
+                    <Field name={"email"} placeholder={"Jane@gmail.com"} />
 
                     <label htmlFor={"password"}>{"Password"}</label>
                     <Field name={"password"} placeholder={"*****"} />
-
-                    <label htmlFor={"email"}>{"Email"}</label>
-                    <Field
-                        name={"email"}
-                        placeholder={"jane@acme.com"}
-                        type={"email"}
-                    />
                     <button type={"submit"} disabled={isSubmitting}>
                         {"Submit"}
                     </button>
@@ -46,5 +39,4 @@ const Hello = () => (
         </Formik>
     </div>
 );
-
-export {Hello};
+export {Login};
