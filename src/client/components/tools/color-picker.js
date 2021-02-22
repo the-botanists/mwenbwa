@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useSpring, animated, config} from "react-spring";
 
 const ColorPicker = () => {
-    const [color, setColor] = useState("#00D2FC");
+    const [colorSelected, setColorSelected] = useState("#00D2FC");
 
     const [showPicker, setShowPicker] = useState(false);
 
@@ -33,24 +33,24 @@ const ColorPicker = () => {
                 <div
                     onClick={() => setShowPicker(val => !val)}
                     className={"k-colorPicker__select"}
-                    style={{backgroundColor: color}}
+                    style={{backgroundColor: colorSelected}}
                 />
             </div>
             <animated.div
                 className={"k-colorPicker__selectedContainer"}
                 style={fadeStyles}>
-                {colors.map((colour, i) => {
+                {colors.map((color, i) => {
                     const key = i;
                     return (
                         <div
                             key={key}
                             onClick={() => {
-                                setColor(colour);
+                                setColorSelected(color);
                                 // setShowPicker((val) => !val);
-                                console.log(colour);
+                                console.log(color);
                             }}
                             className={"k-colorPicker__select"}
-                            style={{backgroundColor: colour}}
+                            style={{backgroundColor: color}}
                         />
                     );
                 })}
