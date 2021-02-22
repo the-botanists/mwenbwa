@@ -1,5 +1,5 @@
 import Tree from "../models/tree";
-import Trees from "../models/trees";
+// import Trees from "../models/trees";
 
 const getAllTree = async (req, res) => {
     try {
@@ -12,7 +12,7 @@ const getAllTree = async (req, res) => {
 
 const getAllTreeWithGeo = async (req, res) => {
     try {
-        const geo200Trees = await Trees.find({
+        const geo200Trees = await Tree.find({
             location: {
                 $geoWithin: {$centerSphere: [[50.624454, 5.604456], 0.0000313]},
             },
