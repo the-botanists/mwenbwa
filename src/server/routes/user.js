@@ -53,10 +53,14 @@ router.post(
                 });
                 return;
             }
+            // Random color for users
+            const color = `#${((Math.random() * 0xffffff) << 0).toString(16)}`;
+
             user = new User({
                 username,
                 email,
                 password,
+                color,
             });
 
             const salt = await bcrypt.genSalt(12);
