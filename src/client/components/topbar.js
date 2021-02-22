@@ -8,6 +8,7 @@
 import * as React from "react";
 
 import Scoreboard from "./scoreboard/container/score-board";
+import Profile from "./profile/container/profile";
 
 const goLogOut = () => {
     localStorage.removeItem("logged");
@@ -33,12 +34,7 @@ const TopBar = () => (
             </div>
 
             <div className={"navbar-end"}>
-                <a
-                    className={
-                        "navbar-item button is-success is-rounded mx-4 px-4"
-                    }>
-                    {"Profile"}
-                </a>
+                <Profile />
                 <form>
                     <button
                         type={"submit"}

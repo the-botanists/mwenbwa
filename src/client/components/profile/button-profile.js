@@ -3,18 +3,18 @@ import PropTypes from "prop-types";
 
 import Button from "../tools/button";
 
-const ButtonScore = ({onOpenModal}) => (
+const ButtonProfil = ({onOpenModal}) => (
     <div>
         <Button
-            //  btnModif={"nav"}
-            label={"Score"}
+            // btnModif={"nav"}
+            label={"Profil"}
             onClick={onOpenModal}
         />
     </div>
 );
 
-ButtonScore.propTypes = {
+ButtonProfil.propTypes = {
     onOpenModal: PropTypes.func.isRequired,
 };
 
-export default ButtonScore;
+export default ButtonProfil;
