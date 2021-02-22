@@ -1,16 +1,23 @@
 import React, {useState} from "react";
-import {GithubPicker} from "react-color";
 import {useSpring, animated, config} from "react-spring";
-
-/* 
-to change default values & styles go to >>
-node_modules\react-color\es\components\github\ */
 
 const ColorPicker = () => {
     const [color, setColor] = useState("#00D2FC");
-    console.log(color);
 
     const [showPicker, setShowPicker] = useState(false);
+
+    const colors = [
+        "#FF6900",
+        "#FCB900",
+        "#7BDCB5",
+        "#00D084",
+        "#8ED1FC",
+        "#0693E3",
+        "#ABB8C3",
+        "#EB144C",
+        "#F78DA7",
+        "#9900EF",
+    ];
 
     const fadeStyles = useSpring({
         config: {...config.default},
@@ -25,22 +32,28 @@ const ColorPicker = () => {
             <div className={"k-colorPicker__selectedContainer"}>
                 <div
                     onClick={() => setShowPicker(val => !val)}
-                    className={"k-colorPicker__selected"}
+                    className={"k-colorPicker__select"}
                     style={{backgroundColor: color}}
                 />
             </div>
-
-            {console.log(showPicker)}
-            <animated.div style={fadeStyles}>
-                <GithubPicker
-                    open={open}
-                    onClick={() => state => !state}
-                    className={"k-colorPicker__picker"}
-                    color={color}
-                    onChangeComplete={colors => {
-                        setColor(colors.hex);
-                    }}
-                />
+            <animated.div
+                className={"k-colorPicker__selectedContainer"}
+                style={fadeStyles}>
+                {colors.map((colour, i) => {
+                    const key = i;
+                    return (
+                        <div
+                            key={key}
+                            onClick={() => {
+                                setColor(colour);
+                                // setShowPicker((val) => !val);
+                                console.log(colour);
+                            }}
+                            className={"k-colorPicker__select"}
+                            style={{backgroundColor: colour}}
+                        />
+                    );
+                })}
             </animated.div>
         </div>
     );

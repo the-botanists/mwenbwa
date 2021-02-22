@@ -12940,6 +12940,9 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .k-colorPicker__selectedContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
           box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
@@ -12949,12 +12952,12 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   margin-bottom: 1.2rem;
 }
 
-.k-colorPicker__selected {
+.k-colorPicker__select {
   width: 2.4rem;
   height: 2rem;
 }
 
-.k-colorPicker__selected:hover {
+.k-colorPicker__select:hover {
   position: relative;
   z-index: 2;
   outline: 2px solid #fff;
