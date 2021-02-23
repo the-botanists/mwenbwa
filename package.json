@@ -5,6 +5,9 @@
   "author": "Pieront Emilie <pieront.emilie@gmail.com>, Kevin Cassart <cassart.kev@gmail.com>, Debroux Cédric <cedric@debroux.ovh>, Cedric AUDRIT <cedric@audrit.be>",
   "license": "MIT",
   "private": true,
+  "engines": {
+    "node": "15.9.0"
+  },
   "scripts": {
     "lint": "npx eslint --fix --cache --ignore-pattern 'docs/*' src",
     "build:server": "npx babel src/server -s --out-dir bin/server",
@@ -61,6 +64,7 @@
     "create-react-app": "^4.0.2",
     "express": "^4.17.1",
     "express-validator": "^6.9.2",
+    "fantasy-name-generator": "^2.0.0",
     "formik": "^2.2.6",
     "jsonwebtoken": "^8.5.1",
     "jwt-simple": "^0.5.6",
