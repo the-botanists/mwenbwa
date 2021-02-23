@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Field = ({icon, label, placeholder, help, onChange}) => (
+const Field = ({icon, label, placeholder, help, value, onChange}) => (
     <>
         <div className={"field"}>
             <label className={"label"}>{label}</label>
             <div className={"control has-icons-left"}>
                 <input
+                    value={value}
                     className={"input"}
                     type={"text"}
                     placeholder={placeholder}
@@ -20,6 +21,7 @@ const Field = ({icon, label, placeholder, help, onChange}) => (
 );
 
 Field.propTypes = {
+    value: PropTypes.string,
     label: PropTypes.string.isRequired,
     help: PropTypes.string,
     placeholder: PropTypes.string,

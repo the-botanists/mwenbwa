@@ -7,10 +7,6 @@ import Button from "../../tools/button";
 
 const Profile = () => {
     const [showModal, setShowModal] = useState(false);
-    // const [username, setUsername] = useState("");
-    // const [name, setName] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [Color, setColor] = useState("");
 
     const handleOpenModal = () => {
         setShowModal(true);

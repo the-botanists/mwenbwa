@@ -17,34 +17,11 @@ const Login = () => (
                     .then(res => {
                         // Store Data in sessionStorage
                         sessionStorage.setItem("token", res.data.token);
-                        sessionStorage.setItem("email", values.email);
                         console.log(res.data);
-                        axios
-                            .get("/user/me", {headers: {token: res.data.token}})
-                            .then(response => {
-                                sessionStorage.setItem(
-                                    "_id",
-                                    response.data._id,
-                                );
-                                sessionStorage.setItem(
-                                    "username",
-                                    response.data.username,
-                                );
-                                sessionStorage.setItem(
-                                    "email",
-                                    response.data.email,
-                                );
-                                console.log(response.data);
-                                window.location.reload(false);
-                            })
-                            .catch(error => {
-                                console.log(`error ${error}`);
-                            });
+                        window.location.reload(false);
                     })
                     .catch(error => {
-                        console.log(error.response.data.msg);
-                        document.querySelector("#error_log").innerHTML =
-                            error.response.data.message;
+                        console.log(error);
                     });
             }}>
             {({isSubmitting}) => (
@@ -53,15 +30,10 @@ const Login = () => (
                     <Field name={"email"} placeholder={"Jane@gmail.com"} />
 
                     <label htmlFor={"password"}>{"Password"}</label>
-                    <Field
-                        name={"password"}
-                        placeholder={"*****"}
-                        type={"password"}
-                    />
+                    <Field name={"password"} placeholder={"*****"} />
                     <button type={"submit"} disabled={isSubmitting}>
                         {"Submit"}
                     </button>
-                    <div id={"error_log"}> </div>
                 </Form>
             )}
         </Formik>

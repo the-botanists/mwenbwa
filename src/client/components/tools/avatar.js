@@ -4,8 +4,6 @@ const md5 = require("md5");
 const Avatar = ({emailToHash}) => {
     const emailHash = md5(emailToHash.trim().toLowerCase());
 
-    console.log(emailHash);
-
     return (
         <>
             <div className={"k-avatar"}>
