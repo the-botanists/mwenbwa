@@ -18,7 +18,27 @@ const Login = () => (
                         // Store Data in sessionStorage
                         sessionStorage.setItem("token", res.data.token);
                         console.log(res.data);
-                        window.location.reload(false);
+                        axios
+                            .get("/user/me", {headers: {token: res.data.token}})
+                            .then(response => {
+                                sessionStorage.setItem(
+                                    "_id",
+                                    response.data._id,
+                                );
+                                sessionStorage.setItem(
+                                    "username",
+                                    response.data.username,
+                                );
+                                sessionStorage.setItem(
+                                    "email",
+                                    response.data.email,
+                                );
+                                console.log(response.data);
+                                window.location.reload(false);
+                            })
+                            .catch(error => {
+                                console.log(`error ${error}`);
+                            });
                     })
                     .catch(error => {
                         console.log(error);

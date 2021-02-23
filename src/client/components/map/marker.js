@@ -4,6 +4,7 @@ import {Marker, Popup} from "react-leaflet"; // MapContainer, TileLayer
 import L from "leaflet";
 import TreeImage0 from "../../assets/img/watercolor-tree1.png";
 import TreeImage1 from "../../assets/img/watercolor-tree2.png";
+import BuyTreeForm from "./buy";
 
 function randtreeIcon() {
     function getRandomInt(max) {
@@ -112,46 +113,7 @@ class TreesMarkers extends React.Component {
                                 {"Wiki info"}
                             </a>
                         </p>
-                        <div className={"control"}>
-                            <label className={"label"}>{"latinName"}</label>
-                            <input
-                                className={"input"}
-                                type={"text"}
-                                placeholder={"Text input"}
-                                value={tree.latinName}
-                            />
-                            <label className={"label"}>{"coordinates"}</label>
-                            <input
-                                className={"input"}
-                                type={"text"}
-                                placeholder={"Text input"}
-                                value={tree.location.coordinates}
-                            />
-                            <label className={"label"}>{"circonf"}</label>
-                            <input
-                                className={"input"}
-                                type={"text"}
-                                placeholder={"Text input"}
-                                value={tree.circonf}
-                            />
-                            <label className={"label"}>{"height"}</label>
-                            <input
-                                className={"input"}
-                                type={"text"}
-                                placeholder={"Text input"}
-                                value={tree.height}
-                            />
-                            <label className={"label"}>{"Name"}</label>
-                            <input
-                                className={"input"}
-                                type={"text"}
-                                placeholder={"Text input"}
-                                value={this.props.dataParentToChild}
-                            />
-                        </div>
-                        <button type={"button"} className={"button is-success"}>
-                            {"Buy"}
-                        </button>
+                        <BuyTreeForm selectTreeID={tree._id} />
                     </Popup>
                 </Marker>
             ));
