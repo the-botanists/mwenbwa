@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 
+import Modal from "../../tools/modal";
 import ButtonScore from "../button-score";
-import ModalScore from "../modal-score";
+import TableScore from "../table-score";
+import Button from "../../tools/button";
 
 const Scoreboard = () => {
     const [showModal, setShowModal] = useState(false);
@@ -21,10 +23,11 @@ const Scoreboard = () => {
     return (
         <div>
             <ButtonScore onOpenModal={handleOpenModal} />
-            <ModalScore
+            <Modal
                 show={showModal}
-                onCloseModal={handleCloseModal}
-                onShareScore={handleShareScore}
+                content={<TableScore />}
+                button1={<Button label={"Share"} onClick={handleShareScore} />}
+                button2={<Button label={"Close"} onClick={handleCloseModal} />}
             />
         </div>
     );
