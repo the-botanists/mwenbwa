@@ -1,6 +1,9 @@
 import React, {useState} from "react";
+
+import Modal from "../../tools/modal";
 import ButtonProfile from "../button-profile";
-import ModalProfile from "../modal-profile";
+import FormProfile from "../forms-profile";
+import Button from "../../tools/button";
 
 const Profile = () => {
     const [showModal, setShowModal] = useState(false);
@@ -19,21 +22,17 @@ const Profile = () => {
 
     const handleSaveProfile = () => {
         console.log("saved !");
-        setShowModal(false);
+        // setShowModal(false);
     };
-
-    // const handleChangeUser = () => {
-    //     setUsername()
-    // };
 
     return (
         <div>
             <ButtonProfile onOpenModal={handleOpenModal} />
-            <ModalProfile
+            <Modal
                 show={showModal}
-                onCloseModal={handleCloseModal}
-                onSaveProfile={handleSaveProfile}
-                // onChangeUser={handleChangeUser}
+                content={<FormProfile />}
+                button1={<Button label={"Save"} onClick={handleSaveProfile} />}
+                button2={<Button label={"Cancel"} onClick={handleCloseModal} />}
             />
         </div>
     );
