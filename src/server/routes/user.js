@@ -9,6 +9,78 @@ const router = express.Router();
 const User = require("../models/user");
 const auth = require("../middleware/auth");
 
+import Tree from "../models/tree";
+const ObjectID = require("mongodb").ObjectID;
+import {nameByRace} from "fantasy-name-generator";
+import Score from "../models/score";
+
+async function get3TreeRand(newUser, selectedColor) {
+    console.log("START 3 RAND");
+    try {
+        const Rand3Trees = await Tree.aggregate([
+            {$match: {owner: ""}},
+            {$sample: {size: 3}},
+        ]);
+        Rand3Trees.map(async randTree => {
+            console.log(`Tree: ${randTree._id}`);
+
+            const currentid = randTree._id;
+            const treeFranName = nameByRace("goblin");
+            await Tree.updateOne(
+                {_id: ObjectID(currentid).valueOf()},
+                {
+                    $set: {
+                        owner: newUser,
+                        friendlyname: treeFranName,
+                        color: selectedColor,
+                    },
+                },
+            );
+        });
+        console.log(`3 Tree add to USER:${newUser}`);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// Set Leaf + add to score
+async function setNewUserScores(newUser) {
+    try {
+        const ttLeafs = await Score.aggregate([
+            {
+                $group: {
+                    _id: null,
+                    TotalLeafs: {
+                        $sum: "$numOfLeafs",
+                    },
+                },
+            },
+        ]);
+        const ttLeafs1 = ttLeafs[0].TotalLeafs;
+        console.log(`TOTAL Leafs of all users: ${ttLeafs1}`);
+        const ttAccount = await Score.countDocuments();
+        console.log(`TOTAL ACCOUNT : ${ttAccount}`);
+        const newUserLeafs = await Math.ceil(
+            parseInt(ttLeafs1) / parseInt(ttAccount),
+        );
+        console.log(`Leafs of newuser : ${newUserLeafs}`);
+
+        const treeNumber = 3;
+
+        const userScore = new Score({
+            username: newUser,
+            numOfLeafs: newUserLeafs,
+            numOfTrees: treeNumber,
+        });
+
+        await userScore.save();
+
+        console.log("New user add in score with leafs");
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 /**
  * @method - POST
  * @param - /signup
@@ -67,6 +139,9 @@ router.post(
             user.password = await bcrypt.hash(password, salt);
 
             await user.save();
+
+            get3TreeRand(username, color);
+            setNewUserScores(username);
 
             const payload = {
                 user: {

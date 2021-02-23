@@ -5,12 +5,11 @@ import MarkerClusterGroup from "react-leaflet-markercluster";
 import "leaflet/dist/leaflet.css";
 import "../../assets/css/map.css";
 import "react-leaflet-markercluster/dist/styles.min.css";
-import GetMarker from "./marker";
-// import {GetMarker} from "./marker2";
+// import GetMarker from "./marker";
+import {GetMarker} from "./marker2";
 
 const infoCenter = bcenter => {
     console.log("Center : ", bcenter);
-    // [24, 23, 33, 12, 31]
     return Object.values(bcenter);
 };
 
