@@ -15,7 +15,6 @@ const FormProfile = () => {
     return (
         <div>
             <Avatar emailToHash={"cassartkv@gmail.com"} />
-            <Field icon={iconUser} label={"Name"} placeholder={"Your name"} />
             <Field
                 icon={iconUser}
                 label={"User Name"}
