@@ -19,10 +19,7 @@ import {Formik, Form} from "formik"; // Field
 let curLocation = [50.6283, 5.5768];
 
 const infoCenter = bcenter => {
-    // console.log("Center : ", bcenter);
-    // console.log("Center Coor : ", Object.values(bcenter));
     curLocation = Object.values(bcenter);
-    // console.log(curLocation)
     return Object.values(bcenter);
 };
 
@@ -33,17 +30,6 @@ const MapEvents = () => {
     });
     return null;
 };
-
-// async function allTreesGetData() {
-//   const response = await axios.get(
-//     '/api/trees/all',
-//   );
-
-//   const allTreesGetData = response.data;
-//   console.log(allTreesGetData);
-// }
-
-// allTreesGetData();
 
 function GameMap() {
     const position = [50.6283, 5.5768];
@@ -102,18 +88,18 @@ function coolName(testCoolName) {
     }
     return "a free tree";
 }
-
+let Justebuy;
 const latMin = center => center[0] - 0.003;
 const latMax = center => center[0] + 0.003;
 const lonMin = center => center[1] - 0.0045;
 const lonMax = center => center[1] + 0.0045;
 
-const GetMarker = allTreesGetData => {
+const GetMarker = () => {
     // CurrentCenter, para2
     const [error, setError] = useState(null);
     const [treesmarker, setTreesmarker] = useState([]);
     // const [curLocation, setCurLocation] = useState([]);
-    console.log(allTreesGetData);
+    // console.log(allTreesGetData);
     useEffect(() => {
         axios
             .get("/api/trees/all")
@@ -127,10 +113,6 @@ const GetMarker = allTreesGetData => {
                 console.log(error);
             });
     });
-
-    // function buyTree() {
-    //     console.log("Great Shot!");
-    // }
 
     const TEST = treesmarker
         .filter(
@@ -188,6 +170,7 @@ const GetMarker = allTreesGetData => {
                                     .post("/api/trees/buy", values)
                                     .then(res => {
                                         console.log(res.data);
+                                        Justebuy = tree._id;
                                     })
                                     .catch(error2 => {
                                         console.log(error2.response);
@@ -215,11 +198,15 @@ const GetMarker = allTreesGetData => {
                                         type={"hidden"}
                                         value={sessionStorage.getItem("color")}
                                     /> */}
-                                    <button
-                                        type={"submit"}
-                                        disabled={isSubmitting}>
-                                        {"Buy"}
-                                    </button>
+                                    {!tree.owner || !Justebuy === tree._id ? (
+                                        <button
+                                            type={"submit"}
+                                            disabled={isSubmitting}>
+                                            {"Buy"}
+                                        </button>
+                                    ) : (
+                                        <div>{"buying back Soon"}</div>
+                                    )}
                                 </Form>
                             )}
                         </Formik>
