@@ -15,9 +15,7 @@ const goLogOut = () => {
 
 const TopBar = () => (
     <nav
-        className={
-            "navbar  is-fixed-top has-navbar-fixed-top has-background-primary p-4"
-        }
+        className={"navbar has-background-primary p-4"}
         role={"navigation"}
         aria-label={"main navigation"}>
         <div id={"navbarBasicExample"} className={"navbar-menu"}>

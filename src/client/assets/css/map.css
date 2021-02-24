@@ -1,8 +1,11 @@
+body {
+    overflow-y: hidden; 
+    overflow-x: hidden; 
+}
 #leafletContainer { 
     width: 100%; 
-    height: 94.5vh;
+    height: 100vh;
     z-index: 2;
-    margin-top: 5.5vh;
 }
 
 .container-fullscreen{
@@ -17,4 +20,9 @@
 }
 p.btn_sg {
     font-size: 11px !important;
+}
+.toplg {
+    color: white;
+    font-weight: 700;
+    font-family:'Courier New', Courier, monospace;
 }

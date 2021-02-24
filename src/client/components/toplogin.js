@@ -6,11 +6,15 @@
  */
 
 import * as React from "react";
+import "../assets/css/map.css";
 
 const TopBarLogin = () => (
-    <nav className={"navbar has-background-primary"}>
+    <nav
+        className={
+            "navbar has-background-primary is-align-items-center is-justify-content-center"
+        }>
         <div>
-            <h1>{"BATTLE TREE"}</h1>
+            <h1 className={"toplg is-size-1"}>{"BATTLE TREE"}</h1>
         </div>
     </nav>
 );
