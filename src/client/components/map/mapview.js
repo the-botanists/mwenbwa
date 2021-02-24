@@ -14,6 +14,7 @@ import "react-leaflet-markercluster/dist/styles.min.css";
 import axios from "axios";
 // import {} from "react-leaflet"; // MapContainer, TileLayer
 import TreeImage1 from "../../assets/img/watercolor-tree2.png";
+import {Formik, Form} from "formik"; // Field
 
 let curLocation = [50.6283, 5.5768];
 
@@ -32,6 +33,17 @@ const MapEvents = () => {
     });
     return null;
 };
+
+// async function allTreesGetData() {
+//   const response = await axios.get(
+//     '/api/trees/all',
+//   );
+
+//   const allTreesGetData = response.data;
+//   console.log(allTreesGetData);
+// }
+
+// allTreesGetData();
 
 function GameMap() {
     const position = [50.6283, 5.5768];
@@ -62,11 +74,7 @@ function GameMap() {
                 zoomToBoundsOnClick={false}
                 disableClusteringAtZoom={17}>
                 {/* <MyComponent /> */}
-                <GetMarker
-                    CurrentCenter
-                    // CurrentCenter={setCurrentCenter}
-                    // para2={<MapEvents />}
-                />
+                <GetMarker />
             </MarkerClusterGroup>
         </MapContainer>
     );
@@ -100,12 +108,12 @@ const latMax = center => center[0] + 0.003;
 const lonMin = center => center[1] - 0.0045;
 const lonMax = center => center[1] + 0.0045;
 
-const GetMarker = () => {
+const GetMarker = allTreesGetData => {
     // CurrentCenter, para2
     const [error, setError] = useState(null);
     const [treesmarker, setTreesmarker] = useState([]);
     // const [curLocation, setCurLocation] = useState([]);
-
+    console.log(allTreesGetData);
     useEffect(() => {
         axios
             .get("/api/trees/all")
@@ -166,9 +174,56 @@ const GetMarker = () => {
                         {"tree ID : "}
                         {tree._id}
                     </p>
-                    <button type={"button"} className={"button is-success"}>
-                        {"Buy"}
-                    </button>
+                    <div>
+                        <Formik
+                            initialValues={{
+                                username: sessionStorage.getItem("username"),
+                                treeid: tree._id,
+                                treevalue: Math.ceil(tree.treevalue),
+                                color: sessionStorage.getItem("color"),
+                            }}
+                            onSubmit={async values => {
+                                console.log(values);
+                                await axios
+                                    .post("/api/trees/buy", values)
+                                    .then(res => {
+                                        console.log(res.data);
+                                    })
+                                    .catch(error2 => {
+                                        console.log(error2.response);
+                                    });
+                            }}>
+                            {({isSubmitting}) => (
+                                <Form>
+                                    {/* <Field
+                                        name={"username"}
+                                        type={"hidden"}
+                                        value={sessionStorage.getItem("username")}
+                                    />
+                                    <Field
+                                        name={"treeid"}
+                                        type={"hidden"}
+                                        value={tree._id}
+                                    />
+                                    <Field
+                                        name={"treevalue"}
+                                        type={"hidden"}
+                                        value={Math.ceil(tree.treevalue)}
+                                    />
+                                    <Field
+                                        name={"color"}
+                                        type={"hidden"}
+                                        value={sessionStorage.getItem("color")}
+                                    /> */}
+                                    <button
+                                        type={"submit"}
+                                        disabled={isSubmitting}>
+                                        {"Buy"}
+                                    </button>
+                                </Form>
+                            )}
+                        </Formik>
+                    </div>
                 </Popup>
             </Marker>
         ));
