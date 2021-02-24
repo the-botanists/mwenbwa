@@ -1,5 +1,6 @@
 import React, {useState, useCallback} from "react";
 import {useSpring, animated, config} from "react-spring";
+// import axios from "axios";
 
 // import PropTypes from "prop-types";
 // import classnames from "classnames";
@@ -7,6 +8,7 @@ import {useSpring, animated, config} from "react-spring";
 // import ColorPicker from "../tools/color-picker";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faEnvelope} from "@fortawesome/free-solid-svg-icons";
+
 import Field from "../tools/field";
 import Avatar from "../tools/avatar";
 
@@ -16,21 +18,15 @@ const FormProfile = () => {
     // const [colorSelected, setColorSelected] = useState("#00D2FC")
     // const handleChangeColor = () => setColorSelected(color);
 
+    const userNameSession = sessionStorage.getItem("username");
+    const emailSession = sessionStorage.getItem("email");
+    const colorSession = sessionStorage.getItem("color");
+
     const iconUser = <FontAwesomeIcon icon={faUser} />;
     const iconEnvelope = <FontAwesomeIcon icon={faEnvelope} />;
 
-    const [colorSelected, setColorSelected] = useState("#00D2FC");
+    const [colorSelected, setColorSelected] = useState(colorSession);
     const [showPicker, setShowPicker] = useState(false);
-    const handleChangeColor = useCallback(() => {
-        setShowPicker(val => !val);
-    }, []);
-
-    const handleChangeUser = useCallback(event => {
-        setUsername(event.target.value);
-    }, []);
-    const handleChangeEmail = useCallback(event => {
-        setEmail(event.target.value);
-    }, []);
 
     const colors = [
         "#FF6900",
@@ -45,6 +41,30 @@ const FormProfile = () => {
         "#9900EF",
     ];
 
+    // const [error, setError] = useState(null);
+    // const [isLoaded, setIsLoaded] = useState(false);
+    // const [items, setItems] = useState([]);
+
+    const handleChangeColor = useCallback(() => {
+        setShowPicker(val => !val);
+    }, []);
+
+    const handleChangeUser = useCallback(event => {
+        setUsername(event.target.value);
+    }, []);
+    const handleChangeEmail = useCallback(event => {
+        setEmail(event.target.value);
+    }, []);
+
+    // useEffect(() => {
+    //     async function upUserInfos() {
+    //         let res = await axios.patch("/api/users", userInfos);
+
+    //         let data = res.data;
+    //         console.log(data);
+    //     }
+    // }, []);
+
     const fadeStyles = useSpring({
         config: {...config.default},
         from: {transformOrigin: "left", transform: "scaleX(0)"},
@@ -53,17 +73,15 @@ const FormProfile = () => {
         },
     });
 
-    console.log(colorSelected);
-
     return (
         <div>
             <p>{username}</p>
             <p>{email}</p>
-            <p>{colorSelected}</p>
+            <p>{colorSession}</p>
             <Avatar emailToHash={"cassartkv@gmail.com"} />
             <Field
                 onChange={handleChangeUser}
-                value={username}
+                value={userNameSession}
                 icon={iconUser}
                 label={"User Name"}
                 placeholder={"Your username"}
@@ -72,7 +90,7 @@ const FormProfile = () => {
             />
             <Field
                 onChange={handleChangeEmail}
-                value={email}
+                value={emailSession}
                 icon={iconEnvelope}
                 label={"Email"}
                 placeholder={"Your email "}
@@ -84,7 +102,7 @@ const FormProfile = () => {
                 <div className={"k-colorPicker "}>
                     <div className={"k-colorPicker__selectedContainer"}>
                         <div
-                            value={colorSelected}
+                            value={colorSession}
                             onClick={handleChangeColor}
                             className={"k-colorPicker__select"}
                             id={"colorSelected"}

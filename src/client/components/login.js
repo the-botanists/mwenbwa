@@ -34,6 +34,10 @@ const Login = () => (
                                     "email",
                                     response.data.email,
                                 );
+                                sessionStorage.setItem(
+                                    "color",
+                                    response.data.color,
+                                );
                                 console.log(response.data);
                                 window.location.reload(false);
                             })
