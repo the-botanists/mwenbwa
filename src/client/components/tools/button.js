@@ -19,7 +19,6 @@ Button.propTypes = {
     disabled: PropTypes.bool,
     onClick: PropTypes.func.isRequired,
 };
-
 // const Button = ({label, title, disabled = false, btnModif, onClick}) => (
 //     <div
 //         className={classnames("k-button",`k-button--${btnModif}` )}
