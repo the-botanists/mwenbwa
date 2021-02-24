@@ -4,7 +4,7 @@ import {Marker, Popup} from "react-leaflet"; // MapContainer, TileLayer
 import L from "leaflet";
 import TreeImage0 from "../../assets/img/watercolor-tree1.png";
 import TreeImage1 from "../../assets/img/watercolor-tree2.png";
-import BuyTreeForm from "./buy";
+// import BuyTreeForm from "./buy";
 
 function randtreeIcon() {
     function getRandomInt(max) {
@@ -113,7 +113,15 @@ class TreesMarkers extends React.Component {
                                 {"Wiki info"}
                             </a>
                         </p>
-                        <BuyTreeForm selectTreeID={tree._id} />
+                        <p>
+                            {"Owner : "}
+                            {tree.owner}
+                        </p>
+                        <p>
+                            {"tree ID : "}
+                            {tree._id}
+                        </p>
+                        {/* <BuyTreeForm selectTreeID={tree._id} /> */}
                     </Popup>
                 </Marker>
             ));
