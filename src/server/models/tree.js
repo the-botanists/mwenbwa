@@ -1,7 +1,11 @@
 // import {ObjectId} from "mongodb";
 import mongoose from "mongoose"; // , {ObjectId}
+const ObjectId = require("mongodb").ObjectID;
 
 const treeSchema = mongoose.Schema({
+    _id: {
+        type: ObjectId,
+    },
     locked: {
         type: Boolean,
         required: true,
@@ -25,12 +29,8 @@ const treeSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    generatedName: {
+    friendlyname: {
         type: String,
-        required: true,
-    },
-    diametre_cime: {
-        type: Number,
         required: true,
     },
     circonf: {
@@ -46,6 +46,10 @@ const treeSchema = mongoose.Schema({
     },
     leafs: {
         type: Number,
+        required: true,
+    },
+    color: {
+        type: String,
         required: true,
     },
 });

@@ -1,16 +1,27 @@
-import React from "react";
-import {MapContainer, TileLayer, useMapEvents} from "react-leaflet"; // Marker, Popup, useMap
+import React, {useState, useEffect} from "react"; // useMap, useMapEvents
+import {
+    MapContainer,
+    TileLayer,
+    useMapEvents,
+    Marker,
+    Popup,
+} from "react-leaflet"; // Marker, Popup, useMap
 import MarkerClusterGroup from "react-leaflet-markercluster";
-// import L from "leaflet";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "../../assets/css/map.css";
 import "react-leaflet-markercluster/dist/styles.min.css";
-import GetMarker from "./marker";
-// import {GetMarker} from "./marker2";
+import axios from "axios";
+// import {} from "react-leaflet"; // MapContainer, TileLayer
+import TreeImage1 from "../../assets/img/watercolor-tree2.png";
+
+let curLocation = [50.6283, 5.5768];
 
 const infoCenter = bcenter => {
-    console.log("Center : ", bcenter);
-    // [24, 23, 33, 12, 31]
+    // console.log("Center : ", bcenter);
+    // console.log("Center Coor : ", Object.values(bcenter));
+    curLocation = Object.values(bcenter);
+    // console.log(curLocation)
     return Object.values(bcenter);
 };
 
@@ -21,15 +32,6 @@ const MapEvents = () => {
     });
     return null;
 };
-const setCurrentCenter = [50.62231133913421, 5.563437938690186];
-// const SetMarker = TreesMarkers dataParentToChild={<MapEvents />} ;
-//const SetMarker = GetMarker data={setCurrentCenter}
-
-// function MyComponent() {
-//     const map = useMap();
-//     console.log("map center:", map.getCenter());
-//     return map.getCenter();
-// }
 
 function GameMap() {
     const position = [50.6283, 5.5768];
@@ -61,7 +63,7 @@ function GameMap() {
                 disableClusteringAtZoom={17}>
                 {/* <MyComponent /> */}
                 <GetMarker
-                    CurrentCenter={setCurrentCenter}
+                    CurrentCenter
                     // CurrentCenter={setCurrentCenter}
                     // para2={<MapEvents />}
                 />
@@ -69,5 +71,108 @@ function GameMap() {
         </MapContainer>
     );
 }
+
+// MARKER
+
+const treeIcon = L.icon({
+    iconUrl: TreeImage1,
+    iconSize: [30, 40], // size of the icon
+    iconAnchor: [17, 0], // point of the icon which will correspond to marker's location
+    popupAnchor: [17, 0], // point from which the popup should open relative to the iconAnchor
+});
+
+function fixLatinName(treeLatinName) {
+    let latinName = treeLatinName.split(` X `)[0];
+    latinName = latinName.split(` x `)[0];
+    latinName = latinName.split(` '`)[0];
+    return latinName;
+}
+
+function coolName(testCoolName) {
+    if (testCoolName) {
+        return testCoolName;
+    }
+    return "a free tree";
+}
+
+const latMin = center => center[0] - 0.003;
+const latMax = center => center[0] + 0.003;
+const lonMin = center => center[1] - 0.0045;
+const lonMax = center => center[1] + 0.0045;
+
+const GetMarker = () => {
+    // CurrentCenter, para2
+    const [error, setError] = useState(null);
+    const [treesmarker, setTreesmarker] = useState([]);
+    // const [curLocation, setCurLocation] = useState([]);
+
+    useEffect(() => {
+        axios
+            .get("/api/trees/all")
+            .then(response => {
+                setTreesmarker(response.data);
+            })
+            // })
+            .catch(() => {
+                // console.log("Error retrieving data!!!");
+                setError(error);
+                console.log(error);
+            });
+    });
+
+    // function buyTree() {
+    //     console.log("Great Shot!");
+    // }
+
+    const TEST = treesmarker
+        .filter(
+            tree =>
+                tree.location.coordinates[1] > lonMin(curLocation) &&
+                tree.location.coordinates[1] < lonMax(curLocation) &&
+                tree.location.coordinates[0] > latMin(curLocation) &&
+                tree.location.coordinates[0] < latMax(curLocation),
+        )
+        .map(tree => (
+            // console.log(tree.friendlyname),
+            <Marker
+                key={tree._id}
+                icon={treeIcon} // {randtreeIcon()}
+                position={tree.location.coordinates}>
+                <Popup>
+                    {"I'm "}
+                    {coolName(tree.friendlyname)}
+                    <br />
+                    <p>
+                        {"Value : "}
+                        {Math.ceil(tree.treevalue)}
+                        {"🍃 leafs "}
+                    </p>
+                    <p>
+                        {"Owner : "}
+                        {tree.owner}
+                    </p>
+                    <p>
+                        {fixLatinName(tree.latinName)}{" "}
+                        <a
+                            href={`https://en.wikipedia.org/wiki/${fixLatinName(
+                                tree.latinName,
+                            )}`}
+                            target={"_blank"}
+                            rel={"noreferrer"}>
+                            {"Wiki info"}
+                        </a>
+                    </p>
+                    <p>
+                        {"tree ID : "}
+                        {tree._id}
+                    </p>
+                    <button type={"button"} className={"button is-success"}>
+                        {"Buy"}
+                    </button>
+                </Popup>
+            </Marker>
+        ));
+    return TEST;
+};
 
 export default GameMap;

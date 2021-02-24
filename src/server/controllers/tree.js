@@ -1,14 +1,19 @@
 import Tree from "../models/tree";
 const ObjectID = require("mongodb").ObjectID;
-// import Trees from "../models/trees";
 
-const getAllTree = async (req, res) => {
-    try {
-        const allTrees = await Tree.find();
-        res.status(200).json({allTrees});
-    } catch (error) {
-        res.status(400).json({error});
-    }
+// const getAllTree = async (req, res) => {
+//     try {
+//         const allTrees = await Tree.find();
+//         res.status(200).json({allTrees});
+//     } catch (error) {
+//         res.status(400).json({error});
+//     }
+// };
+
+const getAllTree = (req, res) => {
+    Tree.find()
+        .then(allTrees => res.status(200).json(allTrees))
+        .catch(error => res.status(404).json({error}));
 };
 
 const get3TreeRand = async (req, res) => {
@@ -17,13 +22,14 @@ const get3TreeRand = async (req, res) => {
             {$match: {owner: ""}},
             {$sample: {size: 3}},
         ]);
-        Rand3Trees.forEach(element => {
-            console.log(element._id);
+        Rand3Trees.map(async randTree => {
+            console.log(`Tree: ${randTree._id}`);
             const user = "hello";
-            const currentid = element._id;
-            // Tree.findByIdAndUpdate( { currentid }, { $set: {owner: "hello" }} )
-            Tree.updateOne({_id: ObjectID(currentid)}, {$set: {owner: user}});
-            // Tree.update( { "_id": currentid}, { "$set": {"owner": "hello" }} )
+            const currentid = randTree._id;
+            await Tree.updateOne(
+                {_id: ObjectID(currentid).valueOf()},
+                {$set: {owner: user}},
+            );
         });
         res.status(200).json({Rand3Trees});
     } catch (error) {

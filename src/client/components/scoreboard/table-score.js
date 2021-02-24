@@ -12,9 +12,9 @@ const TableScore = () => (
                         {"#"}
                     </th>
                     <th>{"User Name"}</th>
-                    <th>{"Leafs"}</th>
+                    <th>{"Trees"}</th>
                     <th />
-                    <th> {"Trees"}</th>
+                    <th> {"Leafs"}</th>
                     <th />
                 </tr>
             </thead>

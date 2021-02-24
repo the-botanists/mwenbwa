@@ -25,31 +25,50 @@ const SignUp = () => (
                     });
             }}>
             {({isSubmitting}) => (
-                <Form>
-                    <label htmlFor={"username"}>{"Enter your username"}</label>
-                    <Field name={"username"} placeholder={"Jane"} />
-
-                    <label htmlFor={"password"}>{"Password"}</label>
-                    <Field
-                        name={"password"}
-                        type={"password"}
-                        placeholder={"*****"}
-                    />
-
-                    <label htmlFor={"email"}>{"Email"}</label>
-                    <Field
-                        name={"email"}
-                        placeholder={"jane@acme.com"}
-                        type={"email"}
-                    />
-                    <button type={"submit"} disabled={isSubmitting}>
-                        {"Submit"}
-                    </button>
-                    <div id={"error_msg"}> </div>
-                </Form>
+                <div className={"mx-6 px-4"}>
+                    <Form>
+                        <div className={"field"}>
+                            <label htmlFor={"username"}>
+                                {"Enter your username"}
+                            </label>
+                            <Field
+                                className={"input is-rounded"}
+                                name={"username"}
+                                placeholder={"Jane"}
+                            />
+                        </div>
+                        <div className={"field"}>
+                            <label htmlFor={"password"}>{"Password"}</label>
+                            <Field
+                                className={"input is-rounded"}
+                                name={"password"}
+                                type={"password"}
+                                placeholder={"*****"}
+                            />
+                        </div>
+                        <div className={"field"}>
+                            <label htmlFor={"email"}>{"Email"}</label>
+                            <Field
+                                className={"input is-rounded"}
+                                name={"email"}
+                                placeholder={"jane@acme.com"}
+                                type={"email"}
+                            />
+                        </div>
+                        <div className={"field"}>
+                            <button
+                                className={"button is-success is-rounded mt-3"}
+                                type={"submit"}
+                                disabled={isSubmitting}>
+                                {"Submit"}
+                            </button>
+                            <div id={"error_msg"}> </div>
+                        </div>
+                    </Form>
+                </div>
             )}
         </Formik>
     </div>
 );
 
-export {SignUp};
+export default SignUp;

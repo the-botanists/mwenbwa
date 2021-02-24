@@ -5,8 +5,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import "./assets/css/reset.css";
 import "./assets/style.css";
 import GameBoard from "./components/gameboard";
-import {SignUp} from "../client/components/signup";
-import {Login} from "../client/components/login";
+import Modallog from "../client/components/modalelog";
 // import {divIcon} from "leaflet";
 const burl = "http://localhost";
 if (sessionStorage.getItem("token")) {
@@ -15,8 +14,7 @@ if (sessionStorage.getItem("token")) {
     ReactDOM.render(
         <BrowserRouter>
             <Route exact path={`${burl}/user/signup`} />
-            <SignUp />
-            <Login />
+            <Modallog />
         </BrowserRouter>,
         document.querySelector("#app"),
     );
