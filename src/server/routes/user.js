@@ -13,6 +13,9 @@ import Tree from "../models/tree";
 const ObjectID = require("mongodb").ObjectID;
 import {nameByRace} from "fantasy-name-generator";
 import Score from "../models/score";
+import userUPDCtrlBuy from "../controllers/userupd";
+
+router.post("/update/", userUPDCtrlBuy.userUpdate);
 
 async function get3TreeRand(newUser, selectedColor) {
     console.log("START 3 RAND");
