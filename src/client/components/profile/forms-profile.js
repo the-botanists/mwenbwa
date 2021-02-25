@@ -60,7 +60,7 @@ const FormProfile = ({onCloseModal}) => {
             oldemail: sessionStorage.getItem("email"),
             color: colorSelected,
         };
-        console.log(updateValue);
+        // console.log(updateValue);
         await axios
             .post("/user/update/", updateValue)
             .then(res => {
