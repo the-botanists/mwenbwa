@@ -10,7 +10,7 @@ const Tablegamelog = () => (
             <thead className={"k-tableHead"}>
                 <tr>
                     <th>{"User Name"}</th>
-                    <th>{"Task"}</th>
+                    <th>{"Action"}</th>
                     <th> {"Time"}</th>
                 </tr>
             </thead>
