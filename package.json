@@ -9,7 +9,6 @@
     "node": "15.9.0",
     "npm": "7.5.2"
   },
-
   "scripts": {
     "lint": "npx eslint --fix --cache --ignore-pattern 'docs/*' src",
     "build:server": "npx babel src/server -s --out-dir bin/server",
