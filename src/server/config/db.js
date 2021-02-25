@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 // Replace this with your MONGOURI.
 const MONGOURI =
     "mongodb+srv://battletree:zD4V1183RRGf5DBF@botanistes.tjvkg.mongodb.net/botanistes?retryWrites=true&w=majority";
+// "mongodb://battletree:zD4V1183RRGf5DBF@db.neant.be:27017/botanistes";
 
 const InitiateMongoServer = async () => {
     try {
