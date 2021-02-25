@@ -8,6 +8,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import Scoreboard from "./scoreboard/container/score-board";
+import Gamelog from "./gamelog/container/gamelog";
 import Profile from "./profile/container/profile";
 const goLogOut = () => {
     sessionStorage.clear();
@@ -50,10 +51,11 @@ const TopBar = () => {
                         {"Leafs : "}
                         {userScore.numOfLeafs}
                     </div>
-                    <Scoreboard />
                 </div>
 
                 <div className={"navbar-end"}>
+                    <Gamelog />
+                    <Scoreboard />
                     <Profile />
                     <form>
                         <button
