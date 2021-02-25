@@ -1,15 +1,15 @@
+
 #leafletContainer { 
     width: 100%; 
-    height: 94.5vh;
+    height: 94vh;
     z-index: 2;
-    margin-top: 5.5vh;
 }
 
 .container-fullscreen{
     width: 100%;
     height: 100vh;
 }
-.k-modal__box {
+.k-modal__box__log {
     min-height: 0 !important;
     max-height: auto !important;
     min-width: 0 !important;
@@ -17,4 +17,9 @@
 }
 p.btn_sg {
     font-size: 11px !important;
+}
+.toplg {
+    color: white;
+    font-weight: 700;
+    font-family:'Courier New', Courier, monospace;
 }

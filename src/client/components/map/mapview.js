@@ -14,14 +14,12 @@ import "react-leaflet-markercluster/dist/styles.min.css";
 import axios from "axios";
 // import {} from "react-leaflet"; // MapContainer, TileLayer
 import TreeImage1 from "../../assets/img/watercolor-tree2.png";
+import {Formik, Form} from "formik"; // Field
 
 let curLocation = [50.6283, 5.5768];
 
 const infoCenter = bcenter => {
-    // console.log("Center : ", bcenter);
-    // console.log("Center Coor : ", Object.values(bcenter));
     curLocation = Object.values(bcenter);
-    // console.log(curLocation)
     return Object.values(bcenter);
 };
 
@@ -62,11 +60,7 @@ function GameMap() {
                 zoomToBoundsOnClick={false}
                 disableClusteringAtZoom={17}>
                 {/* <MyComponent /> */}
-                <GetMarker
-                    CurrentCenter
-                    // CurrentCenter={setCurrentCenter}
-                    // para2={<MapEvents />}
-                />
+                <GetMarker />
             </MarkerClusterGroup>
         </MapContainer>
     );
@@ -94,7 +88,7 @@ function coolName(testCoolName) {
     }
     return "a free tree";
 }
-
+let Justebuy;
 const latMin = center => center[0] - 0.003;
 const latMax = center => center[0] + 0.003;
 const lonMin = center => center[1] - 0.0045;
@@ -105,7 +99,7 @@ const GetMarker = () => {
     const [error, setError] = useState(null);
     const [treesmarker, setTreesmarker] = useState([]);
     // const [curLocation, setCurLocation] = useState([]);
-
+    // console.log(allTreesGetData);
     useEffect(() => {
         axios
             .get("/api/trees/all")
@@ -119,10 +113,6 @@ const GetMarker = () => {
                 console.log(error);
             });
     });
-
-    // function buyTree() {
-    //     console.log("Great Shot!");
-    // }
 
     const TEST = treesmarker
         .filter(
@@ -166,9 +156,61 @@ const GetMarker = () => {
                         {"tree ID : "}
                         {tree._id}
                     </p>
-                    <button type={"button"} className={"button is-success"}>
-                        {"Buy"}
-                    </button>
+                    <div>
+                        <Formik
+                            initialValues={{
+                                username: sessionStorage.getItem("username"),
+                                treeid: tree._id,
+                                treevalue: Math.ceil(tree.treevalue),
+                                color: sessionStorage.getItem("color"),
+                            }}
+                            onSubmit={async values => {
+                                console.log(values);
+                                await axios
+                                    .post("/api/trees/buy", values)
+                                    .then(res => {
+                                        console.log(res.data);
+                                        Justebuy = tree._id;
+                                    })
+                                    .catch(error2 => {
+                                        console.log(error2.response);
+                                    });
+                            }}>
+                            {({isSubmitting}) => (
+                                <Form>
+                                    {/* <Field
+                                        name={"username"}
+                                        type={"hidden"}
+                                        value={sessionStorage.getItem("username")}
+                                    />
+                                    <Field
+                                        name={"treeid"}
+                                        type={"hidden"}
+                                        value={tree._id}
+                                    />
+                                    <Field
+                                        name={"treevalue"}
+                                        type={"hidden"}
+                                        value={Math.ceil(tree.treevalue)}
+                                    />
+                                    <Field
+                                        name={"color"}
+                                        type={"hidden"}
+                                        value={sessionStorage.getItem("color")}
+                                    /> */}
+                                    {!tree.owner || !Justebuy === tree._id ? (
+                                        <button
+                                            type={"submit"}
+                                            disabled={isSubmitting}>
+                                            {"Buy"}
+                                        </button>
+                                    ) : (
+                                        <div>{"buying back Soon"}</div>
+                                    )}
+                                </Form>
+                            )}
+                        </Formik>
+                    </div>
                 </Popup>
             </Marker>
         ));

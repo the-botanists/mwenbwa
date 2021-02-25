@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Login from "./login";
-import Modal from "../components/tools/modal";
+import ModalLog from "../components/tools/modal-log";
 import SignUp from "./signup";
 import Button from "../components/tools/button";
 import ButtonSignUp from "../components/tools/button-sg";
@@ -18,10 +18,10 @@ const Modallog = () => {
     };
 
     if (login) {
-        return <Modal show={showModal} content={<Login />} />;
+        return <ModalLog show={showModal} content={<Login />} />;
     } else if (signUp) {
         return (
-            <Modal
+            <ModalLog
                 show={showModal}
                 content={<SignUp />}
                 button2={<Button label={"Login"} onClick={handleLogin} />}
@@ -30,7 +30,7 @@ const Modallog = () => {
     }
     return (
         <div>
-            <Modal
+            <ModalLog
                 show={showModal}
                 content={<Login />}
                 button2={
