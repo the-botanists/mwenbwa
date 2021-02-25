@@ -3,7 +3,7 @@ import GetScores from "./get-scores";
 
 const TableScore = () => (
     <>
-        <div className={"k-titleScore"}>{"ScoreBoard"}</div>
+        <div className={"k-tableTitle"}>{"ScoreBoard"}</div>
         <table className={"table k-table"}>
             <thead className={"k-tableHead"}>
                 <tr>
