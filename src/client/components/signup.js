@@ -16,7 +16,35 @@ const SignUp = () => (
                 axios
                     .post("/user/signup", values)
                     .then(res => {
-                        console.log(res);
+                        sessionStorage.setItem("token", res.data.token);
+                        sessionStorage.setItem("email", values.email);
+                        sessionStorage.setItem("color", values.color);
+                        console.log(res.data);
+                        axios
+                            .get("/user/me", {headers: {token: res.data.token}})
+                            .then(response => {
+                                sessionStorage.setItem(
+                                    "_id",
+                                    response.data._id,
+                                );
+                                sessionStorage.setItem(
+                                    "username",
+                                    response.data.username,
+                                );
+                                sessionStorage.setItem(
+                                    "email",
+                                    response.data.email,
+                                );
+                                sessionStorage.setItem(
+                                    "color",
+                                    response.data.color,
+                                );
+                                console.log(response.data);
+                                window.location.reload(false);
+                            })
+                            .catch(error => {
+                                console.log(`error ${error}`);
+                            });
                     })
                     .catch(error => {
                         console.log(error.response.data.msg);
