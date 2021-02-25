@@ -6,8 +6,10 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": "15.9.0"
+    "node": "15.9.0",
+    "npm": "7.5.2"
   },
+
   "scripts": {
     "lint": "npx eslint --fix --cache --ignore-pattern 'docs/*' src",
     "build:server": "npx babel src/server -s --out-dir bin/server",
@@ -15,9 +17,7 @@
     "build:client": "npx webpack --progress --profile --colors",
     "work:client": "npx webpack --env=dev --progress",
     "build": "npm run build:server && npm run build:client",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "start": "react-scripts start"
+    "start": "node bin/server/index.js"
   },
   "lint-staged": {
     "*.js": [
@@ -77,6 +77,7 @@
     "react": "^17.0.1",
     "react-bootstrap": "^0.32.1",
     "react-color": "^2.19.3",
+    "react-dom": "^17.0.1",
     "react-leaflet": "^3.1.0",
     "react-leaflet-markercluster": "^3.0.0-rc1",
     "react-router": "^5.2.0",

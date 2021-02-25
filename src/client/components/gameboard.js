@@ -6,11 +6,14 @@ import TopBar from "./topbar";
 class GameBoard extends React.Component {
     render() {
         return (
-            <>
-                <TopBar />
-                {/* <Loader/> */}
-                <GameMap />
-            </>
+            <div>
+                <div>
+                    <TopBar />
+                </div>
+                <div>
+                    <GameMap />
+                </div>
+            </div>
         );
     }
 }
