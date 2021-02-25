@@ -25,8 +25,8 @@ function GetScores() {
                     // debugger
                     setItems(
                         scores
-                            .slice(0, 8)
-                            .sort((a, b) => b.numOfTrees - a.numOfTrees),
+                            .sort((a, b) => b.numOfTrees - a.numOfTrees)
+                            .slice(0, 8),
                     );
                 },
                 /*errors must be handled here rather than in
