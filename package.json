@@ -5,6 +5,11 @@
   "author": "Pieront Emilie <pieront.emilie@gmail.com>, Kevin Cassart <cassart.kev@gmail.com>, Debroux Cédric <cedric@debroux.ovh>, Cedric AUDRIT <cedric@audrit.be>",
   "license": "MIT",
   "private": true,
+  "engines": {
+    "node": "15.9.0",
+    "npm": "7.5.2"
+  },
+
   "scripts": {
     "lint": "npx eslint --fix --cache --ignore-pattern 'docs/*' src",
     "build:server": "npx babel src/server -s --out-dir bin/server",
