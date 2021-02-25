@@ -1,6 +1,7 @@
 import path from "path";
 import treeRoutes from "./routes/tree";
 import scoreRoutes from "./routes/score";
+import bgTask from "./middleware/bgtask";
 const express = require("express");
 const bodyParser = require("body-parser");
 const user = require("../server/routes/user");
@@ -33,3 +34,5 @@ app.use("/api/scores", scoreRoutes);
 app.listen(PORT, () => {
     console.log(`🚀 Server Started at PORT ${PORT}`);
 });
+
+setInterval(bgTask, 1000 * 60 * 15);

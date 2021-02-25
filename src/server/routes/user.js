@@ -63,14 +63,9 @@ async function setNewUserScores(newUser) {
         console.log(`TOTAL Leafs of all users: ${ttLeafs1}`);
         const ttAccount = await Score.countDocuments();
         console.log(`TOTAL ACCOUNT : ${ttAccount}`);
-        let newUserLeafs = 1;
-        if (parseInt(ttAccount) === 0) {
-            newUserLeafs = Math.floor(Math.random() * Math.floor(250000));
-        } else {
-            newUserLeafs = await Math.ceil(
-                parseInt(ttLeafs1) / parseInt(ttAccount),
-            );
-        }
+        const newUserLeafs = await Math.ceil(
+            parseInt(ttLeafs1) / parseInt(ttAccount),
+        );
         console.log(`Leafs of newuser : ${newUserLeafs}`);
 
         const treeNumber = 3;
