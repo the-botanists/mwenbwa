@@ -34,7 +34,7 @@ const SignUp = () => (
                             <Field
                                 className={"input is-rounded"}
                                 name={"username"}
-                                placeholder={"Jane"}
+                                placeholder={"Leny"}
                             />
                         </div>
                         <div className={"field"}>
