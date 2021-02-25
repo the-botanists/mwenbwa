@@ -1,6 +1,6 @@
 import React, {useState, useCallback} from "react";
 import {useSpring, animated, config} from "react-spring";
-// import axios from "axios";
+import axios from "axios";
 // import {Formik, Form} from "formik";
 
 // import PropTypes from "prop-types";
@@ -50,14 +50,30 @@ const FormProfile = ({onCloseModal}) => {
         setEmail(event.target.value);
     }, []);
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        console.log({
+        const updateValue = {
             _id: userIdSession,
+            oldusername: sessionStorage.getItem("username"),
             username,
             email,
+            oldemail: sessionStorage.getItem("email"),
             color: colorSelected,
-        });
+        };
+        console.log(updateValue);
+        await axios
+            .post("/user/update/", updateValue)
+            .then(res => {
+                console.log(res.data);
+                sessionStorage.setItem("username", username);
+                sessionStorage.setItem("email", email);
+                sessionStorage.setItem("color", colorSelected);
+                setColorSelected(colorSelected);
+                setShowPicker(colorSelected);
+            })
+            .catch(error2 => {
+                console.log(error2.response);
+            });
     };
 
     const fadeStyles = useSpring({
@@ -73,7 +89,7 @@ const FormProfile = ({onCloseModal}) => {
             <p>{username}</p>
             <p>{email}</p>
             <p>{colorSelected}</p>
-            <Avatar emailToHash={"cassartkv@gmail.com"} />
+            <Avatar emailToHash={sessionStorage.getItem("email")} />
             <form className={"formProfile"}>
                 <Field
                     onChange={handleChangeUser}

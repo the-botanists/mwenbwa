@@ -142,6 +142,9 @@ function fixLatinName(treeLatinName) {
     latinName = latinName.split(` '`)[0];
     return latinName;
 }
+function getCurrentUserColor() {
+    return sessionStorage.getItem("color");
+}
 
 function coolName(testCoolName) {
     if (testCoolName) {
@@ -223,7 +226,7 @@ const GetMarker = () => {
                                 username: sessionStorage.getItem("username"),
                                 treeid: tree._id,
                                 treevalue: Math.ceil(tree.treevalue),
-                                color: sessionStorage.getItem("color"),
+                                color: getCurrentUserColor(),
                             }}
                             onSubmit={async values => {
                                 console.log(values);
