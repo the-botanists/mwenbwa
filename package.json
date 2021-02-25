@@ -1,6 +1,6 @@
 {
   "name": "@botanists/mwenbwa",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "description": "A web-based game of conquests… and trees",
   "author": "Pieront Emilie <pieront.emilie@gmail.com>, Kevin Cassart <cassart.kev@gmail.com>, Debroux Cédric <cedric@debroux.ovh>, Cedric AUDRIT <cedric@audrit.be>",
   "license": "MIT",
@@ -16,9 +16,7 @@
     "build:client": "npx webpack --progress --profile --colors",
     "work:client": "npx webpack --env=dev --progress",
     "build": "npm run build:server && npm run build:client",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "start": "react-scripts start"
+    "start": "node bin/server/index.js"
   },
   "lint-staged": {
     "*.js": [
