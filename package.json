@@ -6,7 +6,8 @@
   "license": "MIT",
   "private": true,
   "engines": {
-    "node": "15.9.0"
+    "node": "15.9.0",
+    "npm": "7.5.2"
   },
   "scripts": {
     "lint": "npx eslint --fix --cache --ignore-pattern 'docs/*' src",

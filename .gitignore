@@ -69,6 +69,7 @@ typings/
 .DS_Store?
 .Trashes
 Thumbs.d
+.swp
 
 # Map Css #
 src/client/assets/style.css.map
