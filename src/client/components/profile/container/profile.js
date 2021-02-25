@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import Modal from "../../tools/modal";
 import ButtonProfile from "../button-profile";
 import FormProfile from "../forms-profile";
-import Button from "../../tools/button";
+// import Button from "../../tools/button";
 
 const Profile = () => {
     const [showModal, setShowModal] = useState(false);
@@ -16,20 +16,17 @@ const Profile = () => {
         setShowModal(false);
     };
 
-    const handleSaveProfile = () => {
-        console.log("saved !");
-        // setShowModal(false);
-    };
+    const form = (
+        <FormProfile
+            onOpenModal={handleOpenModal}
+            onCloseModal={handleCloseModal}
+        />
+    );
 
     return (
         <div>
             <ButtonProfile onOpenModal={handleOpenModal} />
-            <Modal
-                show={showModal}
-                content={<FormProfile />}
-                button1={<Button label={"Save"} onClick={handleSaveProfile} />}
-                button2={<Button label={"Cancel"} onClick={handleCloseModal} />}
-            />
+            <Modal show={showModal} content={form} />
         </div>
     );
 };

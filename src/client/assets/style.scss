@@ -25,11 +25,9 @@ $radius-circle: 50%;
     color: white;
     font-weight: bold;
     cursor: pointer;
-    &:hover{
-
+    &:hover {
     }
-    &:focus{
-
+    &:focus {
     }
     &--modal {
         background-color: $color-btn-modals;
@@ -102,9 +100,21 @@ $radius-circle: 50%;
     justify-content: center;
     margin: 2rem;
     &__content {
-        @include box(8rem);
+        @include box(10rem);
         border-radius: $radius-circle;
         box-shadow: $box-shabow;
+    }
+}
+
+// ================== FORM PROFILE =============== //
+
+.formProfile {
+    
+    &__buttonGroup {
+        display: flex;
+        justify-content: flex-end;
+        align-self: flex-end;
+        gap: 1rem;
     }
 }
 

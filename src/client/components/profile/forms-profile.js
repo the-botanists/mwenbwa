@@ -1,32 +1,31 @@
 import React, {useState, useCallback} from "react";
 import {useSpring, animated, config} from "react-spring";
 // import axios from "axios";
+// import {Formik, Form} from "formik";
 
 // import PropTypes from "prop-types";
 // import classnames from "classnames";
 
-// import ColorPicker from "../tools/color-picker";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faEnvelope} from "@fortawesome/free-solid-svg-icons";
 
 import Field from "../tools/field";
 import Avatar from "../tools/avatar";
+import Button from "../tools/button";
 
-const FormProfile = () => {
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    // const [colorSelected, setColorSelected] = useState("#00D2FC")
-    // const handleChangeColor = () => setColorSelected(color);
-
-    const userNameSession = sessionStorage.getItem("username");
+const FormProfile = ({onCloseModal}) => {
+    const userIdSession = sessionStorage.getItem("_id");
+    const usernameSession = sessionStorage.getItem("username");
     const emailSession = sessionStorage.getItem("email");
     const colorSession = sessionStorage.getItem("color");
 
-    const iconUser = <FontAwesomeIcon icon={faUser} />;
-    const iconEnvelope = <FontAwesomeIcon icon={faEnvelope} />;
-
+    const [username, setUsername] = useState(usernameSession);
+    const [email, setEmail] = useState(emailSession);
     const [colorSelected, setColorSelected] = useState(colorSession);
     const [showPicker, setShowPicker] = useState(false);
+
+    const iconUser = <FontAwesomeIcon icon={faUser} />;
+    const iconEnvelope = <FontAwesomeIcon icon={faEnvelope} />;
 
     const colors = [
         "#FF6900",
@@ -41,14 +40,9 @@ const FormProfile = () => {
         "#9900EF",
     ];
 
-    // const [error, setError] = useState(null);
-    // const [isLoaded, setIsLoaded] = useState(false);
-    // const [items, setItems] = useState([]);
-
     const handleChangeColor = useCallback(() => {
         setShowPicker(val => !val);
     }, []);
-
     const handleChangeUser = useCallback(event => {
         setUsername(event.target.value);
     }, []);
@@ -56,14 +50,15 @@ const FormProfile = () => {
         setEmail(event.target.value);
     }, []);
 
-    // useEffect(() => {
-    //     async function upUserInfos() {
-    //         let res = await axios.patch("/api/users", userInfos);
-
-    //         let data = res.data;
-    //         console.log(data);
-    //     }
-    // }, []);
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log({
+            _id: userIdSession,
+            username,
+            email,
+            color: colorSelected,
+        });
+    };
 
     const fadeStyles = useSpring({
         config: {...config.default},
@@ -74,60 +69,64 @@ const FormProfile = () => {
     });
 
     return (
-        <div>
+        <div className={"formProfile"}>
             <p>{username}</p>
             <p>{email}</p>
-            <p>{colorSession}</p>
+            <p>{colorSelected}</p>
             <Avatar emailToHash={"cassartkv@gmail.com"} />
-            <Field
-                onChange={handleChangeUser}
-                value={userNameSession}
-                icon={iconUser}
-                label={"User Name"}
-                placeholder={"Your username"}
-                // username ? "username already in use" : "This username is available" >>
-                help={"This username is available"}
-            />
-            <Field
-                onChange={handleChangeEmail}
-                value={emailSession}
-                icon={iconEnvelope}
-                label={"Email"}
-                placeholder={"Your email "}
-                // email !valide ? "This email is invalid" : "email valid" >>
-                help={"This email is invalid"}
-            />
-            <div className={"field"}>
-                <label className={"label"}>{"Color"}</label>
-                <div className={"k-colorPicker "}>
-                    <div className={"k-colorPicker__selectedContainer"}>
-                        <div
-                            value={colorSession}
-                            onClick={handleChangeColor}
-                            className={"k-colorPicker__select"}
-                            id={"colorSelected"}
-                            style={{backgroundColor: colorSelected}}
-                        />
+            <form className={"formProfile"}>
+                <Field
+                    onChange={handleChangeUser}
+                    value={username}
+                    icon={iconUser}
+                    label={"User Name"}
+                    placeholder={usernameSession}
+                    // username ? "username already in use" : "This username is available" >>
+                    help={"This username is available"}
+                />
+                <Field
+                    onChange={handleChangeEmail}
+                    value={email}
+                    icon={iconEnvelope}
+                    label={"Email"}
+                    placeholder={emailSession}
+                    // email !valide ? "This email is invalid" : "email valid" >>
+                    help={"This email is invalid"}
+                />
+                <div className={"field"}>
+                    <label className={"label"}>{"Color"}</label>
+                    <div className={"k-colorPicker "}>
+                        <div className={"k-colorPicker__selectedContainer"}>
+                            <div
+                                onClick={handleChangeColor}
+                                className={"k-colorPicker__select"}
+                                style={{backgroundColor: colorSelected}}
+                            />
+                        </div>
+                        <animated.div
+                            className={"k-colorPicker__selectedContainer"}
+                            style={fadeStyles}>
+                            {colors.map((color, i) => {
+                                const key = i;
+                                return (
+                                    <div
+                                        key={key}
+                                        onClick={() => {
+                                            setColorSelected(color);
+                                        }}
+                                        className={"k-colorPicker__select"}
+                                        style={{backgroundColor: color}}
+                                    />
+                                );
+                            })}
+                        </animated.div>
                     </div>
-                    <animated.div
-                        className={"k-colorPicker__selectedContainer"}
-                        style={fadeStyles}>
-                        {colors.map((color, i) => {
-                            const key = i;
-                            return (
-                                <div
-                                    key={key}
-                                    onClick={() => {
-                                        setColorSelected(color);
-                                    }}
-                                    className={"k-colorPicker__select"}
-                                    style={{backgroundColor: color}}
-                                />
-                            );
-                        })}
-                    </animated.div>
                 </div>
-            </div>
+                <div className={"formProfile__buttonGroup"}>
+                    <Button label={"Save"} onClick={handleSubmit} />
+                    <Button label={"Cancel"} onClick={onCloseModal} />
+                </div>{" "}
+            </form>
         </div>
     );
 };
