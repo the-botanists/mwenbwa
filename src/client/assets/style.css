@@ -12925,11 +12925,23 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .k-avatar__content {
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
   -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
           box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.formProfile__buttonGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  gap: 1rem;
 }
 
 .k-colorPicker {
