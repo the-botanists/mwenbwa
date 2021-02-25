@@ -1,6 +1,6 @@
 /* botanists/mwenbwa
  *
- * /src/client/components/topbar.js - Hello Component
+ * /src/client/components/toplog.js - Hello Component
  *
  * started at 11/02/2021
  */

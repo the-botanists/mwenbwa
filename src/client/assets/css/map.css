@@ -26,3 +26,7 @@ p.btn_sg {
 .topbarlg {
     z-index: 10000 !important;
 }
+.bottombarlg {
+    padding: 0px !important;
+    z-index: 10000 !important;
+}
