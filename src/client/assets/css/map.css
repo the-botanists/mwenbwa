@@ -23,3 +23,6 @@ p.btn_sg {
     font-weight: 700;
     font-family:'Courier New', Courier, monospace;
 }
+.topbarlg {
+    z-index: 10000 !important;
+}
