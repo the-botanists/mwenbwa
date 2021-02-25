@@ -22,7 +22,7 @@ const TopBar = () => {
     // const [curLocation, setCurLocation] = useState([]);
 
     useEffect(async () => {
-        await sleep(10000);
+        await sleep(3000);
         axios
             .get(`/api/scores/user/${sessionStorage.getItem("username")}`)
             .then(response => {
