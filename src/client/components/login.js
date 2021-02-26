@@ -73,8 +73,8 @@ const Login = () => (
                                     type={"email"}
                                     placeholder={"Leny@mango3d.com"}
                                 />
-                                {errors.firstName && touched.firstName ? (
-                                    <div>{errors.firstName}</div>
+                                {errors.email && touched.email ? (
+                                    <div>{errors.email}</div>
                                 ) : null}
                             </div>
                         </div>
