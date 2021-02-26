@@ -1,11 +1,12 @@
 import path from "path";
-import treeRoutes from "./routes/tree";
-import scoreRoutes from "./routes/score";
-import bgTask from "./middleware/bgtask";
 const express = require("express");
 const bodyParser = require("body-parser");
 const user = require("../server/routes/user");
 const InitiateMongoServer = require("./config/db");
+import treeRoutes from "./routes/tree";
+import gamelogRoutes from "./routes/gamelog";
+import scoreRoutes from "./routes/score";
+import bgTask from "./middleware/bgtask";
 
 // Initiate Mongo Server
 InitiateMongoServer();
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 app.use("/user", user);
 app.use("/api/trees", treeRoutes);
 app.use("/api/scores", scoreRoutes);
+app.use("/api/gamelog", gamelogRoutes);
 
 //app.get("*", (req, res) => {
 //     res.sendFile(path.resolve("ERROR 404"));
