@@ -198,7 +198,7 @@ const GetMarker = () => {
                     <br />
                     <p>
                         {"Value : "}
-                        {Math.ceil(tree.treevalue)}
+                        {tree.treevalue}
                         {"🍃 leafs "}
                     </p>
                     <p>
@@ -225,7 +225,7 @@ const GetMarker = () => {
                             initialValues={{
                                 username: sessionStorage.getItem("username"),
                                 treeid: tree._id,
-                                treevalue: Math.ceil(tree.treevalue),
+                                treevalue: tree.treevalue,
                                 color: getCurrentUserColor(),
                             }}
                             onSubmit={async values => {

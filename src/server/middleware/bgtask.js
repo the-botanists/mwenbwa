@@ -58,12 +58,12 @@ async function updateUserScores(forOneUser, totalTreeUser) {
                 },
             },
         );
-        const logingamelogMSG1 = `🕒 15 MIN wind 🍃 on  ${forOneUser} 😢 ✌️ . He catch ${parseInt(
+        const logingamelogMSG1 = `🕒 15 MIN wind 🍃 on  ${forOneUser} ✌️ . He catch ${parseInt(
             ttLeafs1,
         )} Leafs .`;
         updateGameLog(forOneUser, logingamelogMSG1);
         if (counter % 4 === 0) {
-            const logingamelogMSG2 = `🕐 60 MIN 🌀 on  ${forOneUser} 😢 ✌️ . Left ${updNbLeafs} Leafs .`;
+            const logingamelogMSG2 = `🕐 60 MIN 🌀 on  ${forOneUser} 😢 . Left ${updNbLeafs} Leafs .`;
             updateGameLog(forOneUser, logingamelogMSG2);
         }
         console.log(`✔️  USER Score UPDATED 🏁 : ${forOneUser}`);

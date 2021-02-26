@@ -37,13 +37,39 @@ const get3TreeRand = async (req, res) => {
     }
 };
 
+// const getAllTreeWithGeo = async (req, res) => {
+//     try {
+//         const geo200Trees = await Tree.find({
+//             location: {
+//                 $geoWithin: {$centerSphere: [[50.624454, 5.604456], 0.0000313]},
+//             },
+//         });
+//         res.status(200).json(geo200Trees);
+//     } catch (error) {
+//         res.status(400).json({error});
+//     }
+// };
+
 const getAllTreeWithGeo = async (req, res) => {
     try {
-        const geo200Trees = await Tree.find({
-            location: {
-                $geoWithin: {$centerSphere: [[50.624454, 5.604456], 0.0000313]},
+        const geo200Trees = await Tree.aggregate(
+            [
+                {
+                    $geoNear: {
+                        near: {
+                            type: "Point",
+                            coordinates: [50.624454, 5.604456],
+                        },
+                        distanceField: "distance",
+                        spherical: true,
+                        maxDistance: 100,
+                    },
+                },
+            ],
+            (err, results) => {
+                console.log(results);
             },
-        });
+        );
         res.status(200).json(geo200Trees);
     } catch (error) {
         res.status(400).json({error});
