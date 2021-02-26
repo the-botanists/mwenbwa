@@ -3,8 +3,24 @@ import Score from "../models/score";
 import Tree from "../models/tree";
 const ObjectID = require("mongodb").ObjectID;
 const User = require("../models/user");
+import Gamelog from "../models/gamelog";
 
 let counter = 0;
+
+async function updateGameLog(glUser, glAction) {
+    try {
+        const newGamelogObject = new Gamelog({
+            username: glUser,
+            action: glAction,
+        });
+
+        await newGamelogObject.save();
+
+        console.log("Action Add in GAMELOG ...");
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 // Set Leaf + add to score
 async function updateUserScores(forOneUser, totalTreeUser) {
@@ -42,6 +58,14 @@ async function updateUserScores(forOneUser, totalTreeUser) {
                 },
             },
         );
+        const logingamelogMSG1 = `🕒 15 MIN wind 🍃 on  ${forOneUser} 😢 ✌️ . He catch ${parseInt(
+            ttLeafs1,
+        )} Leafs .`;
+        updateGameLog(forOneUser, logingamelogMSG1);
+        if (counter % 4 === 0) {
+            const logingamelogMSG2 = `🕐 60 MIN 🌀 on  ${forOneUser} 😢 ✌️ . Left ${updNbLeafs} Leafs .`;
+            updateGameLog(forOneUser, logingamelogMSG2);
+        }
         console.log(`✔️  USER Score UPDATED 🏁 : ${forOneUser}`);
     } catch (error) {
         console.log(error);

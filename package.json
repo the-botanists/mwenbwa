@@ -1,6 +1,6 @@
 {
   "name": "@botanists/mwenbwa",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A web-based game of conquests… and trees",
   "author": "Pieront Emilie <pieront.emilie@gmail.com>, Kevin Cassart <cassart.kev@gmail.com>, Debroux Cédric <cedric@debroux.ovh>, Cedric AUDRIT <cedric@audrit.be>",
   "license": "MIT",
@@ -69,6 +69,7 @@
     "jwt-simple": "^0.5.6",
     "leaflet": "^1.7.1",
     "md5": "^2.3.0",
+    "moment": "^2.29.1",
     "mongodb": "^3.6.4",
     "mongoose": "^5.11.16",
     "mongoose-unique-validator": "^2.0.3",

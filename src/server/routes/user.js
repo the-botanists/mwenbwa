@@ -14,8 +14,24 @@ const ObjectID = require("mongodb").ObjectID;
 import {nameByRace} from "fantasy-name-generator";
 import Score from "../models/score";
 import userUPDCtrlBuy from "../controllers/userupd";
+import Gamelog from "../models/gamelog";
 
 router.post("/update/", userUPDCtrlBuy.userUpdate);
+
+async function updateGameLog(glUser, glAction) {
+    try {
+        const newGamelogObject = new Gamelog({
+            username: glUser,
+            action: glAction,
+        });
+
+        await newGamelogObject.save();
+
+        console.log("Action Add in GAMELOG ...");
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 async function get3TreeRand(newUser, selectedColor) {
     console.log("START 3 RAND");
@@ -145,6 +161,9 @@ router.post(
 
             get3TreeRand(username, color);
             setNewUserScores(username);
+            const signingamelogMSG = `Tank You 🎆 ${username} ✌️ . He juste register.`;
+            console.log(signingamelogMSG);
+            updateGameLog(username, signingamelogMSG);
 
             const payload = {
                 user: {
@@ -162,6 +181,9 @@ router.post(
                     if (err) {
                         throw err;
                     }
+                    const logingamelogMSG = `Hello 👋 ${username}. He juste log in the game.`;
+                    console.log(logingamelogMSG);
+                    updateGameLog(username, logingamelogMSG);
                     res.status(200).json({
                         token,
                     });
@@ -208,7 +230,8 @@ router.post(
                 });
                 return;
             }
-
+            const logUsername = user.username;
+            const logingamelogMSG = `Hello 👋 ${logUsername}. He juste log in the game.`;
             const payload = {
                 user: {
                     id: user.id,
@@ -225,6 +248,8 @@ router.post(
                     if (err) {
                         throw err;
                     }
+                    console.log(logingamelogMSG);
+                    updateGameLog(logUsername, logingamelogMSG);
                     res.status(200).json({
                         token,
                     });
