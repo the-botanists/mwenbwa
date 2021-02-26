@@ -29,4 +29,5 @@ p.btn_sg {
 .bottombarlg {
     padding: 0px !important;
     z-index: 10000 !important;
+    position: relative;
 }
