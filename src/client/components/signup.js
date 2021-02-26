@@ -10,7 +10,7 @@ const SignupSchema = Yup.object().shape({
         .required("Required"),
     password: Yup.string()
         .min(6, "Too Short!")
-        .max(50, "Too Long!")
+        .max(32, "Too Long!")
         .required("Required"),
     email: Yup.string().email("Invalid email").required("Required"),
 });
@@ -85,7 +85,7 @@ const SignUp = () => (
                                 className={"input is-rounded"}
                                 name={"password"}
                                 type={"password"}
-                                placeholder={"*****"}
+                                placeholder={"➏➏➏➏➏➏"}
                             />
                             {errors.password && touched.password ? (
                                 <div>{errors.password}</div>

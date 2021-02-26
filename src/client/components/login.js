@@ -8,7 +8,7 @@ const SignupSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string()
         .min(6, "Too Short!")
-        .max(50, "Too Long!")
+        .max(24, "Too Long!")
         .required("Required"),
 });
 const Login = () => (
@@ -87,7 +87,7 @@ const Login = () => (
                             <Field
                                 className={"input is-rounded"}
                                 name={"password"}
-                                placeholder={"*****"}
+                                placeholder={"➏➏➏➏➏➏"}
                                 type={"password"}
                             />
                             {errors.password && touched.password ? (
