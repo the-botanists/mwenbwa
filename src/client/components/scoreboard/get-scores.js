@@ -8,7 +8,7 @@ function GetScores() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
 
-    const scoreAppear = useSpring({
+    const textAppear = useSpring({
         from: {transform: "translateY(150%)"},
         to: {transform: "translateY(0)"},
         config: {mass: 1, tension: 400, friction: 12},
@@ -33,23 +33,25 @@ function GetScores() {
                 a catch() block so that we don't swallow exceptions
                 due to real bugs in the components.*/
                 err => {
-                    setIsLoaded(true);
-                    setError(err);
+                    setTimeout(() => {
+                        setIsLoaded(true);
+                        setError(err);
+                    }, 3000);
                 },
             );
     }, []);
 
     if (error) {
         return (
-            <animated.tbody style={scoreAppear}>
+            <animated.tbody style={textAppear}>
                 <tr>
-                    <td>{`Erreur : ${error.message}`}</td>
+                    <td colSpan={"3"}>{`Erreur : ${error.message}`}</td>
                 </tr>
             </animated.tbody>
         );
     } else if (!isLoaded) {
         return (
-            // <animated.tbody style={scoreAppear}>
+            // <animated.tbody style={textAppear}>
             //     <tr>
             //         <td>{"Chargement..."}</td>
             //     </tr>
@@ -59,14 +61,14 @@ function GetScores() {
     }
     return (
         <>
-            <animated.tbody classnames={"k-tbodyScore"} style={scoreAppear}>
+            <tbody classnames={"k-tbody"}>
                 {items.map((item, i) => {
                     let pos = i;
                     return (
                         <tr className={classnames("k-tableRow")} key={item._id}>
                             <th>{++pos}</th>
                             <td>{item.username}</td>
-                            <td className={classnames("k-tdScore")}>
+                            <td className={classnames("k-td")}>
                                 {item.numOfTrees}
                             </td>
                             <td>
@@ -74,7 +76,7 @@ function GetScores() {
                                     {" "}
                                 </div>
                             </td>
-                            <td className={classnames("k-tdScore")}>
+                            <td className={classnames("k-td")}>
                                 {item.numOfLeafs}
                             </td>
                             <td>
@@ -83,7 +85,7 @@ function GetScores() {
                         </tr>
                     );
                 })}
-            </animated.tbody>
+            </tbody>
         </>
     );
 }
