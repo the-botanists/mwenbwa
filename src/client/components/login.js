@@ -1,8 +1,16 @@
 import React from "react";
 import axios from "axios";
 import {Formik, Field, Form} from "formik";
+import * as Yup from "yup";
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+const SignupSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string()
+        .min(6, "Too Short!")
+        .max(50, "Too Long!")
+        .required("Required"),
+});
 const Login = () => (
     <div>
         <h1>{"Login"}</h1>
@@ -11,6 +19,7 @@ const Login = () => (
                 email: "",
                 password: "",
             }}
+            validationSchema={SignupSchema}
             onSubmit={async values => {
                 await sleep(500);
                 axios
@@ -20,7 +29,6 @@ const Login = () => (
                         sessionStorage.setItem("token", res.data.token);
                         sessionStorage.setItem("email", values.email);
                         sessionStorage.setItem("color", values.color);
-                        console.log(res.data);
                         axios
                             .get("/user/me", {headers: {token: res.data.token}})
                             .then(response => {
@@ -40,7 +48,6 @@ const Login = () => (
                                     "color",
                                     response.data.color,
                                 );
-                                console.log(response.data);
                                 window.location.reload(false);
                             })
                             .catch(error => {
@@ -48,12 +55,11 @@ const Login = () => (
                             });
                     })
                     .catch(error => {
-                        console.log(error.response.data.msg);
                         document.querySelector("#error_log").innerHTML =
                             error.response.data.message;
                     });
             }}>
-            {({isSubmitting}) => (
+            {({isSubmitting, errors, touched}) => (
                 <div className={"mx-6 px-4"}>
                     <Form>
                         <div className={"field"}>
@@ -64,8 +70,12 @@ const Login = () => (
                                 <Field
                                     className={"input is-rounded"}
                                     name={"email"}
+                                    type={"email"}
                                     placeholder={"Leny@mango3d.com"}
                                 />
+                                {errors.firstName && touched.firstName ? (
+                                    <div>{errors.firstName}</div>
+                                ) : null}
                             </div>
                         </div>
                         <div className={"field"}>
@@ -80,6 +90,9 @@ const Login = () => (
                                 placeholder={"*****"}
                                 type={"password"}
                             />
+                            {errors.password && touched.password ? (
+                                <div>{errors.password}</div>
+                            ) : null}
                         </div>
                         <div className={"field"}>
                             <button
