@@ -20,14 +20,29 @@ const Scoreboard = () => {
         console.log("shared!");
     };
 
+    const button1 = (
+        <Button
+            className={"button is-success is-rounded"}
+            label={"Share"}
+            onClick={handleShareScore}
+        />
+    );
+    const button2 = (
+        <Button
+            className={"button is-success is-rounded"}
+            label={"Close"}
+            onClick={handleCloseModal}
+        />
+    );
+
     return (
         <div>
             <ButtonScore onOpenModal={handleOpenModal} />
             <Modal
                 show={showModal}
                 content={<TableScore />}
-                button1={<Button label={"Share"} onClick={handleShareScore} />}
-                button2={<Button label={"Close"} onClick={handleCloseModal} />}
+                button1={button1}
+                button2={button2}
             />
         </div>
     );

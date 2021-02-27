@@ -3,9 +3,9 @@ import Menu from "./menu";
 import UserScore from "./user-score";
 
 const TopbarK = () => (
-    <div className={"topbarContainer"}>
-        <Menu />
+    <div className={"k-topbar"}>
         <UserScore />
+        <Menu />
     </div>
 );
 

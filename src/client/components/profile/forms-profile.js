@@ -60,7 +60,6 @@ const FormProfile = ({onCloseModal}) => {
             oldemail: sessionStorage.getItem("email"),
             color: colorSelected,
         };
-        // console.log(updateValue);
         await axios
             .post("/user/update/", updateValue)
             .then(res => {
@@ -139,8 +138,16 @@ const FormProfile = ({onCloseModal}) => {
                     </div>
                 </div>
                 <div className={"formProfile__buttonGroup"}>
-                    <Button label={"Save"} onClick={handleSubmit} />
-                    <Button label={"Cancel"} onClick={onCloseModal} />
+                    <Button
+                        className={"button is-success is-rounded"}
+                        label={"Save"}
+                        onClick={handleSubmit}
+                    />
+                    <Button
+                        className={"button is-success is-rounded"}
+                        label={"Cancel"}
+                        onClick={onCloseModal}
+                    />
                 </div>{" "}
             </form>
         </div>

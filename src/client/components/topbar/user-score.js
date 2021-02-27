@@ -24,17 +24,21 @@ const UserScore = () => {
     });
 
     return (
-        <div className={"container has-background-primary p-4"}>
-            <div className={"navbar-start"}>
-                <div className={"button is-rounded mx-6 px-6"}>
-                    {"Trees : "}
+        <div className={"k-topbar__userScore"}>
+            <div className={"k-topbar__score"}>
+                <div className={"k-topbar__numberScore"}>
+                    {" "}
                     {userScore.numOfTrees}
                 </div>
 
-                <div className={"button is-rounded mx-6 px-6"}>
-                    {"Leafs : "}
+                <div className={"k-treeIcon k-treeIcon--userScore"}> </div>
+            </div>
+            <div className={"k-topbar__score"}>
+                <div className={"k-topbar__numberScore"}>
+                    {" "}
                     {userScore.numOfLeafs}
                 </div>
+                <div className={"k-leafIcon k-leafIcon--userScore"} />
             </div>
         </div>
     );

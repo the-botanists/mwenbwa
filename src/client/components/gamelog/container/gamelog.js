@@ -23,15 +23,17 @@ const Gamelog = () => {
         />
     );
 
+    const button = (
+        <Button
+            className={"button is-success is-rounded"}
+            label={"Close"}
+            onClick={handleCloseModal}
+        />
+    );
     return (
         <div>
             <ButtonGamelog onOpenModal={handleOpenModal} />
-            <Modal
-                show={showModal}
-                content={gamelogContent}
-                // button1={<Button label={"Share"} onClick={} />}
-                button2={<Button label={"Close"} onClick={handleCloseModal} />}
-            />
+            <Modal show={showModal} content={gamelogContent} button2={button} />
         </div>
     );
 };

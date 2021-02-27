@@ -8,8 +8,8 @@
 }
 
 .k-loader {
-  width: 30vh;
-  height: 22.5vh;
+  width: 10.5rem;
+  height: 9.75rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,7 +21,7 @@
 .k-loader__bar {
   background-color: #15dea5;
   height: 100%;
-  width: 3vh;
+  width: 1.5rem;
   -webkit-animation: bars 1000ms backwards infinite ease-in-out alternate;
           animation: bars 1000ms backwards infinite ease-in-out alternate;
 }

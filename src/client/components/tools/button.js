@@ -1,10 +1,9 @@
 import React from "react";
-import classnames from "classnames";
 import PropTypes from "prop-types";
 
 const Button = ({label, title, disabled = false, className, onClick}) => (
     <button
-        className={classnames("button", "is-success", "is-rounded", className)}
+        className={className}
         type={"button"}
         disabled={disabled}
         title={title || label}

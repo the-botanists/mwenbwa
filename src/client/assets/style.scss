@@ -2,6 +2,48 @@
 // @import "./css/style-modal-score/style-score.scss";
 // @import "./css/loader.scss";
 
+// ======MEDIA QUERIES========
+
+$breakpoints: (
+    phone-only: 599px,
+    tablet-portrait-up: 600px,
+    tablet-landscape-up: 900px,
+    desktop-up-small: 1200px,
+    desktop-up: 1400px,
+    big-desktop-up: 1800px,
+);
+
+@mixin for-phone-only {
+    @media (max-width: map-get($breakpoints, phone-only )) {
+        @content;
+    }
+}
+@mixin for-tablet-portrait-up {
+    @media (max-width: map-get($breakpoints, tablet-portrait-up )) {
+        @content;
+    }
+}
+@mixin for-tablet-landscape-up {
+    @media (max-width: map-get($breakpoints , tablet-landscape-up )) {
+        @content;
+    }
+}
+@mixin for-desktop-up-small {
+    @media (max-width: map-get($breakpoints, desktop-up-small)) {
+        @content;
+    }
+}
+@mixin for-desktop-up {
+    @media (max-width: map-get($breakpoints, desktop-up)) {
+        @content;
+    }
+}
+@mixin for-big-desktop-up {
+    @media (max-width: map-get($breakpoints, big-desktop-up )) {
+        @content;
+    }
+}
+
 // ======Mixins Kev========
 @mixin box($width, $height: $width) {
     width: $width;
@@ -11,8 +53,11 @@
 // ======VARIABLES========
 $color-bg-modals: #ffffff;
 $color-btn-modals: #15dea5;
+$color-topbar: #15dea5;
+$color-zoom-control: #15dea5;
 $color-btn-nav: rgb(238, 192, 107);
-$box-shabow: 0 3px 12px rgba(0, 0, 0, 0.15);
+$box-shabow: 0 0px 12px rgba(0, 0, 0, 0.472);
+$box-shabow-hover: 0 0px 3px rgba(0, 0, 0, 0.15);
 $radius-pill: 50rem;
 $radius-circle: 50%;
 
@@ -76,11 +121,23 @@ $radius-circle: 50%;
 .k-leafIcon {
     @include box(1.6rem);
     background: center / contain no-repeat url("./svg/leaf-erable.svg");
+    &--userScore {
+        align-self: center;
+        @include box(3.5rem);
+        position: relative;
+        right: 1.4rem;
+    }
 }
 
 .k-treeIcon {
     @include box(1.6rem);
     background: center / contain no-repeat url("./svg/tree-k.svg");
+    &--userScore {
+        align-self: center;
+        @include box(3.5rem);
+        position: relative;
+        right: 1.4rem;
+    }
 }
 .k-searchIcon {
     @include box(1rem);
@@ -110,7 +167,6 @@ $radius-circle: 50%;
 // ================== FORM PROFILE =============== //
 
 .formProfile {
-    
     &__buttonGroup {
         display: flex;
         justify-content: flex-end;
@@ -142,5 +198,125 @@ $radius-circle: 50%;
             outline: 2px solid #fff;
             box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
         }
+    }
+}
+
+// ================== TOP BAR =============== //
+
+.k-topbar {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: fixed;
+        z-index: 10;
+        right: 0;
+        font-size: 2.5rem;
+        text-align: center;
+        background-color: $color-topbar;
+        width: 30rem;
+        height: 4rem;
+        border-radius: 0px 0px 0px 40px;
+        box-shadow: $box-shabow;
+        @include for-desktop-up-small {
+            width: 20rem;
+        }
+        @include for-tablet-landscape-up {
+            width: 15rem;
+        }
+        @include for-phone-only() {
+            border-radius: 0;
+            width: 100vw;
+        }
+    }
+    &__hideMenu {
+        position: fixed;
+        z-index: 9;
+        right: 0;
+        top: 0rem;
+        padding-top: 60px;
+        width: 30rem;
+        height: 20rem;
+        background-color: $color-topbar;
+        border-radius: 0px 0px 0px 40px;
+        box-shadow: $box-shabow;
+        @include for-desktop-up-small {
+            width: 20rem;
+        }
+        @include for-tablet-landscape-up {
+            width: 15rem;
+        }
+        @include for-phone-only() {
+            border-radius: 0;
+            width: 100vw;
+        }
+    }
+    &__userScore {
+        display: flex;
+        place-content: center;
+        gap: 2rem;
+        align-items: center;
+        // justify-content: center;
+        background-color: $color-topbar;
+        width: 30rem;
+        height: 4.2rem;
+        font-size: 1.5rem;
+        border-radius: 0px 0px 40px 0px;
+        box-shadow: $box-shabow;
+        @include for-desktop-up-small {
+            width: 20rem;
+        }
+        @include for-tablet-landscape-up {
+            width: 15rem;
+        }
+        @include for-phone-only() {
+            width: 100vw;
+            border-radius: 0;
+        }
+    }
+    &__score {
+        display: flex;
+        align-items: center;
+    }
+    &__numberScore {
+        display: flex;
+        place-content: center;
+        background-color: white;
+        padding: 0.4rem 1.5rem 0.4rem 0.6rem;
+        border-radius: $radius-pill;
+        min-width: 6rem;
+        max-height: 3rem;
+    }
+    &__button {
+        cursor: pointer;
+        &--menu {
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+    }
+    &__buttonLabel {
+        &--menu {
+        }
+    }
+}
+
+.leaflet-control-zoom {
+    background: $color-zoom-control !important;
+    position: relative !important;
+    top: 8rem !important;
+    border: none !important;
+    box-shadow: $box-shabow !important;
+}
+.leaflet-bar a {
+    background: $color-zoom-control !important;
+    color: white !important;
+    &:hover {
+        background: lighten($color-zoom-control, 10) !important;
+        color: rgb(255, 255, 255) !important;
+        box-shadow: $box-shabow !important;
     }
 }
