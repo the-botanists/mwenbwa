@@ -16,7 +16,7 @@ const Menu = () => {
     const showMenuRef = useRef();
     const animShowMenu = useSpring({
         ref: showMenuRef,
-        to: [{transform: showMenu ? "translateY(0)" : "translateY(-20)"}],
+        to: [{transform: showMenu ? "translateY(-4)" : "translateY(-20rem)"}],
         from: {transform: "translateY(-20rem)"},
         config: config.gentle,
     });
@@ -24,7 +24,7 @@ const Menu = () => {
     const buttonAppearRef = useRef();
     const animButtonAppear = useSpring({
         ref: buttonAppearRef,
-        to: [{transform: showMenu ? "translateX(0)" : "translateX(-20)"}],
+        to: [{transform: showMenu ? "translateX(0)" : "translateX(-20rem)"}],
         from: {transform: "translateX(-20rem)"},
     });
 
