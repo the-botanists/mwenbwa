@@ -12877,8 +12877,8 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   color: white;
   font-weight: 600;
   border: none;
-  -webkit-transition: all  250ms ease-out;
-  transition: all  250ms ease-out;
+  -webkit-transition: all 250ms ease-out;
+  transition: all 250ms ease-out;
 }
 
 .k-modal__button:hover {
@@ -13053,10 +13053,48 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 .k-topbar__menu {
   font-size: 2.5rem;
-  text-align: center;
+}
+
+.k-topbar__fixeMenu {
+  position: fixed;
+  z-index: 12;
+  right: 0;
+  width: 30rem;
+  height: 4rem;
+  background-color: #15dea5;
+  border-radius: 0px 0px 0px 40px;
+}
+
+@media (max-width: 1200px) {
+  .k-topbar__fixeMenu {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .k-topbar__fixeMenu {
+    width: 15rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .k-topbar__fixeMenu {
+    border-radius: 0;
+    width: 100vw;
+  }
 }
 
 .k-topbar__hideMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
   z-index: 11;
   right: 0;
@@ -13091,55 +13129,17 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 .k-topbar__button {
   cursor: pointer;
+  width: 20rem;
+  text-align: center;
 }
 
 .k-topbar__button--menu {
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  position: fixed;
-  z-index: 12;
-  right: 0;
-  font-size: 2.5rem;
   text-align: center;
-  background-color: #15dea5;
-  width: 30rem;
-  height: 4rem;
-  border-radius: 0px 0px 0px 40px;
-}
-
-@media (max-width: 1200px) {
-  .k-topbar__button--menu {
-    width: 20rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .k-topbar__button--menu {
-    width: 15rem;
-  }
 }
 
 @media (max-width: 599px) {
   .k-topbar__button--menu {
-    border-radius: 0;
-    width: 100vw;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-  }
-}
-
-@media (max-width: 599px) {
-  .k-topbar__buttonLabel--menu {
     text-align: right;
     margin-right: 1rem;
   }

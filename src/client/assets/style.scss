@@ -108,15 +108,15 @@ $radius-circle: 50%;
             overflow: unset;
         }
     }
-    &__button{
+    &__button {
         background-color: $color-btn-modals;
         color: white;
         font-weight: 600;
         border: none;
         // border: 1px darken($color-btn-modals, 10);
         // box-shadow: $button-shadow;
-        transition: all  250ms ease-out;
-        &:hover{
+        transition: all 250ms ease-out;
+        &:hover {
             background-color: darken($color-btn-modals, 5);
             // border:2px solid darken($color-btn-modals, 10);
             // box-shadow: $button-shadow-hover;
@@ -145,7 +145,7 @@ $radius-circle: 50%;
         position: relative;
         right: 3rem;
         @include for-desktop-up-small {
-            @include box(1.8rem);   
+            @include box(1.8rem);
         }
         @include for-tablet-landscape-up {
             @include box(1.6rem);
@@ -165,7 +165,8 @@ $radius-circle: 50%;
         position: relative;
         right: 3rem;
         @include for-desktop-up-small {
-            @include box(1.8rem);        }
+            @include box(1.8rem);
+        }
         @include for-tablet-landscape-up {
             @include box(1.6rem);
             right: 2rem;
@@ -244,9 +245,30 @@ $radius-circle: 50%;
     display: flex;
     &__menu {
         font-size: 2.5rem;
-        text-align: center;
+    }
+    &__fixeMenu {
+        position: fixed;
+        z-index: 12;
+        right: 0;
+        width: 30rem;
+        height: 4rem;
+        background-color: $color-topbar;
+        border-radius: 0px 0px 0px 40px;
+        @include for-desktop-up-small {
+            width: 20rem;
+        }
+        @include for-tablet-landscape-up {
+            width: 15rem;
+        }
+        @include for-phone-only {
+            border-radius: 0;
+            width: 100vw;
+        }
     }
     &__hideMenu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         position: fixed;
         z-index: 11;
         right: 0;
@@ -270,38 +292,14 @@ $radius-circle: 50%;
     }
     &__button {
         cursor: pointer;
+        width: 20rem;
+        text-align: center;
         &--menu {
             cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: fixed;
-            z-index: 12;
-            right: 0;
-            font-size: 2.5rem;
             text-align: center;
-            background-color: $color-topbar;
-            width: 30rem;
-            height: 4rem;
-            border-radius: 0px 0px 0px 40px;
-            @include for-desktop-up-small {
-                width: 20rem;
-            }
-            @include for-tablet-landscape-up {
-                width: 15rem;
-            }
-            @include for-phone-only {
-                border-radius: 0;
-                width: 100vw;
-                justify-content: flex-end;
-            }
-        }
-    }
-    &__buttonLabel {
-        &--menu {
-            @include for-phone-only {
-                text-align:right;
-                margin-right: 1rem
+            @include for-phone-only() {
+                text-align: right;
+                margin-right: 1rem;
             }
         }
     }

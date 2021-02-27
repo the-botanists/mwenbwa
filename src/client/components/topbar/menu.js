@@ -4,6 +4,7 @@ import {useSpring, config, animated, useChain} from "react-spring";
 import Scoreboard from "../scoreboard/container/score-board";
 import Gamelog from "../gamelog/container/gamelog";
 import Profile from "../profile/container/profile";
+// import MenuReduced from "./menu-reduced";
 const goLogOut = () => {
     sessionStorage.clear();
 };
@@ -37,8 +38,10 @@ const Menu = () => {
 
     return (
         <div className={"k-topbar__menu"}>
-            <div className={"k-topbar__button--menu"} onClick={toggleMenu}>
-                <div className={"k-topbar__buttonLabel--menu"}>{"Menu"}</div>
+            <div className={"k-topbar__fixeMenu"}>
+                <div className={"k-topbar__button--menu"} onClick={toggleMenu}>
+                    {"Menu"}
+                </div>
             </div>
             <animated.div className={"k-topbar__hideMenu"} style={animShowMenu}>
                 <div style={animButtonAppear} className={"k-topbar__button"}>
@@ -54,7 +57,7 @@ const Menu = () => {
                     style={animButtonAppear}
                     className={"k-topbar__button"}
                     onClick={goLogOut}>
-                    <div className={"k-topbar__buttonLabel"}>{"Log Out"}</div>
+                    {"Log Out"}
                 </div>
             </animated.div>
         </div>
