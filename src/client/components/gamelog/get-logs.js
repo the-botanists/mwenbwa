@@ -25,7 +25,7 @@ const GetLogs = () => {
                     setTimeout(() => {
                         setIsLoaded(true);
                     }, 3000);
-                    setItems(logs.slice(0, 8));
+                    setItems(logs.slice(0, 100));
                 },
                 err => {
                     setTimeout(() => {
