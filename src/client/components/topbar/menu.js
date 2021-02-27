@@ -1,5 +1,5 @@
 import React, {useState, useRef} from "react";
-import {useSpring, config, animated, useChain} from "react-spring";
+import {useSpring, config, animated} from "react-spring";
 
 import Scoreboard from "../scoreboard/container/score-board";
 import Gamelog from "../gamelog/container/gamelog";
@@ -14,6 +14,29 @@ const Menu = () => {
 
     const toggleMenu = () => setShowMenu(!showMenu);
 
+    // const item1 = (
+    //     <div className={"k-topbar__button"}>
+    //         <Scoreboard />
+    //     </div>
+    // );
+    // const item2 = (
+    //     <div className={"k-topbar__button"}>
+    //         <Profile />
+    //     </div>
+    // );
+    // const item3 = (
+    //     <div className={"k-topbar__button"}>
+    //         <Gamelog />
+    //     </div>
+    // );
+    // const item4 = (
+    //     <div className={"k-topbar__button"} onClick={goLogOut}>
+    //         {"Log Out"}
+    //     </div>
+    // );
+
+    // const items = [item1, item2, item3, item4];
+
     const showMenuRef = useRef();
     const animShowMenu = useSpring({
         ref: showMenuRef,
@@ -22,19 +45,19 @@ const Menu = () => {
         config: config.gentle,
     });
 
-    const buttonAppearRef = useRef();
-    const animButtonAppear = useSpring({
-        ref: buttonAppearRef,
-        to: [{transform: showMenu ? "translateX(0)" : "translateX(-20rem)"}],
-        from: {transform: "translateX(-20rem)"},
-    });
+    // const buttonAppearRef = useRef();
+    // const animButtonAppear = useSpring({
+    //     ref: buttonAppearRef,
+    //     to: [{transform: showMenu ? "translateX(0)" : "translateX(-20rem)"}],
+    //     from: {transform: "translateX(-20rem)"},
+    // });
 
-    useChain(
-        showMenu
-            ? [showMenuRef, buttonAppearRef]
-            : [buttonAppearRef, showMenuRef],
-        [0, showMenu ? 0.1 : 0.6],
-    );
+    // useChain(
+    //     showMenu
+    //         ? [showMenuRef, buttonAppearRef]
+    //         : [buttonAppearRef, showMenuRef],
+    //     [0, showMenu ? 0.1 : 0.6],
+    // );
 
     return (
         <div className={"k-topbar__menu"}>
@@ -44,19 +67,16 @@ const Menu = () => {
                 </div>
             </div>
             <animated.div className={"k-topbar__hideMenu"} style={animShowMenu}>
-                <div style={animButtonAppear} className={"k-topbar__button"}>
+                <div className={"k-topbar__button"}>
                     <Scoreboard />
                 </div>
-                <div style={animButtonAppear} className={"k-topbar__button"}>
+                <div className={"k-topbar__button"}>
                     <Profile />
                 </div>
-                <div style={animButtonAppear} className={"k-topbar__button"}>
+                <div className={"k-topbar__button"}>
                     <Gamelog />
                 </div>
-                <div
-                    style={animButtonAppear}
-                    className={"k-topbar__button"}
-                    onClick={goLogOut}>
+                <div className={"k-topbar__button"} onClick={goLogOut}>
                     {"Log Out"}
                 </div>
             </animated.div>

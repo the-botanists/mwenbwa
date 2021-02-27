@@ -25,12 +25,13 @@ p.btn_sg {
 }
 .topbarlg {
     z-index: 10000 !important;
+    background-color: #15dea5 !important;
 }
 .bottombarlg {
     padding: 0px !important;
     z-index: 10000 !important;
     position: fixed;
     bottom: 0;
-    background-color: #15dea5;
+    background-color: #15dea5 !important;
     width: 100%;
 }

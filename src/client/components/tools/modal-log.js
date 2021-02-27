@@ -27,7 +27,7 @@ const ModalLog = ({show = false, content, button1, button2}) => {
     }
 
     return createPortal(
-        <div className={classnames("k-modal")}>
+        <div className={classnames("k-modal k-modal--log")}>
             <animated.div
                 className={classnames("box", "k-modal__box__log")}
                 style={{transform: modalMove.xys.interpolate(trans)}}

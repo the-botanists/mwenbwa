@@ -11,7 +11,7 @@ import "../assets/css/map.css";
 const TopBarLogin = () => (
     <nav
         className={
-            "topbarlg navbar has-background-primary is-align-items-center is-justify-content-center"
+            "topbarlg navbar is-align-items-center is-justify-content-center"
         }>
         <div>
             <h1 className={"toplg is-size-1"}>{"BATTLE TREE"}</h1>

@@ -12820,22 +12820,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 
-.k-button {
-  padding: 0.5rem 1rem;
-  border-radius: 50rem;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.k-button--modal {
-  background-color: #15dea5;
-}
-
-.k-button--nav {
-  background-color: #eec06b;
-}
-
 .k-modal {
   position: absolute;
   top: 0;
@@ -12855,6 +12839,10 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background: rgba(0, 0, 0, 0.253);
 }
 
+.k-modal--log {
+  background: rgba(0, 0, 0, 0.397);
+}
+
 .k-modal__box {
   min-height: 32rem;
   min-width: 30rem;
@@ -12866,6 +12854,20 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
       -ms-flex-direction: column;
           flex-direction: column;
   overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .k-modal__box {
+    min-height: 30rem;
+    min-width: 22rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .k-modal__box {
+    min-height: 30rem;
+    min-width: 22rem;
+  }
 }
 
 .k-modal__box--profile {
@@ -13077,7 +13079,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 500px) {
   .k-topbar__fixeMenu {
     border-radius: 0;
     width: 100vw;
@@ -13120,7 +13122,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 500px) {
   .k-topbar__hideMenu {
     border-radius: 0;
     width: 100vw;
@@ -13138,7 +13140,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   text-align: center;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 500px) {
   .k-topbar__button--menu {
     text-align: right;
     margin-right: 1rem;
@@ -13177,7 +13179,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 }
 
-@media (max-width: 599px) {
+@media (max-width: 500px) {
   .k-topbar__userScore {
     width: 100vw;
     border-radius: 0;
@@ -13232,7 +13234,9 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 .leaflet-control-zoom {
   background: #15dea5 !important;
-  position: relative !important;
+  position: absolute !important;
+  right: 10px !important;
+  top: 10rem !important;
   top: 8rem !important;
   border: none !important;
   -webkit-box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472) !important;

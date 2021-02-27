@@ -5,7 +5,7 @@
 // ======MEDIA QUERIES========
 
 $breakpoints: (
-    phone-only: 599px,
+    phone-only: 500px,
     tablet-portrait-up: 600px,
     tablet-landscape-up: 900px,
     desktop-up-small: 1200px,
@@ -65,25 +65,6 @@ $radius-circle: 50%;
 
 // ======BUTTON========
 
-.k-button {
-    padding: 0.5rem 1rem;
-    // border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: $radius-pill;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    &:hover {
-    }
-    &:focus {
-    }
-    &--modal {
-        background-color: $color-btn-modals;
-    }
-    &--nav {
-        background-color: $color-btn-nav;
-    }
-}
-
 // ======SCOREBOARD========
 .k-modal {
     position: absolute;
@@ -97,13 +78,25 @@ $radius-circle: 50%;
     align-items: center;
     background: rgba(0, 0, 0, 0.253);
     // opacity: 0;
+    &--log{
+        background: rgba(0, 0, 0, 0.397);
+    }
     &__box {
         min-height: 32rem;
         min-width: 30rem;
         display: flex;
         flex-direction: column;
         overflow: hidden;
-        // background-color: $color-bg-modals !important;
+        @include for-desktop-up-small {
+        }
+        @include for-tablet-landscape-up {
+            min-height: 30rem;
+            min-width: 22rem;
+        }
+        @include for-phone-only {
+            min-height: 30rem;
+            min-width: 22rem;
+        }
         &--profile {
             overflow: unset;
         }
@@ -364,9 +357,14 @@ $radius-circle: 50%;
     }
 }
 
+
+// ================== LEAFLET =============== //
+
 .leaflet-control-zoom {
     background: $color-zoom-control !important;
-    position: relative !important;
+    position: absolute !important;
+    right: 10px !important;
+    top: 10rem !important;
     top: 8rem !important;
     border: none !important;
     box-shadow: $box-shadow !important;
