@@ -13079,6 +13079,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .k-topbar__button--menu {
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

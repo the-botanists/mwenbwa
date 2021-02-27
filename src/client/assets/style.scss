@@ -253,6 +253,7 @@ $radius-circle: 50%;
     &__button {
         cursor: pointer;
         &--menu {
+            cursor: pointer;
             display: flex;
             flex-direction: column;
             justify-content: center;
