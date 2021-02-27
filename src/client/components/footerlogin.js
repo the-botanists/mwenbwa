@@ -15,7 +15,7 @@ const FooterBarLogin = () => (
         }>
         <div className={"bottombarlg content has-text-centered"}>
             <p className={"foolg is-size-6"}>
-                {"Powerd by "}
+                {"Powered by "}
                 <a href={"https://github.com/the-botanists/mwenbwa"}>
                     {"the-botanists"}
                 </a>
