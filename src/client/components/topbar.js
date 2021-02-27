@@ -10,6 +10,7 @@ import axios from "axios";
 import Scoreboard from "./scoreboard/container/score-board";
 import Gamelog from "./gamelog/container/gamelog";
 import Profile from "./profile/container/profile";
+import "../assets/css/map.css";
 const goLogOut = () => {
     sessionStorage.clear();
 };
@@ -54,6 +55,35 @@ const TopBar = () => {
                 </div>
 
                 <div className={"navbar-end"}>
+                    <Gamelog />
+                    <Scoreboard />
+                    <Profile />
+                    <form>
+                        <button
+                            type={"submit"}
+                            className={
+                                "navbar-item button is-danger is-rounded mx-4 px-4"
+                            }
+                            onClick={goLogOut}>
+                            <strong>{"Log Out"}</strong>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div className={"navbar-dropdown is-active"}>
+                <div>
+                    <div className={"button is-rounded mx-6 px-6"}>
+                        {"Trees : "}
+                        {userScore.numOfTrees}
+                    </div>
+
+                    <div className={"button is-rounded mx-6 px-6"}>
+                        {"Leafs : "}
+                        {userScore.numOfLeafs}
+                    </div>
+                </div>
+
+                <div className={"navbar-mobile-device"}>
                     <Gamelog />
                     <Scoreboard />
                     <Profile />
