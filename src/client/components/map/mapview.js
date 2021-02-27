@@ -193,19 +193,23 @@ const GetMarker = () => {
                 icon={!tree.owner ? treeIcon : treeIconOwner(tree.color)} // {randtreeIcon()}
                 position={tree.location.coordinates}>
                 <Popup>
-                    {"I'm "}
-                    {coolName(tree.friendlyname)}
-                    <br />
-                    <p>
-                        {"Value : "}
-                        {tree.treevalue}
-                        {"🍃 leafs "}
-                    </p>
+                    <h3 className={"is-size-5"}>
+                        {"I'm "}
+                        {coolName(tree.friendlyname)}
+                    </h3>
+                    <div className={"my-3 is-size-6"}>
+                        <span>{"Value : "}</span>
+                        <span className={"ml-4"}>
+                            {tree.treevalue}
+                            {" 🍃"}
+                        </span>
+                    </div>
+
+                    <p />
                     <p>
                         {"Owner : "}
                         {tree.owner}
-                    </p>
-                    <p>
+                        <br />
                         {fixLatinName(tree.latinName)}{" "}
                         <a
                             href={`https://en.wikipedia.org/wiki/${fixLatinName(
@@ -216,10 +220,10 @@ const GetMarker = () => {
                             {"Wiki info"}
                         </a>
                     </p>
-                    <p>
+                    {/* <p>
                         {"tree ID : "}
                         {tree._id}
-                    </p>
+                    </p> */}
                     <div>
                         <Formik
                             initialValues={{
@@ -264,6 +268,9 @@ const GetMarker = () => {
                                     /> */}
                                     {!tree.owner || !Justebuy === tree._id ? (
                                         <button
+                                            className={
+                                                "button is-primary is-rounded"
+                                            }
                                             type={"submit"}
                                             disabled={isSubmitting}>
                                             {"Buy"}
