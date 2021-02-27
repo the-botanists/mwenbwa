@@ -1,7 +1,7 @@
 $color-bars: #15dea5;
-$color-bars-hover: rgb(238, 192, 107);
+$color-bars-hover: #eec06b;
 $color-bars-rev: darken($color-bars, 20);
-$size: 5rem;
+$size: 1.5rem;
 $anim-duration: 1000ms;
 $num-bars: 5;
 $anim-delay: $anim-duration / $num-bars;
@@ -14,8 +14,8 @@ $anim-delay: $anim-duration / $num-bars;
     transform: translate(-50%, -50%);
 }
 .k-loader {
-    width: $size * 10;
-    height: $size * 7.5;
+    width: $size * 7;
+    height: $size * 6.5;
     display: flex;
     justify-content: space-evenly;
     &__bar {
@@ -28,7 +28,7 @@ $anim-delay: $anim-duration / $num-bars;
                 animation-delay: $anim-delay * $i;
                 &:hover {
                     animation-play-state: paused;
-                    background-color: $color-bar-hover;
+                    background-color: $color-bars-hover;
                 }
             }
         }

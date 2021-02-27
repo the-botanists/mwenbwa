@@ -1,15 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Button from "../tools/button";
-
 const ButtonProfil = ({onOpenModal}) => (
-    <div>
-        <Button
-            // btnModif={"nav"}
-            label={"Profil"}
-            onClick={onOpenModal}
-        />
+    <div className={"topbar__button"} onClick={onOpenModal}>
+        <div className={"topbar__buttonLabel"}>{"Profile"}</div>
     </div>
 );
 

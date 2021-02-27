@@ -12896,10 +12896,60 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background: center/contain no-repeat url("./svg/leaf-erable.svg");
 }
 
+.k-leafIcon--userScore {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+  right: 3rem;
+}
+
+@media (max-width: 1200px) {
+  .k-leafIcon--userScore {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .k-leafIcon--userScore {
+    width: 1.8rem;
+    height: 1.8rem;
+    right: 2rem;
+  }
+}
+
 .k-treeIcon {
   width: 1.6rem;
   height: 1.6rem;
   background: center/contain no-repeat url("./svg/tree-k.svg");
+}
+
+.k-treeIcon--userScore {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+  right: 3rem;
+}
+
+@media (max-width: 1200px) {
+  .k-treeIcon--userScore {
+    width: 2.3rem;
+    height: 2.3rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .k-treeIcon--userScore {
+    width: 1.8rem;
+    height: 1.8rem;
+    right: 2rem;
+  }
 }
 
 .k-searchIcon {
@@ -12929,8 +12979,8 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   width: 10rem;
   height: 10rem;
   border-radius: 50%;
-  -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472);
+          box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472);
 }
 
 .formProfile__buttonGroup {
@@ -12957,8 +13007,8 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   display: -ms-flexbox;
   display: flex;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
-          box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472);
+          box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472);
   border-radius: 4px;
   position: relative;
   padding: 5px;
@@ -12976,5 +13026,211 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   outline: 2px solid #fff;
   -webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
           box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.25);
+}
+
+.k-topbar {
+  position: absolute;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.k-topbar__menu {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.k-topbar__hideMenu {
+  position: fixed;
+  z-index: 11;
+  right: 0;
+  top: 4rem;
+  padding-top: 60px;
+  width: 30rem;
+  height: 20rem;
+  background-color: #15dea5;
+  border-radius: 0px 0px 0px 40px;
+  -webkit-box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472);
+          box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472);
+}
+
+@media (max-width: 1200px) {
+  .k-topbar__hideMenu {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .k-topbar__hideMenu {
+    width: 15rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .k-topbar__hideMenu {
+    border-radius: 0;
+    width: 100vw;
+  }
+}
+
+.k-topbar__button {
+  cursor: pointer;
+}
+
+.k-topbar__button--menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+  z-index: 12;
+  right: 0;
+  font-size: 2.5rem;
+  text-align: center;
+  background-color: #15dea5;
+  width: 30rem;
+  height: 4rem;
+  border-radius: 0px 0px 0px 40px;
+}
+
+@media (max-width: 1200px) {
+  .k-topbar__button--menu {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .k-topbar__button--menu {
+    width: 15rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .k-topbar__button--menu {
+    border-radius: 0;
+    width: 100vw;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+}
+
+@media (max-width: 599px) {
+  .k-topbar__buttonLabel--menu {
+    text-align: right;
+    margin-right: 1rem;
+  }
+}
+
+.k-topbar__userScore {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-content: center;
+  gap: 2rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #15dea5;
+  width: 30rem;
+  height: 4rem;
+  border-radius: 0px 0px 40px 0px;
+  -webkit-box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472);
+          box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472);
+}
+
+@media (max-width: 1200px) {
+  .k-topbar__userScore {
+    width: 20rem;
+    gap: 0rem;
+    padding-left: 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .k-topbar__userScore {
+    width: 15rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .k-topbar__userScore {
+    width: 100vw;
+    border-radius: 0;
+    z-index: 13;
+    background: none;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    gap: 0;
+    padding-left: 1rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+}
+
+.k-topbar__score {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.k-topbar__numberScore {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  place-content: center;
+  background-color: white;
+  padding: 0.4rem 4rem 0.4rem 0.8rem;
+  border-radius: 50rem;
+  min-width: 6rem;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .k-topbar__numberScore {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .k-topbar__numberScore {
+    padding: 0.2rem 2rem 0.2rem 0.6rem;
+    font-size: 1rem;
+  }
+}
+
+.leaflet-control-zoom {
+  background: #15dea5 !important;
+  position: relative !important;
+  top: 8rem !important;
+  border: none !important;
+  -webkit-box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472) !important;
+          box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472) !important;
+}
+
+.leaflet-bar a {
+  background: #15dea5 !important;
+  color: white !important;
+}
+
+.leaflet-bar a:hover {
+  background: #3aecba !important;
+  color: white !important;
+  -webkit-box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472) !important;
+          box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472) !important;
 }
 /*# sourceMappingURL=style.css.map */

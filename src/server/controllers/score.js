@@ -37,25 +37,6 @@ export const getAllScores = async (req, res) => {
     }
 };
 
-// export const updateScore = async (req, res) => {
-//     try {
-//         await Score.updateOne({_id: req.params.id}, {...req.body, _id: req.params.id})
-//         await res.status(200).json({message: "Score updated !"})
-//     } catch {
-//         res.status(400).json({error});
-//     }
-// };
-
-// export const updateScore = async (req, res) => {
-//     try {
-//         await Score.findOneAndUpdate({_id: req.params.id});;
-//         await Score.save()
-//         res.status(200).json(score);
-//     } catch (error) {
-//         res.status(500).send({error});
-//     }
-// };
-
 export const deleteScore = async (req, res) => {
     try {
         const score = await Score.findByIdAndDelete(req.params.id);
