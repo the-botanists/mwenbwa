@@ -279,8 +279,10 @@ $radius-circle: 50%;
     }
     &__buttonLabel {
         &--menu {
-            text-align:right;
-            margin-right: 1rem
+            @include for-phone-only {
+                text-align:right;
+                margin-right: 1rem
+            }
         }
     }
     &__userScore {
