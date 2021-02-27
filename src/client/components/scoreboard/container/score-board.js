@@ -22,14 +22,14 @@ const Scoreboard = () => {
 
     const button1 = (
         <Button
-            className={"button is-success is-rounded"}
+            className={"button is-rounded k-modal__button"}
             label={"Share"}
             onClick={handleShareScore}
         />
     );
     const button2 = (
         <Button
-            className={"button is-success is-rounded"}
+            className={"button  is-rounded k-modal__button"}
             label={"Close"}
             onClick={handleCloseModal}
         />

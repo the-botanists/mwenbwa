@@ -12872,6 +12872,20 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   overflow: unset;
 }
 
+.k-modal__button {
+  background-color: #15dea5;
+  color: white;
+  font-weight: 600;
+  outline: #11af82;
+}
+
+.k-modal__button:hover {
+  background-color: #3aecba;
+  outline: #11af82;
+  color: white;
+  font-weight: 600;
+}
+
 .k-modal__btnsGroup {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12900,23 +12914,23 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   position: relative;
   right: 3rem;
 }
 
 @media (max-width: 1200px) {
   .k-leafIcon--userScore {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 1.8rem;
+    height: 1.8rem;
   }
 }
 
 @media (max-width: 900px) {
   .k-leafIcon--userScore {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 1.6rem;
+    height: 1.6rem;
     right: 2rem;
   }
 }
@@ -12931,23 +12945,23 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   position: relative;
   right: 3rem;
 }
 
 @media (max-width: 1200px) {
   .k-treeIcon--userScore {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 1.8rem;
+    height: 1.8rem;
   }
 }
 
 @media (max-width: 900px) {
   .k-treeIcon--userScore {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 1.6rem;
+    height: 1.6rem;
     right: 2rem;
   }
 }
