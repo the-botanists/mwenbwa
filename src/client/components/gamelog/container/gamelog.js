@@ -25,7 +25,7 @@ const Gamelog = () => {
 
     const button = (
         <Button
-            className={"button is-success is-rounded"}
+            className={"button  k-modal__button is-rounded"}
             label={"Close"}
             onClick={handleCloseModal}
         />

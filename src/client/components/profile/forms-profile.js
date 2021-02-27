@@ -139,12 +139,12 @@ const FormProfile = ({onCloseModal}) => {
                 </div>
                 <div className={"formProfile__buttonGroup"}>
                     <Button
-                        className={"button is-success is-rounded"}
+                        className={"button  k-modal__button is-rounded"}
                         label={"Save"}
                         onClick={handleSubmit}
                     />
                     <Button
-                        className={"button is-success is-rounded"}
+                        className={"button  k-modal__button is-rounded"}
                         label={"Cancel"}
                         onClick={onCloseModal}
                     />

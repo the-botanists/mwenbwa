@@ -12876,12 +12876,13 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background-color: #15dea5;
   color: white;
   font-weight: 600;
-  outline: #11af82;
+  border: none;
+  -webkit-transition: all  250ms ease-out;
+  transition: all  250ms ease-out;
 }
 
 .k-modal__button:hover {
-  background-color: #3aecba;
-  outline: #11af82;
+  background-color: #13c794;
   color: white;
   font-weight: 600;
 }
@@ -13172,6 +13173,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 @media (max-width: 900px) {
   .k-topbar__userScore {
     width: 15rem;
+    padding-right: 1rem;
   }
 }
 
@@ -13245,7 +13247,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 .leaflet-bar a:hover {
   background: #3aecba !important;
   color: white !important;
-  -webkit-box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472) !important;
-          box-shadow: 0 0px 12px rgba(0, 0, 0, 0.472) !important;
+  -webkit-box-shadow: 0 0px 5px rgba(0, 0, 0, 0.472) !important;
+          box-shadow: 0 0px 5px rgba(0, 0, 0, 0.472) !important;
 }
 /*# sourceMappingURL=style.css.map */
