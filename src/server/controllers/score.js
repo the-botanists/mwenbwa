@@ -28,6 +28,14 @@ export const getOneScoreByUser = async (req, res) => {
     }
 };
 
+// export const getAllScores = (req, res) => {
+//     Score.find()
+//         .sort({ "numOfTress": -1  })
+//         .limit(250)
+//         .then(scores => res.status(200).json(scores))
+//         .catch(error => res.status(404).json({error}));
+// };
+
 export const getAllScores = async (req, res) => {
     try {
         const scores = await Score.find();

@@ -85,9 +85,6 @@ const FormProfile = ({onCloseModal}) => {
 
     return (
         <div className={"formProfile"}>
-            <p>{username}</p>
-            <p>{email}</p>
-            <p>{colorSelected}</p>
             <Avatar emailToHash={sessionStorage.getItem("email")} />
             <form className={"formProfile"}>
                 <Field

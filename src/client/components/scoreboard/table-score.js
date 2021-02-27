@@ -4,7 +4,7 @@ import GetScores from "./get-scores";
 const TableScore = () => (
     <>
         <div className={"k-tableTitle"}>{"ScoreBoard"}</div>
-        <table className={"table k-table"}>
+        <table className={"table is-hoverable k-table"}>
             <thead className={"k-tableHead"}>
                 <tr>
                     <th>
