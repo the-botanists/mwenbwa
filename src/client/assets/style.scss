@@ -69,7 +69,6 @@ $button-shadow-hover: 0 0px 1px rgba(255, 214, 34, 0.507);
 $radius-pill: 50rem;
 $radius-circle: 50%;
 
-// ======BUTTON========
 
 // ======SCOREBOARD========
 .k-modal {
@@ -133,6 +132,8 @@ $radius-circle: 50%;
     }
 }
 
+// ======TABLE========
+
 .k-table {
     flex-grow: 1;
     @include size-modal;
@@ -142,12 +143,12 @@ $radius-circle: 50%;
 }
 
 .k-tableTitle {
-
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
 }
 
-.k-tbody{
-
-}
 .k-tableHead{
     >tr th{      
         position: sticky;
@@ -158,9 +159,6 @@ $radius-circle: 50%;
 .k-tableRow--selected{
     background-color:rgb(238, 192, 107);
 }
-
-
-
 
 .k-leafIcon {
     @include box(1.6rem);
@@ -204,13 +202,6 @@ $radius-circle: 50%;
 .k-searchIcon {
     @include box(1rem);
     background: center / contain no-repeat url("./svg/search.svg");
-}
-
-.k-tableTitle {
-    text-align: center;
-    font-size: 1.6rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
 }
 
 // ================== AVATAR =============== //

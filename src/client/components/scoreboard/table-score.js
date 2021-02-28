@@ -7,10 +7,7 @@ const TableScore = () => (
         <table className={"table is-hoverable k-table"}>
             <thead className={"k-tableHead"}>
                 <tr>
-                    <th>
-                        {/* <div className={"k-searchIcon"} /> */}
-                        {"#"}
-                    </th>
+                    <th>{"#"}</th>
                     <th>{"User Name"}</th>
                     <th>{"Trees"}</th>
                     <th />
@@ -19,33 +16,6 @@ const TableScore = () => (
                 </tr>
             </thead>
             <GetScores />
-            {/* <tbody classnames={"k-tbodyScore"}>
-                {Array.apply(0, new Array(8)).map((x, i) => {
-                    let pos = i;
-                    return (
-                        <tr
-                            className={classnames("k-tableRow")}
-                            key={i.toString()}>
-                            <th>{++pos}</th>
-                            <td>{"kevksar"}</td>
-                            <td className={classnames("k-tdScore")}>
-                                {Math.floor(Math.random() * 100000 + 1000)}
-                            </td>
-                            <td>
-                                <div className={classnames("k-leafIcon")} />
-                            </td>
-                            <td className={classnames("k-tdScore")}>
-                                {Math.floor(Math.random() * 10000 + 1)}
-                            </td>
-                            <td>
-                                <div className={classnames("k-treeIcon")}>
-                                    {" "}
-                                </div>
-                            </td>
-                        </tr>
-                    );
-                })}
-            </tbody> */}
         </table>
     </>
 );

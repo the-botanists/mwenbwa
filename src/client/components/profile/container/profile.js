@@ -1,9 +1,7 @@
 import React, {useState} from "react";
-
 import Modal from "../../tools/modal";
 import ButtonProfile from "../button-profile";
 import FormProfile from "../forms-profile";
-// import Button from "../../tools/button";
 
 const Profile = () => {
     const [showModal, setShowModal] = useState(false);

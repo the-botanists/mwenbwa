@@ -13,30 +13,6 @@ const Tablegamelog = () => (
                 </tr>
             </thead>
             {<GetLogs />}
-            {/* <tbody classnames={"k-tbodyScore"}>
-                    {Array.apply(0, new Array(8)).map((x, i) => {
-                        let n = i;
-                        return (
-                            <tr
-                                className={classnames("k-tableRow")}
-                                key={i.toString()}>
-                                <td>
-                                    {n % 2 === 0
-                                        ? "Henry_Moos2"
-                                        : "AliceOnTheRoof"}
-                                </td>
-                                <td className={classnames("k-tdScore")}>
-                                    {n % 2 === 0
-                                        ? "Bought a tree"
-                                        : "Lock a tree"}
-                                </td>
-                                <td className={classnames("k-tdScore")}>
-                                    {`${++n} minute ago`}
-                                </td>
-                            </tr>
-                        );
-                    })}
-                </tbody> */}
         </table>
     </>
 );

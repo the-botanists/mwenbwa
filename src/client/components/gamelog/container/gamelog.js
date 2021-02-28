@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-
 import Modal from "../../tools/modal";
 import ButtonGamelog from "../button-gamelog";
 import Tablegamelog from "../table-gamelog";

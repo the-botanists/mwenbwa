@@ -1,11 +1,6 @@
 import React, {useState, useCallback} from "react";
 import {useSpring, animated, config} from "react-spring";
 import axios from "axios";
-// import {Formik, Form} from "formik";
-
-// import PropTypes from "prop-types";
-// import classnames from "classnames";
-
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faEnvelope} from "@fortawesome/free-solid-svg-icons";
 
@@ -93,7 +88,6 @@ const FormProfile = ({onCloseModal}) => {
                     icon={iconUser}
                     label={"User Name"}
                     placeholder={usernameSession}
-                    // username ? "username already in use" : "This username is available" >>
                     help={"This username is available"}
                 />
                 <Field
@@ -102,7 +96,6 @@ const FormProfile = ({onCloseModal}) => {
                     icon={iconEnvelope}
                     label={"Email"}
                     placeholder={emailSession}
-                    // email !valide ? "This email is invalid" : "email valid" >>
                     help={"This email is invalid"}
                 />
                 <div className={"field"}>

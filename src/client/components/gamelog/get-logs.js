@@ -4,8 +4,6 @@ import {useSpring, animated} from "react-spring";
 import Loader from "../tools/loader";
 import moment from "moment";
 
-// import GetLogs from "./get-logs";
-
 const GetLogs = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
