@@ -3,7 +3,7 @@ import Gamelog from "../models/gamelog";
 
 const getGamelog = (req, res) => {
     Gamelog.find()
-        .sort({ "_id": -1  })
+        .sort({_id: -1})
         .limit(250)
         .then(theGamelog => res.status(200).json(theGamelog))
         .catch(error => res.status(404).json({error}));

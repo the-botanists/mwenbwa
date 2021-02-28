@@ -23,6 +23,7 @@ const FormProfile = ({onCloseModal}) => {
     const [email, setEmail] = useState(emailSession);
     const [colorSelected, setColorSelected] = useState(colorSession);
     const [showPicker, setShowPicker] = useState(false);
+    const [showMsgAction, setMsgAction] = useState(false);
 
     const iconUser = <FontAwesomeIcon icon={faUser} />;
     const iconEnvelope = <FontAwesomeIcon icon={faEnvelope} />;
@@ -64,6 +65,7 @@ const FormProfile = ({onCloseModal}) => {
             .post("/user/update/", updateValue)
             .then(res => {
                 console.log(res.data);
+                setMsgAction(res.data);
                 sessionStorage.setItem("username", username);
                 sessionStorage.setItem("email", email);
                 sessionStorage.setItem("color", colorSelected);
@@ -71,7 +73,8 @@ const FormProfile = ({onCloseModal}) => {
                 setShowPicker(colorSelected);
             })
             .catch(error2 => {
-                console.log(error2.response);
+                console.log(error2.response.data.msg);
+                setMsgAction(error2.response.data.msg);
             });
     };
 
@@ -134,6 +137,7 @@ const FormProfile = ({onCloseModal}) => {
                         </animated.div>
                     </div>
                 </div>
+                <div>{showMsgAction}</div>
                 <div className={"formProfile__buttonGroup"}>
                     <Button
                         className={"button  k-modal__button is-rounded"}
