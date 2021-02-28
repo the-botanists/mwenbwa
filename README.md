@@ -48,9 +48,7 @@ At anytime, a player can check the *leaderboard*, to see each player score, amou
 
 At anytime, a player can consult the *gamelog*, which record all actions in the game.
 
-
-> SOON 
-> When clicking on a tree, a player can see its value, name, owner, history of buys, and a link to the relative wikipedia article for this tree's species (if applicable). Any player can also leave a comment on a tree.
+When clicking on a tree, a player can see its value, name, owner, (SOON history of buys), and a link to the relative wikipedia article for this tree's species (if applicable). (SOON: Any player can also leave a comment on a tree).
 
 
 ## Screen Shot
