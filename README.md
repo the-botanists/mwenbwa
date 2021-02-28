@@ -46,9 +46,10 @@ API done but not implemented /api/trees/geo100/<tree_id>&<username_of_buyer>
 
 At anytime, a player can check the *leaderboard*, to see each player score, amount of trees, etc.  
 
-> SOON
-> At anytime, a player can consult the *gamelog*, which record all actions in the game.
-> 
+At anytime, a player can consult the *gamelog*, which record all actions in the game.
+
+
+> SOON 
 > When clicking on a tree, a player can see its value, name, owner, history of buys, and a link to the relative wikipedia article for this tree's species (if applicable). Any player can also leave a comment on a tree.
 
 
