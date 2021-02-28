@@ -158,10 +158,13 @@ const latMax = center => center[0] + 0.003;
 const lonMin = center => center[1] - 0.0045;
 const lonMax = center => center[1] + 0.0045;
 
+const myPopup = L.popup();
+
 const GetMarker = () => {
     // CurrentCenter, para2
     const [error, setError] = useState(null);
     const [treesmarker, setTreesmarker] = useState([]);
+    const [rebuyval, setRebuyval] = useState([]);
     // const [curLocation, setCurLocation] = useState([]);
     // console.log(allTreesGetData);
     useEffect(() => {
@@ -177,6 +180,20 @@ const GetMarker = () => {
                 console.log(error);
             });
     });
+
+    async function TreeBuyingBackValue(aTreeID, aCurrentUser) {
+        await axios
+            .get(`/api/trees/geo100/${aTreeID}&${aCurrentUser}`)
+            .then(response => {
+                console.log(response.data);
+                setRebuyval(response.data.TreeRebuy);
+            })
+            // })
+            .catch(() => {
+                // console.log("Error retrieving data!!!");
+                console.log(error);
+            });
+    }
 
     const TEST = treesmarker
         .filter(
@@ -265,7 +282,12 @@ const GetMarker = () => {
                             <div>{"It's our tree"}</div>
                         ) : (
                             <div>
-                                {`buying back Soon ${tree.location.coordinates}`}
+                                {myPopup.isOpen()
+                                    ? TreeBuyingBackValue(
+                                          tree._id,
+                                          sessionStorage.getItem("username"),
+                                      )(`buying back Soon Value :`)(rebuyval)
+                                    : ""}
                             </div>
                         )}
                     </div>

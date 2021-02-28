@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/all/", treeCtrl.getAllTree);
 router.get("/all/cv/:center", treeCtrl.getAllTreeCV);
-router.get("/geo100/:id", treeCtrl.getGeo100Tree);
+router.get("/geo100/:id&:user", treeCtrl.getGeo100Tree);
 router.get("/one/:id", treeCtrl.getOneTree);
 // router.put("/update/:id", treeCtrl.updateTree);
 // router.delete("/del/:id", treeCtrl.removeTree);

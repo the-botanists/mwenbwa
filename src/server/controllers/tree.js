@@ -10,18 +10,18 @@ const ObjectID = require("mongodb").ObjectID;
 //     }
 // };
 
-const getAllTree = (req, res) => {
+const getAllTree = async (req, res) => {
     // console.log(req.query);
-    Tree.find()
+    await Tree.find()
         .then(allTrees => res.status(200).json(allTrees))
         .catch(error => res.status(404).json({error}));
 };
 
-const getAllTreeCV = (req, res) => {
+const getAllTreeCV = async (req, res) => {
     const centercoor = req.params.center.split(",");
     // console.log(centercoor[0]);
     // console.log(centercoor[1]);
-    Tree.find({
+    await Tree.find({
         location: {
             $geoWithin: {
                 $centerSphere: [[centercoor[0], centercoor[1]], 0.0045],
@@ -76,18 +76,169 @@ const getOneTree = async (req, res) => {
 };
 
 const getGeo100Tree = async (req, res) => {
-    const centercoor = req.params.center.split(",");
-    // console.log(centercoor[0]);
-    // console.log(centercoor[1]);
-    await Tree.find({
-        location: {
-            $geoWithin: {
-                $centerSphere: [[centercoor[0], centercoor[1]], 0.0045],
+    try {
+        const oneTree = await Tree.findOne({_id: req.params.id});
+        const futureOwner = req.params.user;
+        console.log(`FUTURE USER OWNER : ${futureOwner}`);
+        console.log(`TREE COOR : ${oneTree.location.coordinates}`);
+        console.log(`TREE VALUE : ${oneTree.treevalue}`);
+        console.log(`CURRENT OWNER : ${oneTree.owner}`);
+        console.log("=======================");
+
+        const TTTreeAt100m = await Tree.find({
+            location: {
+                $geoWithin: {
+                    $centerSphere: [oneTree.location.coordinates, 0.0000313],
+                },
             },
-        },
-    })
-        .then(allTrees => res.status(200).json(allTrees))
-        .catch(error => res.status(404).json({error}));
+        });
+        const countAllTrees = TTTreeAt100m.length;
+        console.log(`COUNT ALL TREES : ${TTTreeAt100m.length}`);
+
+        const TTTreeAt100mFutureOwner = await Tree.find({
+            owner: futureOwner,
+            location: {
+                $geoWithin: {
+                    $centerSphere: [oneTree.location.coordinates, 0.0000313],
+                },
+            },
+        });
+
+        console.log(
+            `COUNT ALL TREES Future OWNER : ${TTTreeAt100mFutureOwner.length}`,
+        );
+
+        const TTTreeAt100mOldOwner = await Tree.find({
+            owner: oneTree.owner,
+            location: {
+                $geoWithin: {
+                    $centerSphere: [oneTree.location.coordinates, 0.0000313],
+                },
+            },
+        });
+        const CountAllTreeCurrentOwner = TTTreeAt100mOldOwner.length;
+        console.log(
+            `COUNT ALL TREES OLD OWNER: ${TTTreeAt100mOldOwner.length}`,
+        );
+        // console.log(Object.values(filters).filter(element => element.active === true).length);
+
+        // ACTUAL OWNER
+        const ttValueAlltree1 = await Tree.aggregate([
+            {
+                $match: {
+                    owner: oneTree.owner,
+                    location: {
+                        $geoWithin: {
+                            $centerSphere: [
+                                oneTree.location.coordinates,
+                                0.0000313,
+                            ],
+                        },
+                    },
+                },
+            },
+            {
+                $group: {
+                    _id: null,
+                    TotalLeafs: {
+                        $sum: "$treevalue",
+                    },
+                },
+            },
+        ]);
+
+        const ttLeafs1 = ttValueAlltree1[0].TotalLeafs;
+        console.log(`☣️  TOTAL Leafs for ${oneTree.owner}: ${ttLeafs1}`);
+        const totalValueAllTreeCurrentOwner = ttLeafs1;
+
+        // ALL TREE VALUE
+        const ttValueAlltree2 = await Tree.aggregate([
+            {
+                $match: {
+                    owner: {$nin: [oneTree.owner, futureOwner]},
+                    location: {
+                        $geoWithin: {
+                            $centerSphere: [
+                                oneTree.location.coordinates,
+                                0.0000313,
+                            ],
+                        },
+                    },
+                },
+            },
+            {
+                $group: {
+                    _id: null,
+                    TotalLeafs2: {
+                        $sum: "$treevalue",
+                    },
+                },
+            },
+        ]);
+
+        const ttLeafs2 = ttValueAlltree2[0].TotalLeafs2;
+        console.log(`☣️  TOTAL Leafs for ALL TREE: ${ttLeafs2}`);
+        const totalValueAllTree = ttLeafs2;
+
+        // FUTURE OWNER TREE VALUE
+        if (TTTreeAt100mFutureOwner.length !== 0) {
+            const ttValueAlltree3 = await Tree.aggregate([
+                {
+                    $match: {
+                        owner: futureOwner,
+                        location: {
+                            $geoWithin: {
+                                $centerSphere: [
+                                    oneTree.location.coordinates,
+                                    0.0000313,
+                                ],
+                            },
+                        },
+                    },
+                },
+                {
+                    $group: {
+                        _id: null,
+                        TotalLeafs3: {
+                            $sum: "$treevalue",
+                        },
+                    },
+                },
+            ]);
+
+            const ttLeafs3 = ttValueAlltree3[0].TotalLeafs3;
+            console.log(`☣️  TOTAL Leafs for ${futureOwner}: ${ttLeafs3}`);
+            const totalValueAllTreeFutureOwner = parseInt(ttLeafs3);
+
+            const calcValue = Math.ceil(
+                parseInt(oneTree.treevalue) +
+                    parseInt(totalValueAllTreeCurrentOwner) *
+                        (parseInt(countAllTrees) /
+                            parseInt(CountAllTreeCurrentOwner)) +
+                    parseInt(totalValueAllTree) -
+                    parseInt(totalValueAllTreeFutureOwner),
+            );
+            console.log(`TREE REBUY VALUE : ${calcValue}`);
+            res.status(200).json({TreeRebuy: calcValue});
+        } else {
+            const ttLeafs3 = 0;
+            console.log(`☣️  TOTAL Leafs for ${futureOwner}: ${ttLeafs3}`);
+            const totalValueAllTreeFutureOwner = parseInt(ttLeafs3);
+
+            const calcValue = Math.ceil(
+                parseInt(oneTree.treevalue) +
+                    parseInt(totalValueAllTreeCurrentOwner) *
+                        (parseInt(countAllTrees) /
+                            parseInt(CountAllTreeCurrentOwner)) +
+                    parseInt(totalValueAllTree) -
+                    parseInt(totalValueAllTreeFutureOwner),
+            );
+            console.log(`TREE REBUY VALUE : ${calcValue}`);
+            res.status(200).json({rebuyvalue: calcValue});
+        }
+    } catch (error) {
+        res.status(404).json({error});
+    }
 };
 
 export default {

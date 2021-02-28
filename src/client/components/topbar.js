@@ -13,6 +13,7 @@ import Profile from "./profile/container/profile";
 import "../assets/css/map.css";
 const goLogOut = () => {
     sessionStorage.clear();
+    window.location.reload();
 };
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
