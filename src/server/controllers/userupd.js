@@ -79,6 +79,7 @@ const userUpdate = async (req, res) => {
         if (testemail && testemail.email !== oldemail) {
             res.status(400).json({
                 msg: "Email Already Exists",
+                isPositiv: false,
             });
             return;
         }
@@ -86,6 +87,7 @@ const userUpdate = async (req, res) => {
         if (testPseudo && testPseudo.username !== oldusername) {
             res.status(400).json({
                 msg: "Username Already Exists",
+                isPositiv: false,
             });
             return;
         }
@@ -94,9 +96,15 @@ const userUpdate = async (req, res) => {
         updateUserScore(username, oldusername);
         changeTreeOwnerName(oldusername, username, color);
 
-        res.status(200).send(`User Updated`);
+        res.status(200).json({
+            msg: "User Updated",
+            isPositiv: true,
+        });
     } catch (err) {
-        res.status(500).send("Error in Saving");
+        res.status(500).json({
+            msg: "Error in Saving",
+            isPositiv: false,
+        });
     }
 };
 

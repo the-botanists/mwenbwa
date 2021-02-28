@@ -1,11 +1,6 @@
 import React, {useState, useCallback} from "react";
 import {useSpring, animated, config} from "react-spring";
 import axios from "axios";
-// import {Formik, Form} from "formik";
-
-// import PropTypes from "prop-types";
-// import classnames from "classnames";
-
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser, faEnvelope} from "@fortawesome/free-solid-svg-icons";
 
@@ -24,6 +19,7 @@ const FormProfile = ({onCloseModal}) => {
     const [colorSelected, setColorSelected] = useState(colorSession);
     const [showPicker, setShowPicker] = useState(false);
     const [showMsgAction, setMsgAction] = useState(false);
+    const [isPositiv, setisPositiv] = useState();
 
     const iconUser = <FontAwesomeIcon icon={faUser} />;
     const iconEnvelope = <FontAwesomeIcon icon={faEnvelope} />;
@@ -64,25 +60,33 @@ const FormProfile = ({onCloseModal}) => {
         await axios
             .post("/user/update/", updateValue)
             .then(res => {
-                console.log(res.data);
-                setMsgAction(res.data);
+                console.log(res.data.isPositiv);
+                setMsgAction(res.data.msg);
+                setisPositiv(res.data.isPositiv);
                 sessionStorage.setItem("username", username);
                 sessionStorage.setItem("email", email);
                 sessionStorage.setItem("color", colorSelected);
                 setColorSelected(colorSelected);
-                setShowPicker(colorSelected);
             })
             .catch(error2 => {
                 console.log(error2.response.data.msg);
                 setMsgAction(error2.response.data.msg);
+                setisPositiv(error2.response.data.isPositiv);
             });
     };
 
-    const fadeStyles = useSpring({
+    const animPicker = useSpring({
         config: {...config.default},
         from: {transformOrigin: "left", transform: "scaleX(0)"},
         to: {
             transform: showPicker ? "scaleX(1)" : "scaleX(0)",
+        },
+    });
+    const animMessAction = useSpring({
+        config: {...config.default},
+        from: {transformOrigin: "bottom", transform: "scaleY(0)"},
+        to: {
+            transform: showMsgAction ? "scaleY(1)" : "scaleX(0)",
         },
     });
 
@@ -96,8 +100,6 @@ const FormProfile = ({onCloseModal}) => {
                     icon={iconUser}
                     label={"User Name"}
                     placeholder={usernameSession}
-                    // username ? "username already in use" : "This username is available" >>
-                    help={"This username is available"}
                 />
                 <Field
                     onChange={handleChangeEmail}
@@ -105,8 +107,6 @@ const FormProfile = ({onCloseModal}) => {
                     icon={iconEnvelope}
                     label={"Email"}
                     placeholder={emailSession}
-                    // email !valide ? "This email is invalid" : "email valid" >>
-                    help={"This email is invalid"}
                 />
                 <div className={"field"}>
                     <label className={"label"}>{"Color"}</label>
@@ -120,7 +120,7 @@ const FormProfile = ({onCloseModal}) => {
                         </div>
                         <animated.div
                             className={"k-colorPicker__selectedContainer"}
-                            style={fadeStyles}>
+                            style={animPicker}>
                             {colors.map((color, i) => {
                                 const key = i;
                                 return (
@@ -137,16 +137,22 @@ const FormProfile = ({onCloseModal}) => {
                         </animated.div>
                     </div>
                 </div>
-                <div>{showMsgAction}</div>
                 <div className={"formProfile__buttonGroup"}>
+                    <animated.div
+                        style={animMessAction}
+                        className={`formProfile__messAction formProfile__messAction--${
+                            isPositiv === true ? "positiv" : "negativ"
+                        }`}>
+                        {showMsgAction}
+                    </animated.div>
                     <Button
-                        className={"button  k-modal__button is-rounded"}
+                        className={`button k-modal__button is-rounded`}
                         label={"Save"}
                         onClick={handleSubmit}
                     />
                     <Button
                         className={"button  k-modal__button is-rounded"}
-                        label={"Cancel"}
+                        label={"Close"}
                         onClick={onCloseModal}
                     />
                 </div>{" "}

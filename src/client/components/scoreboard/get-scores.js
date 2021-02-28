@@ -22,16 +22,8 @@ function GetScores() {
                     setTimeout(() => {
                         setIsLoaded(true);
                     }, 3000);
-                    // debugger
-                    setItems(
-                        scores
-                            .sort((a, b) => b.numOfTrees - a.numOfTrees)
-                            .slice(0, 100),
-                    );
+                    setItems(scores);
                 },
-                /*errors must be handled here rather than in
-                a catch() block so that we don't swallow exceptions
-                due to real bugs in the components.*/
                 err => {
                     setTimeout(() => {
                         setIsLoaded(true);
@@ -50,14 +42,7 @@ function GetScores() {
             </animated.tbody>
         );
     } else if (!isLoaded) {
-        return (
-            // <animated.tbody style={textAppear}>
-            //     <tr>
-            //         <td>{"Chargement..."}</td>
-            //     </tr>
-            // </animated.tbody>
-            <Loader />
-        );
+        return <Loader />;
     }
     return (
         <>

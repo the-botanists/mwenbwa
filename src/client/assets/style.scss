@@ -49,7 +49,7 @@ $breakpoints: (
     height: $height;
 }
 
-@mixin size-modal{
+@mixin size-modal {
     min-height: 30rem;
     min-width: 28rem;
     max-height: 40rem;
@@ -69,8 +69,6 @@ $button-shadow-hover: 0 0px 1px rgba(255, 214, 34, 0.507);
 $radius-pill: 50rem;
 $radius-circle: 50%;
 
-// ======BUTTON========
-
 // ======SCOREBOARD========
 .k-modal {
     position: absolute;
@@ -84,7 +82,7 @@ $radius-circle: 50%;
     align-items: center;
     background: rgba(0, 0, 0, 0.253);
     // opacity: 0;
-    &--log{
+    &--log {
         background: rgba(0, 0, 0, 0.397);
     }
     &__box {
@@ -98,8 +96,8 @@ $radius-circle: 50%;
         @include for-desktop-up-small {
         }
         @include for-tablet-landscape-up {
-        //     min-height: 30rem;
-        //     min-width: 22rem;
+            //     min-height: 30rem;
+            //     min-width: 22rem;
         }
         @include for-phone-only {
             // min-height: 30rem;
@@ -133,6 +131,8 @@ $radius-circle: 50%;
     }
 }
 
+// ======TABLE========
+
 .k-table {
     flex-grow: 1;
     @include size-modal;
@@ -142,25 +142,22 @@ $radius-circle: 50%;
 }
 
 .k-tableTitle {
-
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
 }
 
-.k-tbody{
-
-}
-.k-tableHead{
-    >tr th{      
+.k-tableHead {
+    > tr th {
         position: sticky;
         top: 0;
         background-color: white;
     }
 }
-.k-tableRow--selected{
-    background-color:rgb(238, 192, 107);
+.k-tableRow--selected {
+    background-color: rgb(238, 192, 107);
 }
-
-
-
 
 .k-leafIcon {
     @include box(1.6rem);
@@ -206,13 +203,6 @@ $radius-circle: 50%;
     background: center / contain no-repeat url("./svg/search.svg");
 }
 
-.k-tableTitle {
-    text-align: center;
-    font-size: 1.6rem;
-    font-weight: 600;
-    margin-bottom: 2rem;
-}
-
 // ================== AVATAR =============== //
 
 .k-avatar {
@@ -234,6 +224,16 @@ $radius-circle: 50%;
         justify-content: flex-end;
         align-self: flex-end;
         gap: 1rem;
+    }
+    &__messAction {
+        display: flex;
+        align-items: flex-end;
+        &--positiv{
+            color: green;
+        }
+        &--negativ{
+            color: red;
+        }
     }
 }
 
@@ -318,8 +318,8 @@ $radius-circle: 50%;
     }
     &__button {
         cursor: pointer;
-        width: 20rem;
         text-align: center;
+        width: 100%;
         &--menu {
             cursor: pointer;
             text-align: center;
@@ -328,6 +328,15 @@ $radius-circle: 50%;
                 margin-right: 1rem;
             }
         }
+        // &--score{
+        //     background-color: rgb(235 20 76);
+        // }
+        // &--profile{
+
+        // }
+        // &--gamelog{
+
+        // }
     }
     &__userScore {
         display: flex;
@@ -389,7 +398,6 @@ $radius-circle: 50%;
         }
     }
 }
-
 
 // ================== LEAFLET =============== //
 

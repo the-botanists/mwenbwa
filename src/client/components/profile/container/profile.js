@@ -3,29 +3,19 @@ import React, {useState} from "react";
 import Modal from "../../tools/modal";
 import ButtonProfile from "../button-profile";
 import FormProfile from "../forms-profile";
-// import Button from "../../tools/button";
 
 const Profile = () => {
     const [showModal, setShowModal] = useState(false);
 
-    const handleOpenModal = () => {
-        setShowModal(true);
-    };
-
-    const handleCloseModal = () => {
-        setShowModal(false);
-    };
+    const toggleModal = () => setShowModal(!showModal);
 
     const form = (
-        <FormProfile
-            onOpenModal={handleOpenModal}
-            onCloseModal={handleCloseModal}
-        />
+        <FormProfile onOpenModal={toggleModal} onCloseModal={toggleModal} />
     );
 
     return (
         <div>
-            <ButtonProfile onOpenModal={handleOpenModal} />
+            <ButtonProfile onOpenModal={toggleModal} />
             <Modal show={showModal} content={form} />
         </div>
     );
