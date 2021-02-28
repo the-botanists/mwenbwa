@@ -30,7 +30,7 @@ export const getOneScoreByUser = async (req, res) => {
 
 export const getAllScores = async (req, res) => {
     try {
-        const scores = await Score.find();
+        const scores = await Score.find().sort({numOfTrees: -1});
         res.status(200).json(scores);
     } catch (error) {
         res.status(404).json({error});
