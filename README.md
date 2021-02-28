@@ -36,9 +36,11 @@ Whenever he wants, a player can _buy_ a tree.
 
 > SOON
 > - If the tree belongs to another player, the price is computed with the following formula: `[value of the targetted tree] + ([value of all the targetted  player's trees in 100m radius] × ([amount of trees in 100m radius] / [amount of tree of targetted player in 100m radius])) + [value of all the other players trees in 100m radius] - [value of all your tree in 100m radius]`.
+
 API done but not implemented /api/trees/geo100/<tree_id>&<username_of_buyer>
 
-> Soon
+
+> SOON
 > Whenever he wants, a player can *lock* a tree by paying the following formula: `[value of the tree] × 10 + ([value of all the trees in 100m radius] × [amount of players in 100m radius]) - ([value of all player's trees in 100m radius] / [amount of players in 100m radius])`. A *locked tree* can't be buy by another player.
 >
 
