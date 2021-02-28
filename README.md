@@ -33,21 +33,20 @@ Whenever he wants, a player can _buy_ a tree.
 
 - If the tree is *free*, the _value_ of the tree is its price. When a player buy a *free tree*, a [random name](https://www.npmjs.com/package/fantasy-name-generator) is affected to that tree.
 
-```
-SOON
-- If the tree belongs to another player, the price is computed with the following formula: `[value of the targetted tree] + ([value of all the targetted player's trees in 100m radius] × ([amount of trees in 100m radius] / [amount of tree of targetted player in 100m radius])) + [value of all the other players trees in 100m radius] - [value of all your tree in 100m radius]`.
 
-Whenever he wants, a player can *lock* a tree by paying the following formula: `[value of the tree] × 10 + ([value of all the trees in 100m radius] × [amount of players in 100m radius]) - ([value of all player's trees in 100m radius] / [amount of players in 100m radius])`. A *locked tree* can't be buy by another player.
-```
+> SOON, API done but not implemented /api/trees/geo100/<tree_id>&<username_of_buyer>
+> - If the tree belongs to another player, the price is computed with the following formula: `[value of the targetted tree] + ([value of all the targetted  player's trees in 100m radius] × ([amount of trees in 100m radius] / [amount of tree of targetted player in 100m radius])) + [value of all the other players trees in 100m radius] - [value of all your tree in 100m radius]`.
+>
+> Whenever he wants, a player can *lock* a tree by paying the following formula: `[value of the tree] × 10 + ([value of all the trees in 100m radius] × [amount of players in 100m radius]) - ([value of all player's trees in 100m radius] / [amount of players in 100m radius])`. A *locked tree* can't be buy by another player.
+>
 
 At anytime, a player can check the *leaderboard*, to see each player score, amount of trees, etc.  
 
-```
-SOON
-At anytime, a player can consult the *gamelog*, which record all actions in the game.
+> SOON
+> At anytime, a player can consult the *gamelog*, which record all actions in the game.
+> 
+> When clicking on a tree, a player can see its value, name, owner, history of buys, and a link to the relative wikipedia article for this tree's species (if applicable). Any player can also leave a comment on a tree.
 
-When clicking on a tree, a player can see its value, name, owner, history of buys, and a link to the relative wikipedia article for this tree's species (if applicable). Any player can also leave a comment on a tree.
-```
 
 ## Screen Shot
 
