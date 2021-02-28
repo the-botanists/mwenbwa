@@ -12905,6 +12905,13 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   width: 100%;
 }
 
+.k-tableTitle {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
 .k-tableHead > tr th {
   position: -webkit-sticky;
   position: sticky;
@@ -12984,13 +12991,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   background: center/contain no-repeat url("./svg/search.svg");
 }
 
-.k-tableTitle {
-  text-align: center;
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-}
-
 .k-avatar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13019,6 +13019,23 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   -ms-flex-item-align: end;
       align-self: flex-end;
   gap: 1rem;
+}
+
+.formProfile__messAction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.formProfile__messAction--positiv {
+  color: green;
+}
+
+.formProfile__messAction--negativ {
+  color: red;
 }
 
 .k-colorPicker {
