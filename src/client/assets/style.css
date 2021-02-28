@@ -12844,8 +12844,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .k-modal__box {
-  min-height: 32rem;
-  min-width: 30rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12853,21 +12851,14 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  overflow: hidden;
-}
-
-@media (max-width: 900px) {
-  .k-modal__box {
-    min-height: 30rem;
-    min-width: 22rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .k-modal__box {
-    min-height: 30rem;
-    min-width: 22rem;
-  }
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
 }
 
 .k-modal__box--profile {
@@ -12905,6 +12896,24 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  min-height: 30rem;
+  min-width: 28rem;
+  max-height: 40rem;
+  max-width: 45rem;
+  overflow: auto;
+  display: block;
+  width: 100%;
+}
+
+.k-tableHead > tr th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+.k-tableRow--selected {
+  background-color: #eec06b;
 }
 
 .k-leafIcon {

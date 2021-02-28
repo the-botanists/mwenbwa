@@ -26,7 +26,7 @@ function GetScores() {
                     setItems(
                         scores
                             .sort((a, b) => b.numOfTrees - a.numOfTrees)
-                            .slice(0, 8),
+                            .slice(0, 100),
                     );
                 },
                 /*errors must be handled here rather than in
