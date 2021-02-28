@@ -44,13 +44,22 @@ const Menu = () => {
                 </div>
             </div>
             <animated.div className={"k-topbar__hideMenu"} style={animShowMenu}>
-                <div style={animButtonAppear} className={"k-topbar__button"}>
+                <div
+                    style={animButtonAppear}
+                    className={"k-topbar__button k-topbar__button--score"}
+                    onClick={toggleMenu}>
                     <Scoreboard />
                 </div>
-                <div style={animButtonAppear} className={"k-topbar__button"}>
+                <div
+                    style={animButtonAppear}
+                    className={"k-topbar__button k-topbar__button--profile"}
+                    onClick={toggleMenu}>
                     <Profile />
                 </div>
-                <div style={animButtonAppear} className={"k-topbar__button"}>
+                <div
+                    style={animButtonAppear}
+                    className={"k-topbar__button k-topbar__button--gamelog"}
+                    onClick={toggleMenu}>
                     <Gamelog />
                 </div>
                 <div

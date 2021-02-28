@@ -8,13 +8,7 @@ import Button from "../../tools/button";
 const Scoreboard = () => {
     const [showModal, setShowModal] = useState(false);
 
-    const handleOpenModal = () => {
-        setShowModal(true);
-    };
-
-    const handleCloseModal = () => {
-        setShowModal(false);
-    };
+    const toggleModal = () => setShowModal(!showModal);
 
     const handleShareScore = () => {
         console.log("shared!");
@@ -31,13 +25,13 @@ const Scoreboard = () => {
         <Button
             className={"button  is-rounded k-modal__button"}
             label={"Close"}
-            onClick={handleCloseModal}
+            onClick={toggleModal}
         />
     );
 
     return (
         <div>
-            <ButtonScore onOpenModal={handleOpenModal} />
+            <ButtonScore onOpenModal={toggleModal} />
             <Modal
                 show={showModal}
                 content={<TableScore />}

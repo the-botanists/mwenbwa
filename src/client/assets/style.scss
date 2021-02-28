@@ -318,8 +318,8 @@ $radius-circle: 50%;
     }
     &__button {
         cursor: pointer;
-        width: 20rem;
         text-align: center;
+        width: 100%;
         &--menu {
             cursor: pointer;
             text-align: center;
@@ -328,6 +328,15 @@ $radius-circle: 50%;
                 margin-right: 1rem;
             }
         }
+        // &--score{
+        //     background-color: rgb(235 20 76);
+        // }
+        // &--profile{
+
+        // }
+        // &--gamelog{
+
+        // }
     }
     &__userScore {
         display: flex;
