@@ -38,7 +38,7 @@ function GameMap() {
             id={"leafletContainer"}
             center={position}
             zoom={17}
-            minZoom={12}
+            minZoom={13}
             maxZoom={18}
             // style={{ height: "100vh", width: "100vw" }}
             scrollWheelZoom={true}>
@@ -125,7 +125,7 @@ const treeIcon = L.icon({
     iconUrl: TreeImage1,
     iconSize: [30, 40], // size of the icon
     iconAnchor: [17, 0], // point of the icon which will correspond to marker's location
-    popupAnchor: [17, 0], // point from which the popup should open relative to the iconAnchor
+    // popupAnchor: [17, 0], // point from which the popup should open relative to the iconAnchor
 });
 
 const treeIconOwner = usrColor =>
@@ -133,7 +133,7 @@ const treeIconOwner = usrColor =>
         iconUrl: `data:image/svg+xml;base64,${btoa(svgIcone(usrColor))}`,
         iconSize: [30, 40], // size of the icon
         iconAnchor: [17, 0], // point of the icon which will correspond to marker's location
-        popupAnchor: [17, 0], // point from which the popup should open relative to the iconAnchor
+        // popupAnchor: [17, 0], // point from which the popup should open relative to the iconAnchor
     });
 
 function fixLatinName(treeLatinName) {
@@ -166,7 +166,7 @@ const GetMarker = () => {
     // console.log(allTreesGetData);
     useEffect(() => {
         axios
-            .get("/api/trees/all")
+            .get(`/api/trees/all/cv/${curLocation}`)
             .then(response => {
                 setTreesmarker(response.data);
             })

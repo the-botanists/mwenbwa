@@ -5,6 +5,7 @@ import treeCtrlBuy from "../controllers/treebuy";
 const router = express.Router();
 
 router.get("/all/", treeCtrl.getAllTree);
+router.get("/all/cv/:center", treeCtrl.getAllTreeCV);
 router.get("/geo200/", treeCtrl.getAllTree);
 router.get("/one/:id", treeCtrl.getOneTree);
 // router.put("/update/:id", treeCtrl.updateTree);

@@ -11,7 +11,23 @@ const ObjectID = require("mongodb").ObjectID;
 // };
 
 const getAllTree = (req, res) => {
+    console.log(req.query);
     Tree.find()
+        .then(allTrees => res.status(200).json(allTrees))
+        .catch(error => res.status(404).json({error}));
+};
+
+const getAllTreeCV = (req, res) => {
+    const centercoor = req.params.center.split(",");
+    console.log(centercoor[0]);
+    console.log(centercoor[1]);
+    Tree.find({
+        location: {
+            $geoWithin: {
+                $centerSphere: [[centercoor[0], centercoor[1]], 0.0045],
+            },
+        },
+    })
         .then(allTrees => res.status(200).json(allTrees))
         .catch(error => res.status(404).json({error}));
 };
@@ -52,24 +68,17 @@ const get3TreeRand = async (req, res) => {
 
 const getAllTreeWithGeo = async (req, res) => {
     try {
-        const geo200Trees = await Tree.aggregate(
-            [
-                {
-                    $geoNear: {
-                        near: {
-                            type: "Point",
-                            coordinates: [50.624454, 5.604456],
-                        },
-                        distanceField: "distance",
-                        spherical: true,
-                        maxDistance: 100,
+        const geo200Trees = await Tree.find({
+            location: {
+                $near: {
+                    $maxDistance: 100,
+                    $geometry: {
+                        type: "Point",
+                        coordinates: [50.624454, 5.604456],
                     },
                 },
-            ],
-            (err, results) => {
-                console.log(results);
             },
-        );
+        });
         res.status(200).json(geo200Trees);
     } catch (error) {
         res.status(400).json({error});
@@ -90,4 +99,5 @@ export default {
     getOneTree,
     getAllTreeWithGeo,
     get3TreeRand,
+    getAllTreeCV,
 };
