@@ -13,7 +13,7 @@ InitiateMongoServer();
 const app = express();
 // PORT
 // const PORT = 12345;
-const PORT = process.env.PORT || 12345
+const PORT = process.env.PORT || 12345;
 
 // Middleware
 app.use(bodyParser.json());
