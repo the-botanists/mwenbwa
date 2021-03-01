@@ -12,7 +12,8 @@ import bgTask from "./middleware/bgtask";
 InitiateMongoServer();
 const app = express();
 // PORT
-const PORT = 12345;
+// const PORT = 12345;
+const PORT = process.env.PORT || 
 
 // Middleware
 app.use(bodyParser.json());
