@@ -9,7 +9,7 @@ Based on data from https://data.gov.be/en/node/48556), we create a WebApp consis
 
 hosted on [VPS](https://battletree.neant.be/)
 
-hosted on [heroku](https://btc-liege.herokuapp.com/) Soon
+hosted on [heroku](https://btc-liege.herokuapp.com/)
 
 ## Technology used and specification
 
