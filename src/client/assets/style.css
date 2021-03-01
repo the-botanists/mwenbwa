@@ -12820,6 +12820,28 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 3rem 1.5rem 6rem;
 }
 
+@-webkit-keyframes hover-button {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
+@keyframes hover-button {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+
 .k-modal {
   position: absolute;
   top: 0;
@@ -13159,6 +13181,8 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   cursor: pointer;
   text-align: center;
   width: 100%;
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 .k-topbar__button--menu {
@@ -13171,6 +13195,11 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     text-align: right;
     margin-right: 1rem;
   }
+}
+
+.k-topbar__button:hover {
+  -webkit-animation: hover-button 500ms backwards infinite ease-in-out alternate;
+          animation: hover-button 500ms backwards infinite ease-in-out alternate;
 }
 
 .k-topbar__userScore {

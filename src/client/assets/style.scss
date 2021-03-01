@@ -70,6 +70,19 @@ $radius-pill: 50rem;
 $radius-circle: 50%;
 
 // ======SCOREBOARD========
+@keyframes hover-button{
+    0% {
+        transform: scale(1);
+        
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+
+
+// ======SCOREBOARD========
 .k-modal {
     position: absolute;
     top: 0;
@@ -200,7 +213,7 @@ $radius-circle: 50%;
 }
 .k-searchIcon {
     @include box(1rem);
-    background: center / contain no-repeat url("./svg/search.svg");
+    background: center / contain no-repeat url("./svg/search.svg"); 
 }
 
 // ================== AVATAR =============== //
@@ -320,6 +333,7 @@ $radius-circle: 50%;
         cursor: pointer;
         text-align: center;
         width: 100%;
+        transform: scale(1);
         &--menu {
             cursor: pointer;
             text-align: center;
@@ -327,6 +341,9 @@ $radius-circle: 50%;
                 text-align: right;
                 margin-right: 1rem;
             }
+        }
+        &:hover{
+            animation: hover-button 500ms backwards infinite ease-in-out alternate;
         }
         // &--score{
         //     background-color: rgb(235 20 76);
