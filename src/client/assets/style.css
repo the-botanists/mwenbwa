@@ -13197,6 +13197,10 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 }
 
+.k-topbar__button--logout {
+  color: red;
+}
+
 .k-topbar__button:hover {
   -webkit-animation: hover-button 500ms backwards infinite ease-in-out alternate;
           animation: hover-button 500ms backwards infinite ease-in-out alternate;
@@ -13271,12 +13275,14 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding: 0.4rem 4rem 0.4rem 0.8rem;
   border-radius: 50rem;
   min-width: 6rem;
+  min-height: 3rem;
   font-size: 1.5rem;
 }
 
 @media (max-width: 1200px) {
   .k-topbar__numberScore {
     font-size: 1.2rem;
+    min-height: 2.7rem;
   }
 }
 
@@ -13284,6 +13290,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   .k-topbar__numberScore {
     padding: 0.2rem 2rem 0.2rem 0.6rem;
     font-size: 1rem;
+    min-height: inherit;
   }
 }
 

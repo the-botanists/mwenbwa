@@ -15,6 +15,7 @@ const Menu = () => {
     const toggleMenu = () => setShowMenu(!showMenu);
 
     const showMenuRef = useRef();
+
     const animShowMenu = useSpring({
         ref: showMenuRef,
         to: [{transform: showMenu ? "translateY(-4)" : "translateY(-20rem)"}],
@@ -46,25 +47,22 @@ const Menu = () => {
             <animated.div className={"k-topbar__hideMenu"} style={animShowMenu}>
                 <div
                     style={animButtonAppear}
-                    className={"k-topbar__button k-topbar__button--score"}
-                    onClick={toggleMenu}>
+                    className={"k-topbar__button k-topbar__button--score"}>
                     <Scoreboard />
                 </div>
                 <div
                     style={animButtonAppear}
-                    className={"k-topbar__button k-topbar__button--profile"}
-                    onClick={toggleMenu}>
+                    className={"k-topbar__button k-topbar__button--profile"}>
                     <Profile />
                 </div>
                 <div
                     style={animButtonAppear}
-                    className={"k-topbar__button k-topbar__button--gamelog"}
-                    onClick={toggleMenu}>
+                    className={"k-topbar__button k-topbar__button--gamelog"}>
                     <Gamelog />
                 </div>
                 <div
                     style={animButtonAppear}
-                    className={"k-topbar__button"}
+                    className={"k-topbar__button k-topbar__button--logout "}
                     onClick={goLogOut}>
                     {"Log Out"}
                 </div>
